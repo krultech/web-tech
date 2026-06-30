@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>KRUL Technology | Chemical Engineering & Custom Reactors</title>
-<meta name="description" content="Turnkey production lines, custom chemical reactor engineering, and process methodology — from concept to full-scale production across Europe." />
+<title>KRUL Technology | Chemical Process Engineering & Turnkey Production Setup</title>
+<meta name="description" content="Process Methodology · Turnkey production lines · Custom Reactors · PTFE · Enamel Equipment." />
 <link rel="icon" href="https://res.cloudinary.com/dwqit2mii/image/upload/v1779126899/Ultra-minimalist_square_favicon_design._Perfectly_202605181052_qi0e48.jpg">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.krul.tech/">
 <meta property="og:site_name" content="KRUL Technology">
 <meta property="og:title" content="From idea to full-scale production.">
-<meta property="og:description" content="Turnkey production lines, custom chemical reactor engineering, and process methodology — from concept to full-scale production across Europe.">
+<meta property="og:description" content="Process Methodology · Turnkey production lines · Custom Reactors · PTFE · Enamel Equipment.">
 <meta property="og:image" content="https://res.cloudinary.com/dwqit2mii/image/upload/v1779127867/Extreme_minimalism._A_solid__deep_202605181031_1_zhvvok.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -97,8 +97,14 @@
 
   .wf-header::before { content: none; }
 
-  .wf-header-left { justify-self: start; }
-  .wf-header-right { justify-self: end; }
+ 
+ .wf-header-left { justify-self: start; }
+.wf-header-right {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
 
   .wf-logo {
     grid-column: 2;
@@ -307,35 +313,34 @@
 
   /* Light variant for use over the dark hero video — same dashed/
      hand-written language as .hero-cta, recolored for legibility. */
-  .hero-cta-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    padding: 16px 32px;
-    border: 1.5px dashed rgba(255,255,255,0.55);
-    background: rgba(255,255,255,0.06);
-    font-family: var(--hand);
-    font-size: 17px;
-    color: #EAEAEA;
-    letter-spacing: 0.03em;
-    text-decoration: none;
-    -webkit-backdrop-filter: blur(2px);
-    backdrop-filter: blur(2px);
-    transition: background-color 300ms ease, border-color 300ms ease;
-  }
-  .hero-cta-btn:hover {
-    background: rgba(255,255,255,0.14);
-    border-color: rgba(255,255,255,0.85);
-  }
-  .hero-cta-btn::after {
-    content: "→";
-    font-family: var(--sans);
-    font-size: 15px;
-    transition: transform 300ms ease;
-  }
-  .hero-cta-btn:hover::after {
-    transform: translateX(3px);
-  }
+ .header-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  border-radius: 10px;
+  border: 1.5px solid #E55137;
+  background-color: #E55137;
+  color: #ffffff;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: opacity 200ms ease, transform 120ms ease;
+}
+.header-cta-btn:hover {
+  opacity: 0.72;
+}
+.header-cta-btn:active {
+  transform: scale(1.06);
+}
+.header-cta-btn--mobile {
+  display: none;
+}
 
   /* ============ GLOBAL THEME TRANSITION ============ */
   /* The body owns the screen color. Sections (Blocks 2, 3, 4) are
@@ -1118,6 +1123,13 @@
       padding-left: 0.28em;
     }
     .wf-lang { width: 44px; height: 44px; }
+.header-cta-btn {
+  padding: 7px 14px;
+  font-size: 12px;
+  border-radius: 8px;
+}
+.header-cta-btn--desktop { display: none; }
+.header-cta-btn--mobile { display: inline-flex; }
 
     /* Default section safe zone */
     section { padding-left: 20px; padding-right: 20px; }
@@ -1613,9 +1625,12 @@
 
 <!-- 1. STICKY HEADER -->
 <header class="wf-header" data-screen-label="01 Header">
-  <div class="wf-header-left" aria-hidden="true"></div>
+  <div class="wf-header-left">
+    <a class="header-cta-btn header-cta-btn--mobile" href="https://wa.me/48510275634?text=Hi%2C%20I%27d%20like%20a%20free%20consultation%20about%20my%20project" target="_blank" rel="noopener" data-i18n="hero.cta">Free consultation</a>
+  </div>
   <div class="wf-logo" data-comment-anchor="logo">KRUL</div>
   <div class="wf-header-right">
+    <a class="header-cta-btn header-cta-btn--desktop" href="https://wa.me/48510275634?text=Hi%2C%20I%27d%20like%20a%20free%20consultation%20about%20my%20project" target="_blank" rel="noopener" data-i18n="hero.cta">Free consultation</a>
     <div class="wf-lang-wrap" id="langWrap">
       <button class="wf-lang" id="langToggle" type="button" aria-label="Change language" aria-haspopup="listbox" aria-expanded="false">
         <svg viewBox="0 0 40 40" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
@@ -1644,7 +1659,6 @@
   <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-content">
     <h1 class="hero-title"><span class="hero-title-line" data-i18n="hero.l1">From idea</span><span class="hero-title-line" data-i18n="hero.l2">to full-scale production.</span></h1>
-    <a class="hero-cta-btn" href="https://wa.me/48510275634?text=Hi%2C%20I%27d%20like%20a%20free%20consultation%20about%20my%20project" target="_blank" rel="noopener" data-i18n="hero.cta">Free consultation</a>
   </div>
 </section>
 
