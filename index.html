@@ -4,13 +4,13 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>KRUL Technology | Chemical Engineering & Custom Reactors</title>
-<meta name="description" content="Refurbished equipment, process development, turnkey production lines, and custom reactor engineering." />
+<meta name="description" content="Turnkey production lines, custom chemical reactor engineering, and process methodology — from concept to full-scale production across Europe." />
 <link rel="icon" href="https://res.cloudinary.com/dwqit2mii/image/upload/v1779126899/Ultra-minimalist_square_favicon_design._Perfectly_202605181052_qi0e48.jpg">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.krul.tech/">
 <meta property="og:site_name" content="KRUL Technology">
-<meta property="og:title" content="From concept to full-scale production.">
-<meta property="og:description" content="Refurbished equipment, process development, turnkey production lines, and custom reactor engineering.">
+<meta property="og:title" content="From idea to full-scale production.">
+<meta property="og:description" content="Turnkey production lines, custom chemical reactor engineering, and process methodology — from concept to full-scale production across Europe.">
 <meta property="og:image" content="https://res.cloudinary.com/dwqit2mii/image/upload/v1779127867/Extreme_minimalism._A_solid__deep_202605181031_1_zhvvok.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -305,6 +305,38 @@
     font-size: 16px;
   }
 
+  /* Light variant for use over the dark hero video — same dashed/
+     hand-written language as .hero-cta, recolored for legibility. */
+  .hero-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 32px;
+    border: 1.5px dashed rgba(255,255,255,0.55);
+    background: rgba(255,255,255,0.06);
+    font-family: var(--hand);
+    font-size: 17px;
+    color: #EAEAEA;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    transition: background-color 300ms ease, border-color 300ms ease;
+  }
+  .hero-cta-btn:hover {
+    background: rgba(255,255,255,0.14);
+    border-color: rgba(255,255,255,0.85);
+  }
+  .hero-cta-btn::after {
+    content: "→";
+    font-family: var(--sans);
+    font-size: 15px;
+    transition: transform 300ms ease;
+  }
+  .hero-cta-btn:hover::after {
+    transform: translateX(3px);
+  }
+
   /* ============ GLOBAL THEME TRANSITION ============ */
   /* The body owns the screen color. Sections (Blocks 2, 3, 4) are
      transparent so the background change is one continuous wash
@@ -353,6 +385,7 @@
   /* All themable surfaces transition the same way */
   .about-heading,
   .about-text,
+  .about-stats,
   .section-header h2,
   .section-header,
   .bento-title,
@@ -383,12 +416,14 @@
   }
 
   body.theme-dark .bento-desc,
+  body.theme-dark .about-stats,
   body.theme-dark .section-header .label,
   body.theme-dark .footer-links a {
     color: var(--theme-ink-muted-dark) !important;
   }
 
   body.theme-dark .about-heading,
+  body.theme-dark .about-stats,
   body.theme-dark .section-header,
   body.theme-dark .wf-contacts,
   body.theme-dark .wf-footer,
@@ -448,6 +483,17 @@
     text-align: justify;
     text-wrap: pretty;
     hyphens: auto;
+  }
+
+  .about-stats {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px dashed var(--line);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
   }
 
   @media (max-width: 900px) {
@@ -1113,6 +1159,12 @@
     .hero-title-line + .hero-title-line::before {
       content: none;
     }
+    .hero-cta-btn {
+      margin-top: 20px;
+      padding: 13px 26px;
+      font-size: 15px;
+      gap: 10px;
+    }
 
     /* ===== ABOUT ===== */
     .wf-products { padding: 96px 20px 72px; }
@@ -1128,6 +1180,12 @@
       line-height: 1.5;
       text-align: left;
       hyphens: none;
+    }
+    .about-stats {
+      margin-top: 28px;
+      padding-top: 18px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
     }
 
     /* ===== SECTION HEADER ===== */
@@ -1586,6 +1644,7 @@
   <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-content">
     <h1 class="hero-title"><span class="hero-title-line" data-i18n="hero.l1">From idea</span><span class="hero-title-line" data-i18n="hero.l2">to full-scale production.</span></h1>
+    <a class="hero-cta-btn" href="https://wa.me/48510275634?text=Hi%2C%20I%27d%20like%20a%20free%20consultation%20about%20my%20project" target="_blank" rel="noopener" data-i18n="hero.cta">Free consultation</a>
   </div>
 </section>
 
@@ -1604,6 +1663,7 @@
         Whether it involves overcoming a technological bottleneck, scaling up production, fulfilling a complex custom request, or providing expert consultation — the result of our collaboration is always cost-effective and uninterrupted production that consistently delivers the right product in the right quantity.
       </p>
     </div>
+    <p class="about-stats reveal" data-i18n="about.stats">9 years in chemical process engineering · 43 projects delivered across Europe</p>
   </div>
 </section>
 
@@ -2071,6 +2131,8 @@
       "about.p1": "The main challenge in any manufacturing process is the gap between theory and practice. It's that moment when laboratory methods don't scale to large volumes, standard equipment can't handle the task, and bringing in a dozen different contractors only leads to missed launch deadlines and equipment breakdowns.",
       "about.p2": "By acting as a single point of responsibility, I manage the entire production cycle of your turnkey project: from adapting methods to available raw materials and the required volume to assembling custom reactors or equipping the line with ready-made equipment from my own warehouse. By entrusting the launch of your line to a single specialist, you eliminate financial losses between project phases and receive a system in which the chemical formula and equipment engineering are perfectly synchronized with each other.",
       "about.p3": "Whether it involves overcoming a technological bottleneck, scaling up production, fulfilling a complex custom request, or providing expert consultation — the result of our collaboration is always cost-effective and uninterrupted production that consistently delivers the right product in the right quantity.",
+      "hero.cta": "Free consultation",
+      "about.stats": "9 years in chemical process engineering · 43 projects delivered across Europe",
       "services.heading": "Services",
       "card.aboutLabel": "About this service",
       "card.explore": "Explore →",
@@ -2123,6 +2185,8 @@
       "about.p1": "Głównym wyzwaniem w każdym procesie produkcyjnym jest rozdźwięk między teorią a praktyką. To moment, w którym procedury laboratoryjne nie sprawdzają się przy przejściu na dużą skalę, standardowe maszyny zawodzą, a zaangażowanie wielu różnych podwykonawców kończy się jedynie opóźnieniami we wdrożeniu i awariami sprzętu.",
       "about.p2": "Jako jedyny punkt kontaktu i podmiot w pełni odpowiedzialny za projekt, prowadzę kompletny cykl wdrożeniowy „pod klucz”: od adaptacji technologii do dostępnych surowców i docelowych mocy produkcyjnych, aż po montaż dedykowanych reaktorów lub kompletowanie linii z gotowych urządzeń z własnego magazynu. Powierzając uruchomienie produkcji jednemu specjaliście, eliminują Państwo straty finansowe na stykach kolejnych etapów i zyskują system, w którym formuła chemiczna oraz inżynieria maszyn są ze sobą idealnie zsynchronizowane.",
       "about.p3": "Niezależnie od tego, czy chodzi o wyprowadzenie przedsiębiorstwa z technologicznego ślepego zaułka, skalowanie procesów, skomplikowany projekt na zamówienie, czy eksperckie doradztwo – rezultatem naszej współpracy jest zawsze rentowna i bezawaryjna produkcja, która stabilnie dostarcza właściwy produkt w pożądanej ilości.",
+      "hero.cta": "Bezpłatna konsultacja",
+      "about.stats": "9 lat doświadczenia w inżynierii procesów chemicznych · 43 zrealizowane projekty w Europie",
       "services.heading": "Usługi",
       "card.aboutLabel": "O usłudze",
       "card.explore": "Szczegóły →",
@@ -2175,6 +2239,8 @@
       "about.p1": "Hlavní problém každé výroby spočívá v propasti mezi teorií a praxí. V okamžiku, kdy laboratorní postup přestává fungovat při větších objemech, standardní zařízení nestačí na daný úkol a zapojení desítky různých dodavatelů vede jen ke zpožděnému spuštění a poruchám strojů.",
       "about.p2": "Jako jediné kontaktní místo pokrývám celý výrobní cyklus vašeho projektu na klíč: od přizpůsobení technologického postupu dostupným surovinám a požadovanému objemu až po sestavení reaktorů na míru nebo kompletaci linky hotovým zařízením z vlastního skladu. Tím, že svěříte spuštění linky do rukou jediného odborníka, eliminujete finanční ztráty na hranicích jednotlivých fází a získáte systém, v němž jsou chemické složení a strojní inženýrství v dokonalém souladu.",
       "about.p3": "Ať už jde o vyvedení vašeho podniku z technologické slepé uličky, škálování výroby, složitý zakázkový požadavek nebo odbornou konzultaci – výsledkem naší spolupráce je vždy rentabilní a bezporuchový provoz, který stabilně dodává správný produkt ve správném množství.",
+      "hero.cta": "Bezplatná konzultace",
+      "about.stats": "9 let zkušeností v chemickém procesním inženýrství · 43 realizovaných projektů po celé Evropě",
       "services.heading": "Služby",
       "card.aboutLabel": "O službě",
       "card.explore": "Více →",
@@ -2227,6 +2293,8 @@
       "about.p1": "Das größte Problem jeder Produktion ist die Lücke zwischen Theorie und Praxis. Der Moment, in dem die Labormethode im größeren Maßstab versagt, Standardanlagen an ihre Grenzen stoßen und die Einbindung zahlreicher verschiedener Auftragnehmer letztlich nur zu verschobenen Inbetriebnahmeterminen und Anlagenausfällen führt.",
       "about.p2": "Als zentraler Ansprechpartner und Verantwortlicher begleite ich den gesamten Produktionszyklus Ihres Projekts aus einer Hand – von der Anpassung der Prozessmethodik an verfügbare Rohstoffe und gewünschte Produktionsmengen bis hin zur Fertigung maßgeschneiderter Reaktoren oder der Ausstattung Ihrer Linie mit Fertiggeräten aus eigenem Lagerbestand. Indem Sie die Inbetriebnahme Ihrer Anlage in die Hände eines einzigen Spezialisten legen, vermeiden Sie finanzielle Verluste an den Schnittstellen der einzelnen Projektphasen – und erhalten ein System, in dem Chemie und Anlagentechnik perfekt aufeinander abgestimmt sind.",
       "about.p3": "Ob Ihr Betrieb aus einer technologischen Sackgasse herausgeführt werden muss, ob es um Skalierung geht, um einen komplexen Sonderauftrag oder eine fachkundige Beratung – das Ergebnis unserer Zusammenarbeit ist stets eine wirtschaftliche und störungsfreie Produktion, die zuverlässig das gewünschte Produkt in der gewünschten Menge liefert.",
+      "hero.cta": "Kostenlose Beratung",
+      "about.stats": "9 Jahre Erfahrung in der chemischen Verfahrenstechnik · 43 realisierte Projekte in ganz Europa",
       "services.heading": "Leistungen",
       "card.aboutLabel": "Über die Leistung",
       "card.explore": "Mehr erfahren →",
@@ -2279,6 +2347,8 @@
       "about.p1": "Головний виклик у будь-якому виробничому процесі — це розрив між теорією та практикою. Це той момент, коли лабораторні методики не масштабуються на великі обсяги, стандартне обладнання не справляється із завданням, а залучення десятка різних підрядників призводить лише до зриву термінів запуску та поломок обладнання.",
       "about.p2": "Виступаючи єдиним центром відповідальності, я веду повний виробничий цикл вашого проєкту під ключ: від адаптації методик до доступної сировини та потрібного обсягу — до збирання кастомних реакторів або комплектації лінії готовим обладнанням із власного складу. Довіряючи запуск лінії одному фахівцю, ви виключаєте фінансові втрати між етапами проєкту й отримуєте систему, в якій хімічна формула та інженерія обладнання ідеально синхронізовані між собою.",
       "about.p3": "Чи це вихід вашого підприємства з технологічного глухого кута, масштабування, складний кастомний запит, чи експертна консультація — підсумком нашої співпраці завжди стає рентабельне й безперебійне виробництво, що стабільно видає потрібний продукт у потрібній кількості.",
+      "hero.cta": "Безкоштовна консультація",
+      "about.stats": "9 років досвіду в хімічній технології виробництва · 43 реалізовані проєкти по всій Європі",
       "services.heading": "Послуги",
       "card.aboutLabel": "Про послугу",
       "card.explore": "Детальніше →",
@@ -2331,6 +2401,8 @@
       "about.p1": "Главная проблема любого производства - разрыв между теорией и практикой. Тот самый момент, когда лабораторная методика не работает на больших объемах, стандартное оборудование не справляется с задачей, а привлечение десятка разных подрядчиков приводит лишь к сорванным срокам запуска и поломкам оборудования.",
       "about.p2": "Выступая единым центром ответственности, закрываю весь производственный цикл вашего проекта «под ключ»: от адаптации методики под доступное сырье и нужный объем до сборки кастомных реакторов или комплектации линии готовым оборудованием из собственного склада. Доверяю запуск своей линии одному специалисту, вы исключаете финансовые потери на стыке этапов и получаете систему, в которой химическая формула и инженерия оборудования идеально синхронизированы между собой.",
       "about.p3": "Будь то выход вашего предприятия из технологического тупика, масштабирование, сложный кастомный запрос или экспертная консультация - итогом нашего сотрудничества всегда становится рентабельное и бесперебойное производство, стабильно выдающее нужный продукт в нужном количестве.",
+      "hero.cta": "Бесплатная консультация",
+      "about.stats": "9 лет опыта в химической инженерии процессов · 43 реализованных проекта по всей Европе",
       "services.heading": "Услуги",
       "card.aboutLabel": "Об услуге",
       "card.explore": "Подробнее →",
