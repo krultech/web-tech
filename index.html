@@ -1129,7 +1129,25 @@
   border-radius: 8px;
 }
 .header-cta-btn--desktop { display: none; }
-.header-cta-btn--mobile { display: inline-flex; }
+.header-cta-btn--mobile { display: none; }
+.hero-cta-mobile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 22px;
+  padding: 13px 28px;
+  border-radius: 10px;
+  background-color: #E55137;
+  color: #ffffff;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 200ms ease, transform 120ms ease;
+}
+.hero-cta-mobile:active {
+  transform: scale(1.06);
+}
 
     /* Default section safe zone */
     section { padding-left: 20px; padding-right: 20px; }
@@ -1659,6 +1677,7 @@
   <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-content">
     <h1 class="hero-title"><span class="hero-title-line" data-i18n="hero.l1">From idea</span><span class="hero-title-line" data-i18n="hero.l2">to full-scale production.</span></h1>
+<a class="hero-cta-mobile" href="https://wa.me/48510275634?text=Hi%2C%20I%27d%20like%20a%20free%20consultation%20about%20my%20project" target="_blank" rel="noopener" data-i18n="hero.cta">Free consultation</a>
   </div>
 </section>
 
