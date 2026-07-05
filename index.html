@@ -961,11 +961,49 @@
 
   .tech-log-header {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+    flex-direction: column;
+    align-items: flex-start;
     margin-bottom: 48px;
     padding-bottom: 24px;
     border-bottom: 1px dashed var(--line);
+  }
+
+  .tech-log-title-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .tech-log-header h2 {
+    font-size: clamp(36px, 4vw, 56px) !important;
+    line-height: 1;
+    margin: 0;
+  }
+
+  .yt-channel-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 22px;
+    border-radius: 10px;
+    border: 1.5px solid #F36223;
+    background-color: #F36223;
+    color: #ffffff;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    transition: opacity 200ms ease, transform 120ms ease;
+  }
+
+  .yt-channel-btn:hover {
+    opacity: 0.72;
+  }
+
+  .yt-channel-btn:active {
+    transform: scale(1.06);
   }
 
   /* Карусель видео */
@@ -1056,9 +1094,9 @@
 
   .video-title {
     font-family: var(--sans);
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 600;
-    line-height: 1.4;
+    line-height: 1.3;
     color: var(--ink);
     margin: 0;
     padding: 0 8px;
@@ -1579,6 +1617,7 @@
       scroll-padding-left: 20px;
     }
     .video-card { flex: 0 0 85%; min-width: 0; }
+    .video-title { font-size: 18px !important; } /* Возвращаем аккуратный размер на мобильном */
     .yt-modal-content { width: 100%; border-radius: 0; }
     .yt-modal-close { top: 16px; right: 16px; width: 40px; height: 40px; font-size: 24px; }
 
@@ -2142,8 +2181,10 @@
 
 <section class="wf-tech-log" data-screen-label="04.5 Tech Log">
   <div class="section-header tech-log-header">
-    <h2 class="reveal" data-i18n="techlog.heading">Tech Log</h2>
-    <a href="https://www.youtube.com/" target="_blank" rel="noopener" class="header-cta-btn reveal" data-i18n="techlog.btn">YouTube Channel</a>
+    <div class="tech-log-title-wrapper">
+      <h2 class="reveal" data-i18n="techlog.heading">Video</h2>
+      <a href="https://www.youtube.com/@ВАШ_КАНАЛ" target="_blank" rel="noopener" class="yt-channel-btn reveal" data-i18n="techlog.btn">YouTube Channel</a>
+    </div>
   </div>
 
   <div class="video-carousel reveal">
@@ -2567,7 +2608,7 @@
       "card.audit.b5": "This is a high-level consultation with a practicing engineer who helps you optimize your capital expenditure and avoid critical mistakes during technology implementation. By investing in professional expertise before procurement begins, you lay a solid foundation for the confident and predictable growth of your business.",
       "contacts.heading": "Contacts",
       "footer.copyright": "© 2026 · KRUL",
-      "techlog.heading": "Tech Log",
+      "techlog.heading": "Video",
       "techlog.btn": "YouTube Channel"
     },
 
@@ -2629,7 +2670,7 @@
       "card.audit.b5": "Jest to doradztwo na najwyższym poziomie, prowadzone przez praktykującego inżyniera, które pomaga mądrze zaplanować budżet i uniknąć fatalnych błędów przy wdrażaniu nowej technologii. Inwestując w wiedzę ekspercką przed rozpoczęciem zakupów, budują Państwo solidne fundamenty dla stabilnego i przewidywalnego wzrostu swojego przedsiębiorstwa.",
       "contacts.heading": "Kontakt",
       "footer.copyright": "© 2026 · KRUL",
-      "techlog.heading": "Dziennik techniczny",
+      "techlog.heading": "Wideo",
       "techlog.btn": "Kanał YouTube"
     },
 
@@ -2691,7 +2732,7 @@
       "card.audit.b5": "Jde o konzultaci na vysoké úrovni s praktikem z oboru, který pomáhá rozumně rozložit rozpočet a vyvarovat se kritických chyb při zavádění technologie. Investicí do odborné expertízy ještě před zahájením nákupů pokládáte spolehlivý základ pro jistý a předvídatelný růst vašeho podnikání.",
       "contacts.heading": "Kontakty",
       "footer.copyright": "© 2026 · KRUL",
-      "techlog.heading": "Technický deník",
+      "techlog.heading": "Video",
       "techlog.btn": "Kanál YouTube"
     },
 
@@ -2753,7 +2794,7 @@
       "card.audit.b5": "Dies ist eine Beratung auf hohem Niveau durch einen praktizierenden Ingenieur, der Ihnen hilft, das Budget sinnvoll einzusetzen und kritische Fehler bei der Technologieimplementierung zu vermeiden. Wer in professionelle Expertise investiert, bevor die ersten Beschaffungen anlaufen, legt damit das solide Fundament für ein verlässliches und planbares Unternehmenswachstum.",
       "contacts.heading": "Kontakt",
       "footer.copyright": "© 2026 · KRUL",
-      "techlog.heading": "Technisches Logbuch",
+      "techlog.heading": "Video",
       "techlog.btn": "YouTube Kanal"
     },
 
@@ -2772,7 +2813,7 @@
       "card.discuss": "Обговорити цей проєкт",
       "card.reactors.title": "Реактори на замовлення",
       "card.reactors.b1": "Стандартне обладнання змушує унікальні технології підлаштовуватися під його обмеження. Це неминуче знижує ефективність і рентабельність процесу.",
-      "card.reactors.b2": "Щоб виключити ці компроміси, хімічні реактори проєктуються та виготовляються за індивідуальним замовленням. Обладнання суворо адаптується під ваші завдання синтезу та масштабування виробництва.",
+      "card.reactors.b2": "Щоб виключити ці компромиси, хімічні реактори проєктуються та виготовляються за індивідуальним замовленням. Обладнання суворо адаптується під ваші завдання синтезу та масштабування виробництва.",
       "card.reactors.b3": "Робота ведеться під ключ: від точних розрахунків гідродинаміки й теплообміну, розробки 3D-моделі та креслень до збирання апарата й фінальних випробувань. Ви отримуєте обладнання, розраховане на безпечну роботу з будь-якими, навіть найскладнішими та найагресивнішими середовищами, зібране з преміальних матеріалів і оснащене надійною автоматикою.",
       "card.reactors.b4": "Реалізація проєктів охоплює будь-які масштаби — від пілотних установок до промислових ліній, забезпечуючи їхню безшовну інтеграцію в діючий техпроцес.",
       "card.reactors.b5": "Замовляючи кастомний апарат, ви отримуєте безкомпромісну інженерну якість, еталонну промислову естетику та гарантовану операційну ефективність.",
@@ -2791,7 +2832,7 @@
       "card.turnkey.b1": "Поділ складного проєкту між різними підрядниками неминуче призводить до інженерних нестиковок, розмивання зон відповідальності та критичних затримок запуску.",
       "card.turnkey.b2": "Я веду ваш проєкт під ключ, виступаючи єдиним центром відповідальності за кінцевий результат. Грамотний інжиніринг об'єднує хімічну технологію та апаратне виконання в єдиний процес: від розробки масштабованої методики синтезу до виробництва кастомних реакторів і фінального пусконалагодження на вашому об'єкті.",
       "card.turnkey.b3": "Ви повністю позбавлені необхідності координувати різних виконавців і намагатися адаптувати лабораторну теорію під реальне промислове обладнання. Кожен етап, включаючи складні теплові розрахунки, підбір автоматики та заводські випробування, перебуває під суворим єдиним контролем.",
-      "card.turnkey.b4": "Обираючи послугу повного циклу, ви отримуєте абсолютно готову, високорентабельну та безпечну виробничу лінію, створену під ключ із безкомпромісною увагою до інженерної якості.",
+      "card.turnkey.b4": "Обираючи послугу повного циклу, ви отримуєте абсолютно готовую, високорентабельну та безпечну виробничу лінію, створену під ключ із безкомпромісною увагою до інженерної якості.",
       "card.scaleup.title": "Масштабування",
       "card.scaleup.b1": "Спроба прямого перенесення лабораторних пропорцій на промислові обсяги неминуче руйнує технологічний процес. Це призведе до неконтрольованих реакцій, високого відсотка браку та втрати якості продукту.",
       "card.scaleup.b2": "Щоб уникнути фінансових втрат при масштабуванні, необхідно адаптувати ваш хімічний синтез до нових виробничих потужностей із математичною точністю. Проведення глибокого інженерного перерахунку гідродинаміки, теплообміну та масообміну дозволяє повністю адаптувати базовую методику під реальну фізику великотоннажних реакторів.",
@@ -2815,7 +2856,7 @@
       "card.audit.b5": "Це консультація високого рівня з практикуючим інженером, який допомагає грамотно розподілити бюджет і уникнути критичних помилок при впровадженні технології. Інвестуючи в професійну експертизу до початку закупівель, ви закладаєте надійний фундамент для впевненого та передбачуваного зростання вашого бізнесу.",
       "contacts.heading": "Контакти",
       "footer.copyright": "© 2026 · KRUL",
-      "techlog.heading": "Технічний журнал",
+      "techlog.heading": "Відео",
       "techlog.btn": "YouTube канал"
     },
 
@@ -2861,7 +2902,7 @@
       "card.scaleup.b4": "Итогом работы становится промышленная технология, которая позволяет вам уверенно выпускать большие партии продукции, сохраняя эталонное качество исходного образца.",
       "card.tailored.title": "Индивидуальные решения",
       "card.tailored.b1": "Самые интересные производственные задачи часто заходят в тупик, потому что их специфика не вписывается в рамки стандартных каталожных решений.",
-      "card.tailored.b2": "Если ваш проект выходит за рамки стандартов, я создам решение с чистого листа. Реверс-инжиниринг, модернизация слабых узлов, разработка реакторов под уникальный синтез — в работу берутся даже самые нестандартные задачи. Вместо подгонки технологии под готовое оборудование, аппаратная база будет проектироваться строго под вашу идею.",
+      "card.tailored.b2": "Если ваш проект выходит за рамки стандартов, я создам решение с чистого листа. Реверс-инжиниринг, модернизация слабых узлов, разработка реакторов под уникальный синтез — в работу беруться даже самые нестандартные задачи. Вместо подгонки технологии под готовое оборудование, аппаратная база будет проектироваться строго под вашу идею.",
       "card.tailored.b3": "Глубокий технический аудит исходных данных позволяет оценить реальную физическую и экономическую жизнеспособность проекта.",
       "card.tailored.b4": "В результате вы получаете прозрачный пошаговый план и бескомпромиссное инженерное воплощение, которое снимает все барьеры для масштабирования и роста бизнеса.",
       "card.ptfe.title": "Покрытие PTFE",
@@ -2877,7 +2918,7 @@
       "card.audit.b5": "Это консультация высокого уровня с практикующим инженером, который помогает грамотно распределить бюджет и избежать критических ошибок при внедрении технологии. Инвестируя в профессиональную экспертизу до начала закупок, вы закладываете надежный фундамент для уверенного и предсказуемого роста вашего бизнеса.",
       "contacts.heading": "Контакты",
       "footer.copyright": "© 2026 · KRUL",
-      "techlog.heading": "Технический журнал",
+      "techlog.heading": "Видео",
       "techlog.btn": "YouTube канал"
     }
   };
