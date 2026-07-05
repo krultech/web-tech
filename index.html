@@ -346,7 +346,7 @@
 }
 
   /* ============ GLOBAL THEME TRANSITION ============ */
-  /* The body owns the screen color. Sections (Blocks 2, 3, 4, Tech Log) are
+  /* The body owns the screen color. Sections are
      transparent so the background change is one continuous wash
      across the whole viewport. */
 
@@ -1115,7 +1115,7 @@
   html:lang(de) .v-lang:not([data-lang="de"]),
   html:lang(uk) .v-lang:not([data-lang="uk"]),
   html:lang(ru) .v-lang:not([data-lang="ru"]) {
-    display: none;
+    display: none !important;
   }
 
   /* Модальное окно плеера (Lightbox) */
@@ -1197,15 +1197,7 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 32px;
-  }
-
-  .contacts-inner > .contacts-heading {
-    margin-bottom: 64px;
-  }
-
-  .contacts-inner > .contacts-socials {
-    margin-top: 64px;
+    gap: 64px;
   }
 
   .contacts-heading {
@@ -1222,7 +1214,17 @@
     align-self: stretch;
   }
 
+  .contacts-primary {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
   .contacts-phone {
+    display: flex;
+    align-items: center;
+    gap: 24px;
     font-family: var(--hand);
     font-size: clamp(48px, 6vw, 88px);
     line-height: 1;
@@ -1236,28 +1238,46 @@
     opacity: 0.5;
   }
 
+  .contact-icon {
+    width: 0.8em;
+    height: 0.8em;
+    opacity: 0.8;
+    flex-shrink: 0;
+  }
+
   .contacts-socials {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 48px;
+    gap: 40px;
+  }
+
+  .contacts-socials li {
+    display: block;
   }
 
   .contacts-socials a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     font-family: var(--hand);
     font-size: clamp(20px, 1.8vw, 26px);
     color: var(--ink);
     text-decoration: none;
-    border-bottom: 1px dashed var(--line);
-    padding-bottom: 4px;
-    transition: border-bottom-style 300ms ease, opacity 300ms ease;
+    transition: opacity 300ms ease;
   }
 
   .contacts-socials a:hover {
-    border-bottom-style: solid;
-    opacity: 0.7;
+    opacity: 0.5;
+  }
+
+  .social-icon {
+    width: 28px;
+    height: 28px;
+    opacity: 0.8;
+    flex-shrink: 0;
   }
 
   /* ============ FOOTER ============ */
@@ -1630,18 +1650,13 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 28px;
+      gap: 48px;
       max-width: 100%;
     }
-    .contacts-inner > .contacts-heading { margin-bottom: 28px; }
-    .contacts-inner > .contacts-socials { margin-top: 36px; }
 
-    .contacts-heading {
-      text-align: center;
-      align-self: stretch;
-      font-size: 12px;
-      letter-spacing: 0.28em;
-      padding-bottom: 16px;
+    .contacts-primary {
+      align-items: center;
+      gap: 24px;
     }
 
     .contacts-phone {
@@ -1650,6 +1665,7 @@
       text-align: center;
       line-height: 1.05;
       padding: 6px 0;
+      gap: 16px;
     }
 
     /* Email is naturally wider than phone numbers — shrink it so the
@@ -1664,24 +1680,12 @@
     .contacts-socials {
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 24px;
     }
+    
     .contacts-socials a {
       font-size: 19px;
-      padding: 12px 20px;
-      border-bottom: none;
-      display: inline-block;
-    }
-    .contacts-socials a::after {
-      content: "";
-      display: block;
-      width: 28px;
-      height: 1px;
-      border-bottom: 1px dashed var(--line);
-      margin: 6px auto 0;
-    }
-    body.theme-dark .contacts-socials a::after {
-      border-bottom-color: var(--theme-line-dark);
+      padding: 8px 20px;
     }
 
     /* ===== FOOTER ===== */
@@ -1700,7 +1704,6 @@
     /* Contacts: no opacity drop on tap */
     .contacts-phone:hover { opacity: 1; }
     .contacts-socials a:hover {
-      border-bottom-style: dashed;
       opacity: 1;
     }
 
@@ -2184,11 +2187,12 @@
   <div class="section-header tech-log-header">
     <div class="tech-log-title-wrapper">
       <h2 class="reveal" data-i18n="techlog.heading">Video</h2>
-      <a href="https://www.youtube.com/@ВАШ_КАНАЛ" target="_blank" rel="noopener" class="yt-channel-btn reveal" data-i18n="techlog.btn">YouTube Channel</a>
+      <a href="https://www.youtube.com/@krultechnology" target="_blank" rel="noopener" class="yt-channel-btn reveal" data-i18n="techlog.btn">YouTube Channel</a>
     </div>
   </div>
 
   <div class="video-carousel reveal">
+
     <div class="video-card" data-yt-id="RgZh-EapXgs">
       <div class="video-thumb-wrap">
         <img class="video-thumb" src="https://res.cloudinary.com/dwqit2mii/image/upload/v1783249361/KRUL_TECHNOLOGY_on_metal_plate_202607050357_mplm9u.webp" alt="Video thumbnail">
@@ -2209,71 +2213,139 @@
         <div class="video-play-btn"></div>
       </div>
       <h3 class="video-title">
-        <span class="v-lang" data-lang="en">How we assemble custom chemical reactors</span>
-        <span class="v-lang" data-lang="pl">Jak montujemy niestandardowe reaktory chemiczne</span>
-        <span class="v-lang" data-lang="cs">Jak sestavujeme chemické reaktory na míru</span>
-        <span class="v-lang" data-lang="de">Wie wir kundenspezifische chemische Reaktoren montieren</span>
-        <span class="v-lang" data-lang="uk">Як ми збираємо кастомні хімічні реактори</span>
-        <span class="v-lang" data-lang="ru">Как мы собираем кастомные химические реакторы</span>
+        <span class="v-lang" data-lang="en">Coming Soon...</span>
+        <span class="v-lang" data-lang="pl">Coming Soon...</span>
+        <span class="v-lang" data-lang="cs">Coming Soon...</span>
+        <span class="v-lang" data-lang="de">Coming Soon...</span>
+        <span class="v-lang" data-lang="uk">Coming Soon...</span>
+        <span class="v-lang" data-lang="ru">Coming Soon...</span>
       </h3>
     </div>
-<div class="video-card" data-yt-id="RgZh-EapXgs">
+    <div class="video-card" data-yt-id="RgZh-EapXgs">
       <div class="video-thumb-wrap">
         <img class="video-thumb" src="https://res.cloudinary.com/dwqit2mii/image/upload/v1783249361/KRUL_TECHNOLOGY_on_metal_plate_202607050357_mplm9u.webp" alt="Video thumbnail">
         <div class="video-play-btn"></div>
       </div>
       <h3 class="video-title">
-        <span class="v-lang" data-lang="en">How we assemble custom chemical reactors</span>
-        <span class="v-lang" data-lang="pl">Jak montujemy niestandardowe reaktory chemiczne</span>
-        <span class="v-lang" data-lang="cs">Jak sestavujeme chemické reaktory na míru</span>
-        <span class="v-lang" data-lang="de">Wie wir kundenspezifische chemische Reaktoren montieren</span>
-        <span class="v-lang" data-lang="uk">Як ми збираємо кастомні хімічні реактори</span>
-        <span class="v-lang" data-lang="ru">Как мы собираем кастомные химические реакторы</span>
+        <span class="v-lang" data-lang="en">Coming Soon...</span>
+        <span class="v-lang" data-lang="pl">Coming Soon...</span>
+        <span class="v-lang" data-lang="cs">Coming Soon...</span>
+        <span class="v-lang" data-lang="de">Coming Soon...</span>
+        <span class="v-lang" data-lang="uk">Coming Soon...</span>
+        <span class="v-lang" data-lang="ru">Coming Soon...</span>
       </h3>
     </div>
-<div class="video-card" data-yt-id="RgZh-EapXgs">
+    <div class="video-card" data-yt-id="RgZh-EapXgs">
       <div class="video-thumb-wrap">
         <img class="video-thumb" src="https://res.cloudinary.com/dwqit2mii/image/upload/v1783249361/KRUL_TECHNOLOGY_on_metal_plate_202607050357_mplm9u.webp" alt="Video thumbnail">
         <div class="video-play-btn"></div>
       </div>
       <h3 class="video-title">
-        <span class="v-lang" data-lang="en">How we assemble custom chemical reactors</span>
-        <span class="v-lang" data-lang="pl">Jak montujemy niestandardowe reaktory chemiczne</span>
-        <span class="v-lang" data-lang="cs">Jak sestavujeme chemické reaktory na míru</span>
-        <span class="v-lang" data-lang="de">Wie wir kundenspezifische chemische Reaktoren montieren</span>
-        <span class="v-lang" data-lang="uk">Як ми збираємо кастомні хімічні реактори</span>
-        <span class="v-lang" data-lang="ru">Как мы собираем кастомные химические реакторы</span>
+        <span class="v-lang" data-lang="en">Coming Soon...</span>
+        <span class="v-lang" data-lang="pl">Coming Soon...</span>
+        <span class="v-lang" data-lang="cs">Coming Soon...</span>
+        <span class="v-lang" data-lang="de">Coming Soon...</span>
+        <span class="v-lang" data-lang="uk">Coming Soon...</span>
+        <span class="v-lang" data-lang="ru">Coming Soon...</span>
       </h3>
     </div>
-<div class="video-card" data-yt-id="RgZh-EapXgs">
-      <div class="video-thumb-wrap">
-        <img class="video-thumb" src="https://res.cloudinary.com/dwqit2mii/image/upload/v1783249361/KRUL_TECHNOLOGY_on_metal_plate_202607050357_mplm9u.webp" alt="Video thumbnail">
-        <div class="video-play-btn"></div>
-      </div>
-      <h3 class="video-title">
-        <span class="v-lang" data-lang="en">How we assemble custom chemical reactors</span>
-        <span class="v-lang" data-lang="pl">Jak montujemy niestandardowe reaktory chemiczne</span>
-        <span class="v-lang" data-lang="cs">Jak sestavujeme chemické reaktory na míru</span>
-        <span class="v-lang" data-lang="de">Wie wir kundenspezifische chemische Reaktoren montieren</span>
-        <span class="v-lang" data-lang="uk">Як ми збираємо кастомні хімічні реактори</span>
-        <span class="v-lang" data-lang="ru">Как мы собираем кастомные химические реакторы</span>
-      </h3>
     </div>
-    </div> </section>
+</section>
 
 <section class="wf-contacts" data-screen-label="05 Contacts">
   <div class="contacts-inner">
     <h2 class="contacts-heading reveal" data-i18n="contacts.heading">Contacts</h2>
 
-    <a class="contacts-phone reveal" href="tel:+48510275634">+48 510 275 634</a>
-    <a class="contacts-phone reveal" href="tel:+380976550056">+38 097 655 00 56</a>
-    <a class="contacts-phone footer-email-link reveal" href="mailto:krul.contact@gmail.com">krul.contact@gmail.com</a>
+    <div class="contacts-primary reveal">
+      <a class="contacts-phone" href="tel:+48510275634">
+        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        +48 510 275 634
+      </a>
+      <a class="contacts-phone" href="tel:+380976550056">
+        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        +38 097 655 00 56
+      </a>
+      <a class="contacts-phone footer-email-link" href="mailto:krul.contact@gmail.com">
+        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        krul.contact@gmail.com
+      </a>
+    </div>
 
-    
-<ul class="contacts-socials reveal">
-      <li><a href="https://t.me/erikkrul" target="_blank" rel="noopener noreferrer">Telegram</a></li>
-      <li><a href="https://wa.me/48510275634" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
-      <li><a href="https://www.linkedin.com/in/erik-krul/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+    <ul class="contacts-socials reveal">
+      <li>
+        <a href="https://wa.me/48510275634" target="_blank" rel="noopener noreferrer">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          WhatsApp
+        </a>
+      </li>
+
+      <li>
+        <a href="https://www.youtube.com/@krultechnologyru" target="_blank" rel="noopener noreferrer" class="v-lang" data-lang="ru">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.17 1 12 1 12s0 3.83.46 5.58a2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.83 23 12 23 12s0-3.83-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
+          YouTube
+        </a>
+        <a href="https://www.youtube.com/@krultechnologyru" target="_blank" rel="noopener noreferrer" class="v-lang" data-lang="uk">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.17 1 12 1 12s0 3.83.46 5.58a2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.83 23 12 23 12s0-3.83-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
+          YouTube
+        </a>
+        <a href="https://www.youtube.com/@krultechnologypl" target="_blank" rel="noopener noreferrer" class="v-lang" data-lang="pl">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.17 1 12 1 12s0 3.83.46 5.58a2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.83 23 12 23 12s0-3.83-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
+          YouTube
+        </a>
+        <a href="https://www.youtube.com/@krultechnology" target="_blank" rel="noopener noreferrer" class="v-lang" data-lang="en">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.17 1 12 1 12s0 3.83.46 5.58a2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.83 23 12 23 12s0-3.83-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
+          YouTube
+        </a>
+        <a href="https://www.youtube.com/@krultechnology" target="_blank" rel="noopener noreferrer" class="v-lang" data-lang="cs">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.17 1 12 1 12s0 3.83.46 5.58a2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.83 23 12 23 12s0-3.83-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
+          YouTube
+        </a>
+        <a href="https://www.youtube.com/@krultechnology" target="_blank" rel="noopener noreferrer" class="v-lang" data-lang="de">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.17 1 12 1 12s0 3.83.46 5.58a2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.83 23 12 23 12s0-3.83-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
+          YouTube
+        </a>
+      </li>
+
+      <li>
+        <a href="https://www.instagram.com/krultechnology.ru" target="_blank" rel="noopener noreferrer" class="v-lang" data-lang="ru">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          Instagram
+        </a>
+        <a href="https://www.instagram.com/krultechnology.ru" target="_blank" rel="noopener noreferrer" class="v-lang" data-lang="uk">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          Instagram
+        </a>
+        <a href="https://www.instagram.com/krultechnology.pl" target="_blank" rel="noopener noreferrer" class="v-lang" data-lang="pl">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          Instagram
+        </a>
+        <a href="https://www.instagram.com/krultechnology/" target="_blank" rel="noopener noreferrer" class="v-lang" data-lang="en">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          Instagram
+        </a>
+        <a href="https://www.instagram.com/krultechnology/" target="_blank" rel="noopener noreferrer" class="v-lang" data-lang="cs">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          Instagram
+        </a>
+        <a href="https://www.instagram.com/krultechnology/" target="_blank" rel="noopener noreferrer" class="v-lang" data-lang="de">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          Instagram
+        </a>
+      </li>
+
+      <li>
+        <a href="https://www.linkedin.com/in/erik-krul/" target="_blank" rel="noopener noreferrer">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          LinkedIn
+        </a>
+      </li>
+
+      <li>
+        <a href="https://t.me/erikkrul" target="_blank" rel="noopener noreferrer">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          Telegram
+        </a>
+      </li>
     </ul>
   </div>
 </section>
@@ -2776,309 +2848,3 @@
       "card.tailored.b4": "Výsledkem je transparentní plán krok za krokem a nekompromisní inženýrské řešení, které odstraňuje veškeré překážky pro škálování a růst vašeho podnikání.",
       "card.ptfe.title": "PTFE",
       "card.ptfe.b1": "Vystavení drahého průmyslového vybavení agresivním chemikáliím nevyhnutelně vede k rychlé korozi, usazování lepivých zbytků produktů a nákladným provozním odstávkám.",
-      "card.ptfe.b2": "K eliminaci těchto provozních rizik poskytujeme profesionální služby nanášení PTFE povlaků, které jsou navrženy tak, aby zajišťovaly absolutní chemickou inertnost a extrémní tepelnou stabilitu. Naše technologie precizní aplikace vytváří nepropustnou, nepřilnavou bariéru přizpůsobenou přesně na míru náročným podmínkám vašeho výrobního prostředí.",
-      "card.ptfe.b3": "Jste tak zcela zbaveni neustálého boje s předčasným opotřebením vybavení a vyčerpávajícími čisticími cykly.",
-      "card.ptfe.b4": "Výběrem naší pokročilé služby nanášení PTFE povlaků výrazně prodloužíte životnost vašich klíčových strojů, zajistíte nekompromisní čistotu produktů a udržíte vysoce efektivní a ziskovou výrobní linku.",
-      "card.audit.title": "Technický audit a konzultace",
-      "card.audit.b1": "Cena chyby ve fázi technologického plánování nebo slepého výběru zařízení se měří v milionech ztracených investycji a měsících výrobních prostojů.",
-      "card.audit.b2": "Hloubková technická konzultace eliminuje kritické chyby hned od začátku. Základem výběru technologického řešení není přizpůsobení katalogovým aparátům, nýbrž nezávislý inženýrský audit vašeho záměru, receptury nebo stávající linky.",
-      "card.audit.b3": "Detailní rozbor fyzikálně-chemických parametrů syntézy odhalí skrytá rizika při škálování a stanoví reálné požadavky na strojní vybavení. Získáte objektivní posouzení životaschopnosti projektu, zcela prosté nerealistických marketingových slibů.",
-      "card.audit.b4": "Výsledkem je přehledná cestovní mapa: od optimální konfigurace reaktoru až po strategii bezpečného spuštění procesu.",
-      "card.audit.b5": "Jde o konzultaci na vysoké úrovni s praktikem z oboru, který pomáhá rozumně rozložit rozpočet a vyvarovat se kritických chyb při zavádění technologie. Investicí do odborné expertízy ještě před zahájením nákupů pokládáte spolehlivý základ pro jistý a předvídatelný růst vašeho podnikání.",
-      "contacts.heading": "Kontakty",
-      "footer.copyright": "© 2026 · KRUL",
-      "techlog.heading": "Video",
-      "techlog.btn": "Kanál YouTube"
-    },
-
-    de: {
-      "hero.l1": "Von der Idee",
-      "hero.l2": "zur industriellen Produktion.",
-      "about.heading": "ÜBER MICH",
-      "about.p1": "Das größte Problem jeder Produktion ist die Lücke zwischen Theorie und Praxis. Der Moment, in dem die Labormethode im größeren Maßstab versagt, Standardanlagen an ihre Grenzen stoßen und die Einbindung zahlreicher verschiedener Auftragnehmer letztlich nur zu verschobenen Inbetriebnahmeterminen und Anlagenausfällen führt.",
-      "about.p2": "Als zentraler Ansprechpartner und Verantwortlicher begleite ich den gesamten Produktionszyklus Ihres Projekts aus einer Hand – von der Anpassung der Prozessmethodik an verfügbare Rohstoffe und gewünschte Produktionsmengen bis hin zur Fertigung maßgeschneiderter Reaktoren oder der Ausstattung Ihrer Linie mit Fertiggeräten aus eigenem Lagerbestand. Indem Sie die Inbetriebnahme Ihrer Anlage in die Hände eines einzigen Spezialisten legen, vermeiden Sie finanzielle Verluste an den Schnittstellen der einzelnen Projektphasen – und erhalten ein System, in dem Chemie und Anlagentechnik perfekt aufeinander abgestimmt sind.",
-      "about.p3": "Ob Ihr Betrieb aus einer technologischen Sackgasse herausgeführt werden muss, ob es um Skalierung geht, um einen komplexen Sonderauftrag oder eine fachkundige Beratung – das Ergebnis unserer Zusammenarbeit ist stets eine wirtschaftliche und störungsfreie Produktion, die zuverlässig das gewünschte Produkt in der gewünschten Menge liefert.",
-      "hero.cta": "Kostenlose Beratung",
-      "about.stats": "9 Jahre Erfahrung in der chemischen Verfahrenstechnik · 43 realisierte Projekte in ganz Europa",
-      "services.heading": "Leistungen",
-      "card.aboutLabel": "Über die Leistung",
-      "card.explore": "Mehr erfahren →",
-      "card.discuss": "Dieses Projekt besprechen",
-      "card.reactors.title": "Reaktoren nach Maß",
-      "card.reactors.b1": "Standardanlagen zwingen einzigartige Verfahren dazu, sich deren Einschränkungen anzupassen – mit unvermeidlichen Einbußen bei Effizienz und Wirtschaftlichkeit.",
-      "card.reactors.b2": "Um solche Kompromisse von vornherein auszuschließen, werden chemische Reaktoren individuell geplant und gefertigt. Jede Anlage wird konsequent auf Ihre spezifischen Synthese- und Skalierungsanforderungen zugeschnitten.",
-      "card.reactors.b3": "Die Umsetzung erfolgt schlüsselfertig: von der präzisen Auslegung von Strömungsmechanik und Wärmeübertragung über die Entwicklung von 3D-Modellen und Konstruktionszeichnungen bis hin zur Montage und den abschließenden Werksabnahmetests.",
-      "card.reactors.b4": "Sie erhalten eine Anlage, die für den sicheren Betrieb mit beliebigen – auch hochaggressiven – Medien ausgelegt ist, aus hochwertigen Werkstoffen gefertigt und mit zuverlässiger Automatisierungstechnik ausgestattet wird.",
-      "card.reactors.b5": "Die Projektrealisierung deckt jeden Maßstab ab – von Pilotanlagen bis zu industriellen Produktionslinien – und gewährleistet deren nahtlose Integration in bestehende Prozesse. Mit einer maßgeschneiderten Anlage erhalten Sie kompromisslose Ingenieursqualität, industrielle Ästhetik auf höchstem Niveau und garantierte Betriebseffizienz.",
-      "card.methodology.title": "Prozessdesign",
-      "card.methodology.b1": "Selbst die brillanteste Formel verliert ihren Wert, wenn sie beim Scale-up auf Industriemengen zu Ausschuss führt oder schwer beschaffbare Rohstoffe erfordert.",
-      "card.methodology.b2": "Die Entwicklung verfahrenstechnischer Methoden von Grund auf überführt Ihre Ausgangsidee in eine fertige Industrietechnologie. Jeder Prozess wird auf die Besonderheiten Ihres Betriebs zugeschnitten und konsequent an die verfügbare Rohstoffbasis angepasst.",
-      "card.methodology.b3": "Das Ergebnis ist eine vollständig funktionsfähige, sichere und problemlos skalierbare Synthesemethodik. Die detaillierte Auslegung aller chemischen und thermodynamischen Parameter gewährleistet eine lückenlose Reproduzierbarkeit der Reaktionen beim Übergang auf größere Produktionsmaßstäbe.",
-      "card.methodology.b4": "Das abschließende Produkt ist ein ausgereiftes Verfahrensreglement, das Ausschussrisiken eliminiert, die Herstellungskosten optimiert und eine gleichbleibend hohe Produktqualität von Charge zu Charge sicherstellt.",
-      "card.inventory.title": "Anlagen ab Lager",
-      "card.inventory.b1": "Monatelange Lieferzeiten für bestellte Anlagen blockieren den Projektstart und verschieben den Return on Investment in kritischem Maße.",
-      "card.inventory.b2": "Für eine schnelle Lösung solcher Engpässe biete ich geprüfte Lager- und aufgearbeitete Gebrauchtanlagen an, die zur sofortigen Lieferung bereitstehen.",
-      "card.inventory.b3": "Jede Anlage durchläuft ein umfassendes technisches Audit sowie den obligatorischen Austausch aller Verschleißteile. Eine mehrstufige Prüfung von Strömungsverhalten und Automatisierungstechnik stellt sicher, dass die Anlage absolut betriebssicher ist und auf dem Niveau eines Neugeräts arbeitet.",
-      "card.inventory.b4": "Sie erhalten eine Anlage, die exakt auf Ihre chemischen Syntheseprozesse abgestimmt ist, sowie fachkundige Empfehlungen zur Integration in Ihren bestehenden Produktionsprozess. Dies ist die ideale Lösung für die Erprobung von Pilotprojekten oder die kurzfristige Erweiterung von Produktionskapazitäten unter hohem Zeitdruck.",
-      "card.inventory.b5": "Mit Industrieanlagen aus dem Bestand verkürzen Sie die Inbetriebnahmezeiten erheblich, optimieren Ihre Investitionskosten gezielt und starten die Produktion ohne jegliche Abstriche an der Ingenieursqualität.",
-      "card.turnkey.title": "Schlüsselfertige Umsetzung",
-      "card.turnkey.b1": "Die Aufteilung komplexer Projekte auf verschiedene Auftragnehmer führt unweigerlich zu technischen Schnittstellenproblemen, unklaren Verantwortlichkeiten und erheblichen Verzögerungen beim Projektstart.",
-      "card.turnkey.b2": "Ich betreue Ihr Projekt schlüsselfertig und übernehme die alleinige Verantwortung für das Gesamtergebnis. Durchdachtes Engineering verbindet Verfahrenstechnik und Anlagenausführung zu einem einheitlichen Prozess – von der Entwicklung einer skalierbaren Synthesemethodik über die Fertigung maßgeschneiderter Reaktoren bis zur abschließenden Inbetriebnahme vor Ort.",
-      "card.turnkey.b3": "Sie sind vollständig davon entbunden, verschiedene Gewerke zu koordinieren oder Laborkonzepte mühsam an reale Industrieanlagen anzupassen. Jede Projektphase – einschließlich komplexer wärmetechnischer Berechnungen, Automatisierungsauswahl und Werksabnahmetests – unterliegt einer einheitlichen und konsequenten Qualitätskontrolle.",
-      "card.turnkey.b4": "Mit der schlüsselfertigen Gesamtlösung erhalten Sie eine vollständig betriebsbereite, hochrentable und sichere Produktionslinie – realisiert mit kompromisslosem Anspruch an Ingenieursqualität.",
-      "card.scaleup.title": "Scale-up",
-      "card.scaleup.b1": "Der direkte Übertrag von Laborproportionen auf den Industriemaßstab zerstört den Prozess mit hoher Wahrscheinlichkeit – die Folgen sind unkontrollierte Reaktionen, hohe Ausschussraten und Qualitätsverluste.",
-      "card.scaleup.b2": "Um finanzielle Einbußen beim Scale-up zu vermeiden, muss Ihr chemischer Syntheseprozess mit mathematischer Präzision an die neuen Produktionskapazitäten angepasst werden. Eine fundierte ingenieurtechnische Neuberechnung von Strömungsmechanik, Wärme- und Stoffübertragung überführt die Grundmethodik vollständig in die reale Physik großtechnischer Reaktoren.",
-      "card.scaleup.b3": "Sie erhalten abgestimmte Temperaturprofile, präzise Dosieralgorithmen und exakt definierte Rührparameter, die die Prozessstabilität auch bei schwierigen oder hochviskosen Medien sicherstellen. Dieser Ansatz schließt die kostspielige Trial-and-Error-Methode am realen Rohstoff vollständig aus: Jeder Übergangsschritt wird vorab modelliert und berechnet.",
-      "card.scaleup.b4": "Das Ergebnis ist eine industriell erprobte Technologie, mit der Sie zuverlässig große Produktionschargen fahren und dabei die Qualität des ursprünglichen Referenzmusters lückenlos erhalten.",
-      "card.tailored.title": "Individuelle Lösungen",
-      "card.tailored.b1": "Die interessantesten Produktionsaufgaben geraten häufig in eine Sackgasse, weil ihre spezifischen Anforderungen mit keiner Standardlösung aus dem Katalog abzudecken sind. Wenn Ihr Projekt über gängige Standards hinausgeht, entwickle ich eine Lösung von Grund auf.",
-      "card.tailored.b2": "Reverse Engineering, die Modernisierung schwacher Anlagenkomponenten, die Auslegung von Reaktoren für einzigartige Synthesen – auch die ungewöhnlichsten Aufgaben werden angenommen. Statt die Technologie an vorhandene Anlagen anzupassen, wird die gesamte Apparatebasis konsequent nach Ihrer Idee ausgelegt.",
-      "card.tailored.b3": "Ein eingehender technischer Audit der Ausgangsdaten liefert eine belastbare Einschätzung der physikalischen und wirtschaftlichen Realisierbarkeit Ihres Vorhabens.",
-      "card.tailored.b4": "Das Ergebnis: ein transparenter, schrittweiser Umsetzungsplan und eine kompromisslose ingenieurtechnische Realisierung, die alle Hürden für Skalierung und Unternehmenswachstum aus dem Weg räumt.",
-      "card.ptfe.title": "PTFE",
-      "card.ptfe.b1": "Die Aussetzung teurer Industrieanlagen gegenüber aggressiven Chemikalien führt unweigerlich zu schneller Korrosion, klebrigen Produktablagerungen und kostspieligen Betriebsausfällen.",
-      "card.ptfe.b2": "Um diese operationellen Risiken zu eliminieren, bieten wir professionelle PTFE-Beschichtungsdienstleistungen an, die auf absolute chemische Inertheit und extreme thermische Stabilität ausgelegt sind. Unsere präzise Applikationstechnologie schafft eine undurchdringliche Antihaft-Barriere, die speziell auf die rauen Bedingungen Ihrer Produktionsumgebung zugeschnitten ist.",
-      "card.ptfe.b3": "Sie werden vollständig von dem ständigen Kampf gegen vorzeitigen Materialverschleiß und aufwendige Reinigungszyklen befreit.",
-      "card.ptfe.b4": "Mit der Wahl unserer fortschrittlichen PTFE-Beschichtung verlängern Sie die Lebensdauer Ihrer kritischen Anlagen erheblich, gewährleisten kompromisslose Produktreinheit und erhalten eine hocheffiziente, profitable Produktionslinie.",
-      "card.audit.title": "Beratung",
-      "card.audit.b1": "Ein Fehler in der verfahrenstechnischen Planung oder eine uninformierte Investitionsentscheidung beim Anlagenkauf kann Millionen vernichten und monatelange Produktionsausfälle nach sich ziehen.",
-      "card.audit.b2": "Eine fundierte technische Beratung beseitigt solche kritischen Fehler von Anfang an. Die Grundlage für die Auswahl der richtigen Technologielösung ist kein Abgleich mit Kataloggeräten, sondern ein unabhängiges ingenieurtechnisches Audit Ihrer Aufgabenstellung, Ihrer Rezeptur oder Ihrer bestehenden Produktionslinie.",
-      "card.audit.b3": "Die detaillierte Analyse der physikalisch-chemischen Syntheseparameter legt verborgene Risiken beim Scale-up offen und definiert die tatsächlichen Anforderungen an die Anlagentechnik. Sie erhalten eine objektive Bewertung der Projektmachbarkeit – frei von unrealistischen Marketingversprechen.",
-      "card.audit.b4": "Das Resultat ist eine klare Roadmap: von der optimalen Reaktorkonfiguration bis zur Strategie für einen sicheren Prozessstart.",
-      "card.audit.b5": "Dies ist eine Beratung auf hohem Niveau durch einen praktizierenden Ingenieur, der Ihnen hilft, das Budget sinnvoll einzusetzen und kritische Fehler bei der Technologieimplementierung zu vermeiden. Wer in professionelle Expertise investiert, bevor die ersten Beschaffungen anlaufen, legt damit das solide Fundament für ein verlässliches und planbares Unternehmenswachstum.",
-      "contacts.heading": "Kontakt",
-      "footer.copyright": "© 2026 · KRUL",
-      "techlog.heading": "Video",
-      "techlog.btn": "YouTube Kanal"
-    },
-
-    uk: {
-      "hero.l1": "Від ідеї",
-      "hero.l2": "до промислового виробництва.",
-      "about.heading": "ПРО МЕНЕ",
-      "about.p1": "Головний виклик у будь-якому виробничому процесі — це розрив між теорією та практикою. Це той момент, коли лабораторні методики не масштабуються на великі обсяги, стандартне обладнання не справляється із завданням, а залучення десятка різних підрядників призводить лише до зриву термінів запуску та поломок обладнання.",
-      "about.p2": "Виступаючи єдиним центром відповідальності, я веду повний виробничий цикл вашого проєкту під ключ: від адаптації методик до доступної сировини та потрібного обсягу — до збирання кастомних реакторів або комплектації лінії готовим обладнанням із власного складу. Довіряючи запуск лінії одному фахівцю, ви виключаєте фінансові втрати між етапами проєкту й отримуєте систему, в якій хімічна формула та інженерія обладнання ідеально синхронізовані між собою.",
-      "about.p3": "Чи це вихід вашого підприємства з технологічного глухого кута, масштабування, складний кастомний запит, чи експертна консультація — підсумком нашої співпраці завжди стає рентабельне й безперебійне виробництво, що стабільно видає потрібний продукт у потрібній кількості.",
-      "hero.cta": "Безкоштовна консультація",
-      "about.stats": "9 років досвіду в хімічній технології виробництва · 43 реалізовані проєкти по всій Європі",
-      "services.heading": "Послуги",
-      "card.aboutLabel": "Про послугу",
-      "card.explore": "Детальніше →",
-      "card.discuss": "Обговорити цей проєкт",
-      "card.reactors.title": "Реактори на замовлення",
-      "card.reactors.b1": "Стандартне обладнання змушує унікальні технології підлаштовуватися під його обмеження. Це неминуче знижує ефективність і рентабельність процесу.",
-      "card.reactors.b2": "Щоб виключити ці компромиси, хімічні реактори проєктуються та виготовляються за індивідуальним замовленням. Обладнання суворо адаптується під ваші завдання синтезу та масштабування виробництва.",
-      "card.reactors.b3": "Робота ведеться під ключ: від точних розрахунків гідродинаміки й теплообміну, розробки 3D-моделі та креслень до збирання апарата й фінальних випробувань. Ви отримуєте обладнання, розраховане на безпечну роботу з будь-якими, навіть найскладнішими та найагресивнішими середовищами, зібране з преміальних матеріалів і оснащене надійною автоматикою.",
-      "card.reactors.b4": "Реалізація проєктів охоплює будь-які масштаби — від пілотних установок до промислових ліній, забезпечуючи їхню безшовну інтеграцію в діючий техпроцес.",
-      "card.reactors.b5": "Замовляючи кастомний апарат, ви отримуєте безкомпромісну інженерну якість, еталонну промислову естетику та гарантовану операційну ефективність.",
-      "card.methodology.title": "Розробка методики",
-      "card.methodology.b1": "Навіть найгеніальніша формула втрачає сенс, якщо при масштабуванні на промислові обсяги вона дає брак або вимагає недоступної сировини.",
-      "card.methodology.b2": "Розробка технологічних методик з нуля переводить вашу базову ідею у формат готової промислової технології. Кожен процес проєктується з урахуванням специфіки вашого підприємства і суворо адаптується під доступну сировинну базу.",
-      "card.methodology.b3": "Як підсумок — ви отримуєте повністю робочу, безпечну та легко масштабовану методику синтезу. Детальний розрахунок усіх хімічних і термодинамічних режимів забезпечує абсолютну відтворюваність реакцій при перенесенні на великі виробничі обсяги.",
-      "card.methodology.b4": "Результатом роботи стає вивірений технологічний регламент, який виключає ризики браку, оптимізує собівартість і гарантує незмінно високу якість вашого продукту від партії до партії.",
-      "card.inventory.title": "Обладнання зі складу",
-      "card.inventory.b1": "Багатомісячне очікування замовленого обладнання заморожує запуск проєкту і критично зсуває терміни повернення інвестицій.",
-      "card.inventory.b2": "Для оперативного вирішення подібних завдань я пропоную перевірене складське та відновлене обладнання, готове до негайного відвантаження.",
-      "card.inventory.b3": "Кожен апарат проходить суворий інженерний аудит та обов'язкову заміну всіх швидкозношуваних вузлів. Багатоступеневий контроль тестування гідродинаміки й автоматики виступає гарантією того, що установка є абсолютно безпечною та працює на рівні повністю нового апарата.",
-      "card.inventory.b4": "Ви отримуєте апарат точно під специфіку вашого хімічного синтезу та експертні рекомендації щодо його інтеграції в діючий технологічний процес. Це ідеальне рішення для тестування пілотних проєктів або екстреного масштабування виробничих потужностей в умовах жорстких дедлайнів.",
-      "card.inventory.b5": "Обираючи промислове обладнання в наявності, ви радикально скорочуєте терміни запуску, грамотно оптимізуєте витрати й починаєте випускати продукт без жодного компромісу в якості інженерії.",
-      "card.turnkey.title": "Проєкти під ключ",
-      "card.turnkey.b1": "Поділ складного проєкту між різними підрядниками неминуче призводить до інженерних нестиковок, розмивання зон відповідальності та критичних затримок запуску.",
-      "card.turnkey.b2": "Я веду ваш проєкт під ключ, виступаючи єдиним центром відповідальності за кінцевий результат. Грамотний інжиніринг об'єднує хімічну технологію та апаратне виконання в єдиний процес: від розробки масштабованої методики синтезу до виробництва кастомних реакторів і фінального пусконалагодження на вашому об'єкті.",
-      "card.turnkey.b3": "Ви повністю позбавлені необхідності координувати різних виконавців і намагатися адаптувати лабораторну теорію під реальне промислове обладнання. Кожен етап, включаючи складні теплові розрахунки, підбір автоматики та заводські випробування, перебуває під суворим єдиним контролем.",
-      "card.turnkey.b4": "Обираючи послугу повного циклу, ви отримуєте абсолютно готовую, високорентабельну та безпечну виробничу лінію, створену під ключ із безкомпромісною увагою до інженерної якості.",
-      "card.scaleup.title": "Масштабування",
-      "card.scaleup.b1": "Спроба прямого перенесення лабораторних пропорцій на промислові обсяги неминуче руйнує технологічний процес. Це призведе до неконтрольованих реакцій, високого відсотка браку та втрати якості продукту.",
-      "card.scaleup.b2": "Щоб уникнути фінансових втрат при масштабуванні, необхідно адаптувати ваш хімічний синтез до нових виробничих потужностей із математичною точністю. Проведення глибокого інженерного перерахунку гідродинаміки, теплообміну та масообміну дозволяє повністю адаптувати базовую методику під реальну фізику великотоннажних реакторів.",
-      "card.scaleup.b3": "ВВи отримуєте вивірені температурні режими, точні алгоритми дозування та параметри перемішування, які гарантують стабільність процесу навіть при роботі зі складними або в'язкими середовищами. Такий підхід повністю виключає метод спроб і помилок на дорогій сировині: кожен етап переходу моделюється і прораховується заздалегідь.",
-      "card.scaleup.b4": "Підсумком роботи стає промислова технологія, яка дозволяє вам впевнено випускати великі партії продукції, зберігаючи еталонну якість вихідного зразка.",
-      "card.tailored.title": "Індивідуальні рішення",
-      "card.tailored.b1": "Найцікавіші виробничі завдання часто заходять у глухий кут, тому що їхня специфіка не вписується в рамки стандартних каталожних рішень.",
-      "card.tailored.b2": "Якщо ваш проєкт виходить за межі стандартів, я створю рішення з нуля. Реверс-інжиніринг, модернізація слабких вузлів, розробка реакторов під унікальний синтез — у роботу беруться навіть найнестандартніші завдання. Замість підгонки технології під готове обладнання, апаратна база проєктуватиметься суворо під вашу ідею.",
-      "card.tailored.b3": "Глибокий технічний аудит вихідних даних дозволяє оцінити реальна фізичну та економічну життєздатність проєкту.",
-      "card.tailored.b4": "У результаті ви отримуєте прозорий покроковий план і безкомпромісне інженерне втілення, яке знімає всі бар'єри для масштабування та зростання бізнесу.",
-      "card.ptfe.title": "Покриття PTFE",
-      "card.ptfe.b1": "Вплив агресивних хімічних речовин на дороге промислове обладнання неминуче призводить до швидкої корозії, налипання залишків продукту та дорогих експлуатаційних простоїв.",
-      "card.ptfe.b2": "Щоб усунути ці експлуатаційні ризики, ми надаємо професійні послуги з нанесення PTFE-покриттів, розроблених для забезпечення абсолютної хімічної інертності та екстремальної термічної стабільності. Наша технологія високоточного нанесення створює непроникний антиадгезійний бар'єр, спеціально адаптований до суворих реалій вашого виробничого середовища.",
-      "card.ptfe.b3": "Ви повністю позбавляєтеся від постійної боротьби з передчасним зносом обладнання та виснажливими циклами очищення.",
-      "card.ptfe.b4": "Обираючи нашу передову послугу з нанесення PTFE-покриттів, ви значно подовжуєте термін служби вашого критично важливого обладнання, забезпечуєте безкомпромісну чистоту продукції та підтримуєте високоефективну й рентабельну виробничу лінію.",
-      "card.audit.title": "Консультація",
-      "card.audit.b1": "Ціна помилки на етапі технологічного планування або сліпого вибору обладнання — мільйони втрачених інвестицій і місяці виробничого простою.",
-      "card.audit.b2": "Моя глибока технічна консультація усуває критичні помилки з самого початку. В основі підбору технологічного рішення лежить не підгонка під каталожні апарати, а незалежний інженерний аудит вашого завдання, рецептури або діючої лінії.",
-      "card.audit.b3": "Детальний розбір фізико-хімічних параметрів синтезу виявляє приховані ризики при масштабуванні та диктує реальні вимоги до апаратного забезпечення. Ви отримуєте об'єктивну оцінку життєздатності проєкту, повністю вільну від нереалистичних маркетингових обіцянок.",
-      "card.audit.b4": "Як підсумок — у вас на руках чітка дорожня карта: від оптимальної конфігурації реактора до стратегії безпечного запуску процесу.",
-      "card.audit.b5": "Це консультація високого рівня з практикуючим інженером, який допомагає грамотно розподілити бюджет і уникнути критичних помилок при впровадженні технології. Інвестуючи в професійну експертизу до початку закупівель, ви закладаєте надійний фундамент для впевненого та передбачуваного зростання вашого бізнесу.",
-      "contacts.heading": "Контакти",
-      "footer.copyright": "© 2026 · KRUL",
-      "techlog.heading": "Відео",
-      "techlog.btn": "YouTube канал"
-    },
-
-    ru: {
-      "hero.l1": "От идеи",
-      "hero.l2": "до промышленного производства.",
-      "about.heading": "ОБО МНЕ",
-      "about.p1": "Главная проблема любого производства - разрыв между теорией и практикой. Тот самый момент, когда лабораторная методика не работает на больших объемах, стандартное оборудование не справляется с задачей, а привлечение десятка разных подрядчиков приводит лишь к сорванным срокам запуска и поломкам оборудования.",
-      "about.p2": "Выступая единым центром ответственности, закрываю весь производственный цикл вашего проекта «под ключ»: от адаптации методики под доступное сырье и нужный объем до сборки кастомных реакторов или комплектации линии готовым оборудованием из собственного склада. Доверяю запуск своей линии одному специалисту, вы исключаете финансовые потери на стыке этапов и получаете систему, в которой химическая формула и инженерия оборудования идеально синхронизированы между собой.",
-      "about.p3": "Будь то выход вашего предприятия из технологического тупика, масштабирование, сложный кастомный запрос или экспертная консультация - итогом нашего сотрудничества всегда становится рентабельное и бесперебойное производство, стабильно выдающее нужный продукт в нужном количестве.",
-      "hero.cta": "Бесплатная консультация",
-      "about.stats": "9 лет опыта в химической инженерии процессов · 43 реализованных проекта по всей Европе",
-      "services.heading": "Услуги",
-      "card.aboutLabel": "Об услуге",
-      "card.explore": "Подробнее →",
-      "card.discuss": "Обсудить этот проект",
-      "card.reactors.title": "Реакторы на заказ",
-      "card.reactors.b1": "Стандартное оборудование вынуждает уникальные технологии подстраиваться под его ограничения. Это неизбежно снижает эффективность и рентабельльность процесса.",
-      "card.reactors.b2": "Чтобы исключить эти компромиссы, химические реакторы проектируются и производятся по индивидуальному заказу. Оборудование строго адаптируется под ваши задачи синтеза и масштабирования производства.",
-      "card.reactors.b3": "Работа ведется под ключ: от точных расчетов гидродинамики и теплообмена, разработки 3D-модели и чертежей до сборки аппарата и финальных испытаний. Вы получаете оборудование, рассчитанное на безопасную работу с любыми, даже самыми сложными и агрессивными средами, собранное из премиальных материалов и оснащенное надежной автоматикой.",
-      "card.reactors.b4": "Реализация проектов охватывает любые масштабы — от пилотных установок до промышленных линий, обеспечивая их бесшовную интеграцию в действующий техпроцесс.",
-      "card.reactors.b5": "Заказывая кастомный аппарат, вы получаете бескомпромиссное инженерное качество, эталонную промышленную эстетику и гарантированную операционную эффективность.",
-      "card.methodology.title": "Разработка методики",
-      "card.methodology.b1": "Даже самая гениальная формула теряет смысл, если при масштабировании на промышленные объемы она дает брак или требует недоступного сырья.",
-      "card.methodology.b2": "Разработка технологических методик с нуля переводит вашу базовую идею в формат готовой промышленной технологии. Каждый процесс проектируется с учетом специфики вашего предприятия и строго адаптируется под доступную сырьевую базу.",
-      "card.methodology.b3": "Как итог - вы получаете полностью рабочую, безопасную и легко масштабируемую методику синтеза. Детальный расчет всех химических и термодинамических режимов обеспечивает абсолютную воспроизводимость реакций при переносе на большие производственные объемы.",
-      "card.methodology.b4": "Результатом работы становится выверенный технологический регламент, который исключает риски брака, оптимизирует себестоимость и гарантирует неизменно высокое качество вашего продукта от партии к партии.",
-      "card.inventory.title": "Оборудование со склада",
-      "card.inventory.b1": "Многомесячное ожидание заказного оборудования замораживает запуск проекта и критически сдвигает сроки возврата инвестиций.",
-      "card.inventory.b2": "Для оперативного решения подобных задач я предлагаю проверенное складское и восстановленное оборудование, готовое к немедленной отгрузке.",
-      "card.inventory.b3": "Каждый аппарат проходит строгий инженерный аудит и обязательную замену всех изнашиваемых узлов. Многоступенчатый контроль тестирования гидродинамики и автоматики выступает гарантией того, что установка абсолютно безопасна и работает на уровне полностью нового аппарата.",
-      "card.inventory.b4": "Вы получаете аппарат точно под специфику вашего химического синтеза и экспертные рекомендации по его интеграции в действующий технологический процесс. Это идеальное решение для тестирования пилотных проектов или экстренного масштабирования производственных мощностей в условиях жестких сроков.",
-      "card.inventory.b5": "Выбирая промышленное оборудование из наличия, вы радикально сокращаете сроки запуска, грамотно оптимизируете затраты и начинаете выпускать продукт без единого компромисса в качестве инженерии.",
-      "card.turnkey.title": "Проекты под ключ",
-      "card.turnkey.b1": "Разделение сложного проекта между разными подрядчиками неизбежно приводит инженерным нестыковкам, размытию зон ответственности и критическим задержкам запуска.",
-      "card.turnkey.b2": "Я веду ваш проект под ключ, выступая единым центром ответственности за конечный результат. Грамотный инжиниринг объединяет химическую технологию и аппаратное исполнение в единый процесс: от разработки масштабируемой методики синтеза до производства кастомних реакторов и финальной пусконаладки на вашем объекте.",
-      "card.turnkey.b3": "Вы полностью избавлены от необходимости координировать разных исполнителей и пытаться адаптировать лабораторную теорию под реальное промышленное оборудование. Каждый этап, включая сложные тепловые расчеты, подбор автоматики и заводские испытания, находится под строгим единым контролем.",
-      "card.turnkey.b4": "Выбирая услугу полного цикла, вы получаете абсолютно готовую, высокорентабельную и безопасную производственную линию, созданную под ключ с бескомпромиссным вниманием к инженерному качеству.",
-      "card.scaleup.title": "Масштабирование",
-      "card.scaleup.b1": "Попытка прямого переноса лабораторных пропорций на промышленные объемы неизбежно разрушит технологический процесс. Это приведет к неконтролируемым реакциям, высокому проценту брака и потере качества продукта.",
-      "card.scaleup.b2": "Чтобы избежать финансовых потерь при масштабировании, необходимо адаптировать ваш химический синтез к новым производственным мощностям с математической точностью. Проведение глубокого инженерного перерасчета гидродинамики, теплообмена и массообмена позволяет полностью адаптировать базовую методику под реальную физику крупнотоннажных реакторов.",
-      "card.scaleup.b3": "Вы получаете выверенные температурные режимы, точные алгоритмы дозирования и параметры перемешивания, которые гарантируют стабильность процесса даже при работе со сложными или вязкими средами. Подобный подход полностью исключает метод проб и ошибок на дорогостоящем сырье: каждый этап перехода моделируется и просчитывается заранее.",
-      "card.scaleup.b4": "Итогом работы становится промышленная технология, которая позволяет вам уверенно выпускать большие партии продукции, сохраняя эталонное качество исходного образца.",
-      "card.tailored.title": "Индивидуальные решения",
-      "card.tailored.b1": "Самые интересные производственные задачи часто заходят в тупик, потому что их специфика не вписывается в рамки стандартных каталожных решений.",
-      "card.tailored.b2": "Если ваш проект выходит за рамки стандартов, я создам решение с чистого листа. Реверс-инжиниринг, модернизация слабых узлов, разработка реакторов под уникальный синтез — в работу беруться даже самые нестандартные задачи. Вместо подгонки технологии под готовое оборудование, аппаратная база будет проектироваться строго под вашу идею.",
-      "card.tailored.b3": "Глубокий технический аудит исходных данных позволяет оценить реальную физическую и экономическую жизнеспособность проекта.",
-      "card.tailored.b4": "В результате вы получаете прозрачный пошаговый план и бескомпромиссное инженерное воплощение, которое снимает все барьеры для масштабирования и роста бизнеса.",
-      "card.ptfe.title": "Покрытие PTFE",
-      "card.ptfe.b1": "Воздействие агрессивных химических веществ на дорогостоящее промышленное оборудование неизбежно приводит к быстрой коррозии, налипанию остатков продукта и дорогостоящим эксплуатационным простоям.",
-      "card.ptfe.b2": "Чтобы устранить эти операционные риски, мы предлагаем профессиональные услуги по нанесению ПТФЭ-покрытий (PTFE), разработанные для обеспечения абсолютной химической инертности и экстремальной термической стабильности. Наша прецизионная технология нанесения создает непроницаемый антиадгезионный барьер, специально адаптированный к суровым условиям вашей производственной среды.",
-      "card.ptfe.b3": "Вы полностью избавляетесь от постоянной борьбы с преждевременным износом оборудования и изнурительными циклами очистки.",
-      "card.ptfe.b4": "Выбирая нашу передовую услугу по нанесению ПТФЭ-покрытий, вы значительно продлеваете срок службы вашего критически важного оборудования, обеспечиваете бескомпромиссную чистоту продукции и поддерживаете высокоэффективную и рентабельную производственную линию.",
-      "card.audit.title": "Консультация",
-      "card.audit.b1": "Цена ошибки на этапе технологического планирования или слепого выбора оборудования — миллионы потерянных инвестиций и месяцы производственного простоя.",
-      "card.audit.b2": "Моя глубока техническая консультация устраняет критические ошибки с самого начала. В основе подбора технологического решения лежит не подгонка под каталожные аппараты, а независимый инженерный аудит вашей задачи, рецептуры или действующей линии.",
-      "card.audit.b3": "Детальный разбор физико-химических параметров синтезу выявляет скрытые риски при масштабировании и диктует реальные требования к аппаратному обеспечению. Вы получаете объективную оценку жизнеспособности проекта, полностью свободную от нереалистичных маркетингових обещаний.",
-      "card.audit.b4": "Как итог — у вас на руках четкая дорожная карта: от оптимальной конфигурации реактора до стратегии безопасного запуска процесса.",
-      "card.audit.b5": "Это консультация высокого уровня с практикующим инженером, который помогает грамотно распределить бюджет и избежать критических ошибок при внедрении технологии. Инвестируя в профессиональную экспертизу до начала закупок, вы закладываете надежный фундамент для уверенного и предсказуемого роста вашего бизнеса.",
-      "contacts.heading": "Контакты",
-      "footer.copyright": "© 2026 · KRUL",
-      "techlog.heading": "Видео",
-      "techlog.btn": "YouTube канал"
-    }
-  };
-
-  const TOGGLE_ARIA = {
-    en: "Change language",
-    pl: "Zmień język",
-    cs: "Změnit jazyk",
-    de: "Sprache ändern",
-    uk: "Змінити мову",
-    ru: "Изменить язык"
-  };
-
-  const STORAGE_KEY = "krul.lang";
-  const DEFAULT_LANG = "en";
-  const VALID = Object.keys(translations);
-
-  
-  function getInitialLang() {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved && VALID.indexOf(saved) !== -1) return saved;
-    } catch (e) {}
-    return DEFAULT_LANG;
-  }
-
-  function applyLang(lang) {
-    if (VALID.indexOf(lang) === -1) lang = DEFAULT_LANG;
-    const dict = translations[lang];
-    const nodes = document.querySelectorAll("[data-i18n]");
-    for (let i = 0; i < nodes.length; i++) {
-      const el = nodes[i];
-      const key = el.getAttribute("data-i18n");
-      if (dict[key] != null) el.textContent = dict[key];
-    }
-    document.documentElement.lang = lang;
-    const toggle = document.getElementById("langToggle");
-    if (toggle) toggle.setAttribute("aria-label", TOGGLE_ARIA[lang] || TOGGLE_ARIA.en);
-
-    const items = document.querySelectorAll(".lang-item");
-    for (let i = 0; i < items.length; i++) {
-      items[i].classList.toggle("is-active", items[i].getAttribute("data-lang") === lang);
-    }
-
-    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
-  }
-
-  function openMenu() {
-    const menu = document.getElementById("langMenu");
-    const toggle = document.getElementById("langToggle");
-    if (!menu || !toggle) return;
-    menu.classList.add("is-open");
-    menu.setAttribute("aria-hidden", "false");
-    toggle.setAttribute("aria-expanded", "true");
-  }
-  function closeMenu() {
-    const menu = document.getElementById("langMenu");
-    const toggle = document.getElementById("langToggle");
-    if (!menu || !toggle) return;
-    menu.classList.remove("is-open");
-    menu.setAttribute("aria-hidden", "true");
-    toggle.setAttribute("aria-expanded", "false");
-  }
-  function toggleMenu() {
-    const menu = document.getElementById("langMenu");
-    if (!menu) return;
-    if (menu.classList.contains("is-open")) closeMenu();
-    else openMenu();
-  }
-
-  function init() {
-    const toggle = document.getElementById("langToggle");
-    const menu = document.getElementById("langMenu");
-    const wrap = document.getElementById("langWrap");
-    if (!toggle || !menu || !wrap) return;
-
-    applyLang(getInitialLang());
-
-    toggle.addEventListener("click", function(e) {
-      e.stopPropagation();
-      toggleMenu();
-    });
-    const items = menu.querySelectorAll(".lang-item");
-    for (let i = 0; i < items.length; i++) {
-      items[i].addEventListener("click", function(e) {
-        e.stopPropagation();
-        const lang = this.getAttribute("data-lang");
-        applyLang(lang);
-        closeMenu();
-      });
-    }
-
-    document.addEventListener("click", function(e) {
-      if (!wrap.contains(e.target)) closeMenu();
-    });
-    document.addEventListener("keydown", function(e) {
-      if (e.key === "Escape" || e.keyCode === 27) closeMenu();
-    });
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
-  } else {
-    init();
-  }
-})();
-</script>
-</html>
