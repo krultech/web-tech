@@ -346,7 +346,7 @@
 }
 
   /* ============ GLOBAL THEME TRANSITION ============ */
-  /* The body owns the screen color. Sections (Blocks 2, 3, 4) are
+  /* The body owns the screen color. Sections (Blocks 2, 3, 4, Tech Log) are
      transparent so the background change is one continuous wash
      across the whole viewport. */
 
@@ -374,12 +374,14 @@
     color: var(--theme-ink-dark);
   }
 
-  /* Sections 2, 3, 4 are transparent — body shows through */
+  /* Sections are transparent — body shows through */
   .wf-products,
   .wf-bento,
+  .wf-tech-log,
   .wf-contacts,
   body.theme-dark .wf-products,
   body.theme-dark .wf-bento,
+  body.theme-dark .wf-tech-log,
   body.theme-dark .wf-contacts {
     background: transparent !important;
   }
@@ -403,6 +405,7 @@
   .contacts-heading,
   .contacts-phone,
   .contacts-socials a,
+  .wf-tech-log,
   .wf-contacts,
   .wf-footer,
   .footer-links a {
@@ -434,6 +437,7 @@
   body.theme-dark .about-stats,
   body.theme-dark .section-header,
   body.theme-dark .wf-contacts,
+  body.theme-dark .wf-tech-log,
   body.theme-dark .wf-footer,
   body.theme-dark .contacts-socials a,
   body.theme-dark .footer-links a {
@@ -947,6 +951,201 @@
     flex-shrink: 0;
   }
 
+  /* ============ TECH LOG (YOUTUBE VIDEOS) ============ */
+  .wf-tech-log {
+    position: relative;
+    padding: 120px 48px;
+    background: transparent;
+    border-top: 1px dashed var(--line);
+  }
+
+  .tech-log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px dashed var(--line);
+  }
+
+  /* Карусель видео */
+  .video-carousel {
+    display: flex;
+    gap: 32px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE */
+    padding-bottom: 24px;
+  }
+  .video-carousel::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+
+  .video-card {
+    flex: 0 0 32%; /* На ПК видно 3 карточки */
+    min-width: 320px;
+    cursor: pointer;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  .video-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .video-thumb-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1.5px dashed var(--line);
+    background: var(--fill-1);
+  }
+
+  body.theme-dark .video-thumb-wrap {
+    border-color: var(--theme-line-dark);
+    background: #1a1a1a;
+  }
+
+  .video-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.8s ease;
+    filter: brightness(0.85);
+  }
+
+  .video-card:hover .video-thumb {
+    transform: scale(1.05);
+    filter: brightness(0.6);
+  }
+
+  /* Кнопка Play по центру обложки */
+  .video-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 64px;
+    height: 64px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  
+  .video-play-btn::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 18px solid #111;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    margin-left: 6px;
+  }
+
+  .video-card:hover .video-play-btn {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .video-title {
+    font-family: var(--sans);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--ink);
+    margin: 0;
+    padding: 0 8px;
+    letter-spacing: -0.01em;
+  }
+
+  body.theme-dark .video-title {
+    color: var(--theme-ink-dark);
+  }
+
+  /* МАГИЯ ПЕРЕВОДОВ: Скрываем языки, которые не совпадают с текущим тегом <html> */
+  html:lang(en) .v-lang:not([data-lang="en"]),
+  html:lang(pl) .v-lang:not([data-lang="pl"]),
+  html:lang(cs) .v-lang:not([data-lang="cs"]),
+  html:lang(de) .v-lang:not([data-lang="de"]),
+  html:lang(uk) .v-lang:not([data-lang="uk"]),
+  html:lang(ru) .v-lang:not([data-lang="ru"]) {
+    display: none;
+  }
+
+  /* Модальное окно плеера (Lightbox) */
+  .yt-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+
+  .yt-modal.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .yt-modal-bg {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+  }
+
+  .yt-modal-close {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    width: 48px;
+    height: 48px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.3s ease;
+  }
+
+  .yt-modal-close:hover {
+    background: rgba(255,255,255,0.2);
+  }
+
+  .yt-modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    aspect-ratio: 16 / 9;
+    z-index: 1;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+    background: #000;
+  }
+
+  .yt-modal-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
   /* ============ CONTACTS ============ */
   .wf-contacts {
     position: relative;
@@ -1364,6 +1563,24 @@
     /* Description stays muted on mobile — focus state doesn't reveal it,
        the info overlay (tap the arrow) is the read surface */
     .bento-cell.has-video .bento-desc { display: none; }
+
+    /* ===== TECH LOG ===== */
+    .wf-tech-log { padding: 80px 20px 40px; }
+    .tech-log-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .video-carousel {
+      gap: 16px;
+      margin: 0 -20px;
+      padding: 0 20px 20px;
+      scroll-padding-left: 20px;
+    }
+    .video-card { flex: 0 0 85%; min-width: 0; }
+    .yt-modal-content { width: 100%; border-radius: 0; }
+    .yt-modal-close { top: 16px; right: 16px; width: 40px; height: 40px; font-size: 24px; }
 
     /* ===== CONTACTS — single centered column ===== */
     .wf-contacts {
@@ -1923,6 +2140,31 @@
   </div>
 </section>
 
+<section class="wf-tech-log" data-screen-label="04.5 Tech Log">
+  <div class="section-header tech-log-header">
+    <h2 class="reveal" data-i18n="techlog.heading">Tech Log</h2>
+    <a href="https://www.youtube.com/" target="_blank" rel="noopener" class="header-cta-btn reveal" data-i18n="techlog.btn">YouTube Channel</a>
+  </div>
+
+  <div class="video-carousel reveal">
+    <div class="video-card" data-yt-id="RgZh-EapXgs">
+      <div class="video-thumb-wrap">
+        <img class="video-thumb" src="https://res.cloudinary.com/dwqit2mii/image/upload/v1783249361/KRUL_TECHNOLOGY_on_metal_plate_202607050357_mplm9u.webp" alt="Video thumbnail">
+        <div class="video-play-btn"></div>
+      </div>
+      <h3 class="video-title">
+        <span class="v-lang" data-lang="en">How we assemble custom chemical reactors</span>
+        <span class="v-lang" data-lang="pl">Jak montujemy niestandardowe reaktory chemiczne</span>
+        <span class="v-lang" data-lang="cs">Jak sestavujeme chemické reaktory na míru</span>
+        <span class="v-lang" data-lang="de">Wie wir kundenspezifische chemische Reaktoren montieren</span>
+        <span class="v-lang" data-lang="uk">Як ми збираємо кастомні хімічні реактори</span>
+        <span class="v-lang" data-lang="ru">Как мы собираем кастомные химические реакторы</span>
+      </h3>
+    </div>
+
+    </div>
+</section>
+
 <section class="wf-contacts" data-screen-label="05 Contacts">
   <div class="contacts-inner">
     <h2 class="contacts-heading reveal" data-i18n="contacts.heading">Contacts</h2>
@@ -2093,6 +2335,50 @@
 })();
 </script>
 </body>
+<script>
+/* =====================================================================
+   YOUTUBE LIGHTBOX (ОТКРЫТИЕ ВИДЕО ПО КЛИКУ НА КАРТОЧКУ)
+===================================================================== */
+(function() {
+  const videoCards = document.querySelectorAll('.video-card');
+  
+  videoCards.forEach(card => {
+    card.addEventListener('click', function() {
+      const ytId = this.getAttribute('data-yt-id');
+      if (!ytId) return;
+
+      const modal = document.createElement('div');
+      modal.className = 'yt-modal';
+      modal.innerHTML = `
+        <div class="yt-modal-bg"></div>
+        <button class="yt-modal-close">×</button>
+        <div class="yt-modal-content">
+          <iframe src="https://www.youtube.com/embed/${ytId}?autoplay=1&modestbranding=1&rel=0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+      `;
+
+      document.body.appendChild(modal);
+      document.body.style.overflow = 'hidden';
+
+      requestAnimationFrame(() => {
+        modal.classList.add('is-open');
+      });
+
+      const closeModal = () => {
+        modal.classList.remove('is-open');
+        setTimeout(() => {
+          modal.remove();
+          document.body.style.overflow = '';
+        }, 400); 
+      };
+
+      modal.querySelector('.yt-modal-bg').addEventListener('click', closeModal);
+      modal.querySelector('.yt-modal-close').addEventListener('click', closeModal);
+    });
+  });
+})();
+</script>
+
 <script>
 /* =====================================================================
    SCROLL REVEAL — one-shot fade-up on .reveal elements
@@ -2280,7 +2566,9 @@
       "card.audit.b4": "You walk away with a clear, actionable roadmap: from the optimal reactor configuration to a comprehensive strategy for safely launching the process.",
       "card.audit.b5": "This is a high-level consultation with a practicing engineer who helps you optimize your capital expenditure and avoid critical mistakes during technology implementation. By investing in professional expertise before procurement begins, you lay a solid foundation for the confident and predictable growth of your business.",
       "contacts.heading": "Contacts",
-      "footer.copyright": "© 2026 · KRUL"
+      "footer.copyright": "© 2026 · KRUL",
+      "techlog.heading": "Tech Log",
+      "techlog.btn": "YouTube Channel"
     },
 
     pl: {
@@ -2340,7 +2628,9 @@
       "card.audit.b4": "W efekcie dysponują Państwo precyzyjną „mapą drogową”: począwszy od optymalnej konfiguracji reaktora, aż po strategię bezpiecznego uruchomienia procesu.",
       "card.audit.b5": "Jest to doradztwo na najwyższym poziomie, prowadzone przez praktykującego inżyniera, które pomaga mądrze zaplanować budżet i uniknąć fatalnych błędów przy wdrażaniu nowej technologii. Inwestując w wiedzę ekspercką przed rozpoczęciem zakupów, budują Państwo solidne fundamenty dla stabilnego i przewidywalnego wzrostu swojego przedsiębiorstwa.",
       "contacts.heading": "Kontakt",
-      "footer.copyright": "© 2026 · KRUL"
+      "footer.copyright": "© 2026 · KRUL",
+      "techlog.heading": "Dziennik techniczny",
+      "techlog.btn": "Kanał YouTube"
     },
 
     cs: {
@@ -2400,7 +2690,9 @@
       "card.audit.b4": "Výsledkem je přehledná cestovní mapa: od optimální konfigurace reaktoru až po strategii bezpečného spuštění procesu.",
       "card.audit.b5": "Jde o konzultaci na vysoké úrovni s praktikem z oboru, který pomáhá rozumně rozložit rozpočet a vyvarovat se kritických chyb při zavádění technologie. Investicí do odborné expertízy ještě před zahájením nákupů pokládáte spolehlivý základ pro jistý a předvídatelný růst vašeho podnikání.",
       "contacts.heading": "Kontakty",
-      "footer.copyright": "© 2026 · KRUL"
+      "footer.copyright": "© 2026 · KRUL",
+      "techlog.heading": "Technický deník",
+      "techlog.btn": "Kanál YouTube"
     },
 
     de: {
@@ -2460,7 +2752,9 @@
       "card.audit.b4": "Das Resultat ist eine klare Roadmap: von der optimalen Reaktorkonfiguration bis zur Strategie für einen sicheren Prozessstart.",
       "card.audit.b5": "Dies ist eine Beratung auf hohem Niveau durch einen praktizierenden Ingenieur, der Ihnen hilft, das Budget sinnvoll einzusetzen und kritische Fehler bei der Technologieimplementierung zu vermeiden. Wer in professionelle Expertise investiert, bevor die ersten Beschaffungen anlaufen, legt damit das solide Fundament für ein verlässliches und planbares Unternehmenswachstum.",
       "contacts.heading": "Kontakt",
-      "footer.copyright": "© 2026 · KRUL"
+      "footer.copyright": "© 2026 · KRUL",
+      "techlog.heading": "Technisches Logbuch",
+      "techlog.btn": "YouTube Kanal"
     },
 
     uk: {
@@ -2506,7 +2800,7 @@
       "card.tailored.title": "Індивідуальні рішення",
       "card.tailored.b1": "Найцікавіші виробничі завдання часто заходять у глухий кут, тому що їхня специфіка не вписується в рамки стандартних каталожних рішень.",
       "card.tailored.b2": "Якщо ваш проєкт виходить за межі стандартів, я створю рішення з нуля. Реверс-інжиніринг, модернізація слабких вузлів, розробка реакторов під унікальний синтез — у роботу беруться навіть найнестандартніші завдання. Замість підгонки технології під готове обладнання, апаратна база проєктуватиметься суворо під вашу ідею.",
-      "card.tailored.b3": "Глибокий технічний аудит вихідних даних дозволяє оцінити реальну фізичну та економічну життєздатність проєкту.",
+      "card.tailored.b3": "Глибокий технічний аудит вихідних даних дозволяє оцінити реальна фізичну та економічну життєздатність проєкту.",
       "card.tailored.b4": "У результаті ви отримуєте прозорий покроковий план і безкомпромісне інженерне втілення, яке знімає всі бар'єри для масштабування та зростання бізнесу.",
       "card.ptfe.title": "Покриття PTFE",
       "card.ptfe.b1": "Вплив агресивних хімічних речовин на дороге промислове обладнання неминуче призводить до швидкої корозії, налипання залишків продукту та дорогих експлуатаційних простоїв.",
@@ -2516,11 +2810,13 @@
       "card.audit.title": "Консультація",
       "card.audit.b1": "Ціна помилки на етапі технологічного планування або сліпого вибору обладнання — мільйони втрачених інвестицій і місяці виробничого простою.",
       "card.audit.b2": "Моя глибока технічна консультація усуває критичні помилки з самого початку. В основі підбору технологічного рішення лежить не підгонка під каталожні апарати, а незалежний інженерний аудит вашого завдання, рецептури або діючої лінії.",
-      "card.audit.b3": "Детальний розбір фізико-хімічних параметрів синтезу виявляє приховані ризики при масштабуванні та диктує реальні вимоги до апаратного забезпечення. Ви отримуєте об'єктивну оцінку життєздатності проєкту, повністю вільну від нереалістичних маркетингових обіцянок.",
+      "card.audit.b3": "Детальний розбір фізико-хімічних параметрів синтезу виявляє приховані ризики при масштабуванні та диктує реальні вимоги до апаратного забезпечення. Ви отримуєте об'єктивну оцінку життєздатності проєкту, повністю вільну від нереалистичних маркетингових обіцянок.",
       "card.audit.b4": "Як підсумок — у вас на руках чітка дорожня карта: від оптимальної конфігурації реактора до стратегії безпечного запуску процесу.",
       "card.audit.b5": "Це консультація високого рівня з практикуючим інженером, який допомагає грамотно розподілити бюджет і уникнути критичних помилок при впровадженні технології. Інвестуючи в професійну експертизу до початку закупівель, ви закладаєте надійний фундамент для впевненого та передбачуваного зростання вашого бізнесу.",
       "contacts.heading": "Контакти",
-      "footer.copyright": "© 2026 · KRUL"
+      "footer.copyright": "© 2026 · KRUL",
+      "techlog.heading": "Технічний журнал",
+      "techlog.btn": "YouTube канал"
     },
 
     ru: {
@@ -2576,11 +2872,13 @@
       "card.audit.title": "Консультация",
       "card.audit.b1": "Цена ошибки на этапе технологического планирования или слепого выбора оборудования — миллионы потерянных инвестиций и месяцы производственного простоя.",
       "card.audit.b2": "Моя глубока техническая консультация устраняет критические ошибки с самого начала. В основе подбора технологического решения лежит не подгонка под каталожные аппараты, а независимый инженерный аудит вашей задачи, рецептуры или действующей линии.",
-      "card.audit.b3": "Детальный разбор физико-химических параметров синтезу выявляет скрытые риски при масштабировании и диктует реальные требования к аппаратному обеспечению. Вы получаете объективную оценку жизнеспособности проекта, полностью свободную от нереалистичных маркетинговых обещаний.",
+      "card.audit.b3": "Детальный разбор физико-химических параметров синтезу выявляет скрытые риски при масштабировании и диктует реальные требования к аппаратному обеспечению. Вы получаете объективную оценку жизнеспособности проекта, полностью свободную от нереалистичных маркетингових обещаний.",
       "card.audit.b4": "Как итог — у вас на руках четкая дорожная карта: от оптимальной конфигурации реактора до стратегии безопасного запуска процесса.",
       "card.audit.b5": "Это консультация высокого уровня с практикующим инженером, который помогает грамотно распределить бюджет и избежать критических ошибок при внедрении технологии. Инвестируя в профессиональную экспертизу до начала закупок, вы закладываете надежный фундамент для уверенного и предсказуемого роста вашего бизнеса.",
       "contacts.heading": "Контакты",
-      "footer.copyright": "© 2026 · KRUL"
+      "footer.copyright": "© 2026 · KRUL",
+      "techlog.heading": "Технический журнал",
+      "techlog.btn": "YouTube канал"
     }
   };
 
