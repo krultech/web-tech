@@ -1009,18 +1009,19 @@
   /* Карусель видео */
   .video-carousel {
     display: flex;
+    flex-wrap: nowrap; /* ЖЕСТКИЙ ЗАПРЕТ на перенос строк вниз */
     gap: 32px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE */
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
     padding-bottom: 24px;
   }
-  .video-carousel::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+  .video-carousel::-webkit-scrollbar { display: none; } 
 
   .video-card {
-    flex: 0 0 32%; /* На ПК видно 3 карточки */
-    min-width: 320px;
+    flex: 0 0 28%; /* БЫЛО 32%, СТАЛО 28% — теперь 4-е видео идеально выглядывает */
+    min-width: 300px; /* Чуть уменьшил минимальную ширину для небольших ноутбуков */
     cursor: pointer;
     scroll-snap-align: start;
     display: flex;
@@ -2186,68 +2187,9 @@
       <a href="https://www.youtube.com/@ВАШ_КАНАЛ" target="_blank" rel="noopener" class="yt-channel-btn reveal" data-i18n="techlog.btn">YouTube Channel</a>
     </div>
   </div>
-<div class="video-carousel reveal">
-    <div class="video-card" data-yt-id="">
-      <div class="video-thumb-wrap">
-        <img class="video-thumb" src="https://res.cloudinary.com/dwqit2mii/image/upload/v1783249361/KRUL_TECHNOLOGY_on_metal_plate_202607050357_mplm9u.webp" alt="Video thumbnail">
-        <div class="video-play-btn"></div>
-      </div>
-      <h3 class="video-title">
-        <span class="v-lang" data-lang="en">How we assemble custom chemical reactors</span>
-        <span class="v-lang" data-lang="pl">Jak montujemy niestandardowe reaktory chemiczne</span>
-        <span class="v-lang" data-lang="cs">Jak sestavujeme chemické reaktory na míru</span>
-        <span class="v-lang" data-lang="de">Wie wir kundenspezifische chemische Reaktoren montieren</span>
-        <span class="v-lang" data-lang="uk">Як ми збираємо кастомні хімічні реактори</span>
-        <span class="v-lang" data-lang="ru">Как мы собираем кастомные химические реакторы</span>
-      </h3>
-    </div>
-<div class="video-carousel reveal">
-    <div class="video-card" data-yt-id="RgZh-EapXgs">
-      <div class="video-thumb-wrap">
-        <img class="video-thumb" src="https://res.cloudinary.com/dwqit2mii/image/upload/v1783249361/KRUL_TECHNOLOGY_on_metal_plate_202607050357_mplm9u.webp" alt="Video thumbnail">
-        <div class="video-play-btn"></div>
-      </div>
-      <h3 class="video-title">
-        <span class="v-lang" data-lang="en">How we assemble custom chemical reactors</span>
-        <span class="v-lang" data-lang="pl">Jak montujemy niestandardowe reaktory chemiczne</span>
-        <span class="v-lang" data-lang="cs">Jak sestavujeme chemické reaktory na míru</span>
-        <span class="v-lang" data-lang="de">Wie wir kundenspezifische chemische Reaktoren montieren</span>
-        <span class="v-lang" data-lang="uk">Як ми збираємо кастомні хімічні реактори</span>
-        <span class="v-lang" data-lang="ru">Как мы собираем кастомные химические реакторы</span>
-      </h3>
-    </div>
-<div class="video-carousel reveal">
-    <div class="video-card" data-yt-id="RgZh-EapXgs">
-      <div class="video-thumb-wrap">
-        <img class="video-thumb" src="https://res.cloudinary.com/dwqit2mii/image/upload/v1783249361/KRUL_TECHNOLOGY_on_metal_plate_202607050357_mplm9u.webp" alt="Video thumbnail">
-        <div class="video-play-btn"></div>
-      </div>
-      <h3 class="video-title">
-        <span class="v-lang" data-lang="en">How we assemble custom chemical reactors</span>
-        <span class="v-lang" data-lang="pl">Jak montujemy niestandardowe reaktory chemiczne</span>
-        <span class="v-lang" data-lang="cs">Jak sestavujeme chemické reaktory na míru</span>
-        <span class="v-lang" data-lang="de">Wie wir kundenspezifische chemische Reaktoren montieren</span>
-        <span class="v-lang" data-lang="uk">Як ми збираємо кастомні хімічні реактори</span>
-        <span class="v-lang" data-lang="ru">Как мы собираем кастомные химические реакторы</span>
-      </h3>
-    </div>
-<div class="video-carousel reveal">
-    <div class="video-card" data-yt-id="">
-      <div class="video-thumb-wrap">
-        <img class="video-thumb" src="https://res.cloudinary.com/dwqit2mii/image/upload/v1783249361/KRUL_TECHNOLOGY_on_metal_plate_202607050357_mplm9u.webp" alt="Video thumbnail">
-        <div class="video-play-btn"></div>
-      </div>
-      <h3 class="video-title">
-        <span class="v-lang" data-lang="en">How we assemble custom chemical reactors</span>
-        <span class="v-lang" data-lang="pl">Jak montujemy niestandardowe reaktory chemiczne</span>
-        <span class="v-lang" data-lang="cs">Jak sestavujeme chemické reaktory na míru</span>
-        <span class="v-lang" data-lang="de">Wie wir kundenspezifische chemische Reaktoren montieren</span>
-        <span class="v-lang" data-lang="uk">Як ми збираємо кастомні хімічні реактори</span>
-        <span class="v-lang" data-lang="ru">Как мы собираем кастомные химические реакторы</span>
-      </h3>
-    </div>
 
   <div class="video-carousel reveal">
+
     <div class="video-card" data-yt-id="RgZh-EapXgs">
       <div class="video-thumb-wrap">
         <img class="video-thumb" src="https://res.cloudinary.com/dwqit2mii/image/upload/v1783249361/KRUL_TECHNOLOGY_on_metal_plate_202607050357_mplm9u.webp" alt="Video thumbnail">
@@ -2262,9 +2204,63 @@
         <span class="v-lang" data-lang="ru">Как мы собираем кастомные химические реакторы</span>
       </h3>
     </div>
-
+    <div class="video-card" data-yt-id="RgZh-EapXgs">
+      <div class="video-thumb-wrap">
+        <img class="video-thumb" src="https://res.cloudinary.com/dwqit2mii/image/upload/v1783249361/KRUL_TECHNOLOGY_on_metal_plate_202607050357_mplm9u.webp" alt="Video thumbnail">
+        <div class="video-play-btn"></div>
+      </div>
+      <h3 class="video-title">
+        <span class="v-lang" data-lang="en">How we assemble custom chemical reactors</span>
+        <span class="v-lang" data-lang="pl">Jak montujemy niestandardowe reaktory chemiczne</span>
+        <span class="v-lang" data-lang="cs">Jak sestavujeme chemické reaktory na míru</span>
+        <span class="v-lang" data-lang="de">Wie wir kundenspezifische chemische Reaktoren montieren</span>
+        <span class="v-lang" data-lang="uk">Як ми збираємо кастомні хімічні реактори</span>
+        <span class="v-lang" data-lang="ru">Как мы собираем кастомные химические реакторы</span>
+      </h3>
     </div>
-</section>
+<div class="video-card" data-yt-id="RgZh-EapXgs">
+      <div class="video-thumb-wrap">
+        <img class="video-thumb" src="https://res.cloudinary.com/dwqit2mii/image/upload/v1783249361/KRUL_TECHNOLOGY_on_metal_plate_202607050357_mplm9u.webp" alt="Video thumbnail">
+        <div class="video-play-btn"></div>
+      </div>
+      <h3 class="video-title">
+        <span class="v-lang" data-lang="en">How we assemble custom chemical reactors</span>
+        <span class="v-lang" data-lang="pl">Jak montujemy niestandardowe reaktory chemiczne</span>
+        <span class="v-lang" data-lang="cs">Jak sestavujeme chemické reaktory na míru</span>
+        <span class="v-lang" data-lang="de">Wie wir kundenspezifische chemische Reaktoren montieren</span>
+        <span class="v-lang" data-lang="uk">Як ми збираємо кастомні хімічні реактори</span>
+        <span class="v-lang" data-lang="ru">Как мы собираем кастомные химические реакторы</span>
+      </h3>
+    </div>
+<div class="video-card" data-yt-id="RgZh-EapXgs">
+      <div class="video-thumb-wrap">
+        <img class="video-thumb" src="https://res.cloudinary.com/dwqit2mii/image/upload/v1783249361/KRUL_TECHNOLOGY_on_metal_plate_202607050357_mplm9u.webp" alt="Video thumbnail">
+        <div class="video-play-btn"></div>
+      </div>
+      <h3 class="video-title">
+        <span class="v-lang" data-lang="en">How we assemble custom chemical reactors</span>
+        <span class="v-lang" data-lang="pl">Jak montujemy niestandardowe reaktory chemiczne</span>
+        <span class="v-lang" data-lang="cs">Jak sestavujeme chemické reaktory na míru</span>
+        <span class="v-lang" data-lang="de">Wie wir kundenspezifische chemische Reaktoren montieren</span>
+        <span class="v-lang" data-lang="uk">Як ми збираємо кастомні хімічні реактори</span>
+        <span class="v-lang" data-lang="ru">Как мы собираем кастомные химические реакторы</span>
+      </h3>
+    </div>
+<div class="video-card" data-yt-id="RgZh-EapXgs">
+      <div class="video-thumb-wrap">
+        <img class="video-thumb" src="https://res.cloudinary.com/dwqit2mii/image/upload/v1783249361/KRUL_TECHNOLOGY_on_metal_plate_202607050357_mplm9u.webp" alt="Video thumbnail">
+        <div class="video-play-btn"></div>
+      </div>
+      <h3 class="video-title">
+        <span class="v-lang" data-lang="en">How we assemble custom chemical reactors</span>
+        <span class="v-lang" data-lang="pl">Jak montujemy niestandardowe reaktory chemiczne</span>
+        <span class="v-lang" data-lang="cs">Jak sestavujeme chemické reaktory na míru</span>
+        <span class="v-lang" data-lang="de">Wie wir kundenspezifische chemische Reaktoren montieren</span>
+        <span class="v-lang" data-lang="uk">Як ми збираємо кастомні хімічні реактори</span>
+        <span class="v-lang" data-lang="ru">Как мы собираем кастомные химические реакторы</span>
+      </h3>
+    </div>
+    </div> </section>
 
 <section class="wf-contacts" data-screen-label="05 Contacts">
   <div class="contacts-inner">
