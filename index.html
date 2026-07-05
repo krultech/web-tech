@@ -794,8 +794,31 @@
     color: #fff;
   }
 
-  .card-info-body:last-child {
+  .card-info-body:last-of-type {
     margin-bottom: 0;
+  }
+
+  .card-discuss-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
+    padding: 12px 24px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(40,40,40,0.85);
+    color: #fff;
+    font-family: var(--hand);
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    width: fit-content;
+  }
+
+  .card-discuss-btn:hover {
+    background: rgba(70,70,70,0.95);
+    border-color: rgba(255,255,255,0.5);
   }
 
   .card-info-close {
@@ -1583,7 +1606,7 @@
   }
 
   .bento-cell h2, .bento-cell h3, .bento-title, .card-title {
-    white-space: normal !important; 
+    white-space: normal !important;
     word-break: keep-all !important; 
     -webkit-hyphens: none !important; 
     hyphens: none !important;
@@ -1592,7 +1615,7 @@
     letter-spacing: -0.04em !important;
     font-size: clamp(20px, 6.5vw, 28px) !important;
     line-height: 1.1 !important;
-    padding-right: 8px !important; 
+    padding-right: 8px !important;
   }
 }
 
@@ -1608,22 +1631,28 @@
 /* 2. СТИЛИ ДЛЯ БОЛЬШИХ ЭКРАНОВ И ДЕСКТОПА (ЭКРАНЫ ОТ 769px) */
 @media (min-width: 769px) {
   .bento-cell h2, .bento-cell h3, .bento-title, .card-title {
-    white-space: normal !important;   /* Разрешаем перенос фраз на новые строки */
-    word-break: keep-all !important;  /* Слова переносятся целиком, без дефисов */
+    white-space: normal !important;
+    /* Разрешаем перенос фраз на новые строки */
+    word-break: keep-all !important;
+    /* Слова переносятся целиком, без дефисов */
     -webkit-hyphens: none !important; 
     hyphens: none !important;
     
-    font-weight: 900 !important;       /* Тяжелый премиальный вес */
-    text-transform: none !important;   /* Строгий строчный стиль без капса */
-    line-height: 1.05 !important;      /* Плотный вертикальный ритм */
-    letter-spacing: -0.04em !important; /* Стильный зажим букв */
+    font-weight: 900 !important;
+    /* Тяжелый премиальный вес */
+    text-transform: none !important;
+    /* Строгий строчный стиль без капса */
+    line-height: 1.05 !important;
+    /* Плотный вертикальный ритм */
+    letter-spacing: -0.04em !important;
+    /* Стильный зажим букв */
     
     /* 11cqw — это ровно 11% от текущей ширины самой карточки. */
     font-size: clamp(23px, 11cqw, 54px) !important;
     
     display: block !important;
     margin-bottom: 20px !important;    
-    padding-top: 10px !important;     
+    padding-top: 10px !important;
   }
 
   .bento-cell p {
@@ -1638,7 +1667,6 @@
 </head>
 <body>
 
-<!-- 1. STICKY HEADER -->
 <header class="wf-header" data-screen-label="01 Header">
   <div class="wf-header-left">
     <a class="header-cta-btn header-cta-btn--mobile" href="https://wa.me/48510275634?text=Hi%2C%20I%27d%20like%20a%20free%20consultation%20about%20my%20project" target="_blank" rel="noopener" data-i18n="hero.cta">Free consultation</a>
@@ -1650,6 +1678,7 @@
       <button class="wf-lang" id="langToggle" type="button" aria-label="Change language" aria-haspopup="listbox" aria-expanded="false">
         <svg viewBox="0 0 40 40" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
           <circle cx="20" cy="20" r="14"/>
+         
           <ellipse cx="20" cy="20" rx="6" ry="14"/>
           <line x1="6" y1="20" x2="34" y2="20"/>
           <path d="M7.5 12.5 Q20 18 32.5 12.5"/>
@@ -1668,7 +1697,6 @@
   </div>
 </header>
 
-<!-- 2. HERO -->
 <section class="wf-hero" data-screen-label="02 Hero">
   <video class="hero-bg" src="https://res.cloudinary.com/dwqit2mii/video/upload/v1778405422/Hero_qwkhx8.mp4" autoplay loop muted playsinline></video>
   <div class="hero-overlay" aria-hidden="true"></div>
@@ -1678,7 +1706,6 @@
   </div>
 </section>
 
-<!-- 3. ABOUT -->
 <section class="wf-products" data-screen-label="03 About">
   <div class="about-inner">
     <h2 class="about-heading reveal" data-i18n="about.heading">About</h2>
@@ -1697,7 +1724,6 @@
   </div>
 </section>
 
-<!-- 4. BENTO GRID -->
 <section class="wf-bento" data-screen-label="04 Bento">
 
   <div class="section-header">
@@ -1710,6 +1736,7 @@
         <video class="card-video-bg" loop muted playsinline preload="none" poster="https://res.cloudinary.com/dwqit2mii/image/upload/v1778406895/Reactors_preview_1_11zon_sn8gj0.webp"><source src="https://res.cloudinary.com/dwqit2mii/video/upload/v1778406025/Reactors_yhlalf.mp4" type="video/mp4"></video>
         <div class="card-overlay" aria-hidden="true"></div>
         <h3 class="bento-title" data-i18n="card.reactors.title">Custom Reactors</h3>
+    
         <div class="bento-foot">
           <button type="button" class="card-icon-btn" aria-label="Open">→</button>
           <button type="button" class="card-pill-btn" data-i18n="card.explore">Explore →</button>
@@ -1718,12 +1745,15 @@
           <button type="button" class="card-info-close" aria-label="Close">×</button>
           <div>
             <h4 class="card-info-title" data-i18n="card.aboutLabel">About this service</h4>
+           
             <p class="card-info-body" data-i18n="card.reactors.b1">Standard equipment forces unique technologies to conform to its limitations. This inevitably reduces the efficiency and profitability of the process.</p>
             <p class="card-info-body" data-i18n="card.reactors.b2">To eliminate these compromises, I custom-design and manufacture chemical reactors strictly tailored to your synthesis objectives and production scaling needs.</p>
             <p class="card-info-body" data-i18n="card.reactors.b3">My turnkey approach covers everything: from the precise calculation of hydrodynamics and heat transfer, through the development of 3D models and drawings, to the final assembly and testing of the apparatus. You receive equipment designed for safe operation with any media—even the most complex and aggressive ones—built from premium materials and equipped with reliable automation.</p>
             <p class="card-info-body" data-i18n="card.reactors.b4">I implement projects at any scale—from pilot plants to industrial lines—ensuring their seamless integration into your existing production processes.</p>
             <p class="card-info-body" data-i18n="card.reactors.b5">When you commission a custom unit, you receive uncompromising engineering quality, benchmark industrial aesthetics, and guaranteed operational efficiency.</p>
+            <a href="https://wa.me/48510275634?text=Interested%20in%20Custom%20Reactors" target="_blank" rel="noopener" class="card-discuss-btn" data-i18n="card.discuss">Discuss this project</a>
           </div>
+    
         </div>
       </div>
       <div class="bento-cell has-video" data-card-video>
@@ -1743,12 +1773,14 @@
             <p class="card-info-body" data-i18n="card.methodology.b2">Developing a process methodology from scratch transforms your basic concept into a ready-to-deploy industrial technology. Each process is engineered with your specific operational needs in mind and strictly adapted to your available raw materials.</p>
             <p class="card-info-body" data-i18n="card.methodology.b3">This approach yields a fully functional, safe, and seamlessly scalable synthesis methodology. Precise calculations of all chemical and thermodynamic conditions ensure the absolute reproducibility of reactions when transitioning to high-volume production.</p>
             <p class="card-info-body" data-i18n="card.methodology.b4">The ultimate outcome is a refined manufacturing protocol that eliminates the risk of defects, optimizes production costs, and guarantees consistently high product quality, batch after batch.</p>
+            <a href="https://wa.me/48510275634?text=Interested%20in%20Methodology%20Development" target="_blank" rel="noopener" class="card-discuss-btn" data-i18n="card.discuss">Discuss this project</a>
           </div>
         </div>
       </div>
     </div>
     <div class="bento-row">
       <div class="bento-cell has-video" data-card-video>
+ 
         <img class="card-poster-bg" src="https://res.cloudinary.com/dwqit2mii/image/upload/v1778687020/Magazines_sfnt0q.webp" alt="">
         <video class="card-video-bg" loop muted playsinline preload="none" poster="https://res.cloudinary.com/dwqit2mii/image/upload/v1778687020/Magazines_sfnt0q.webp"><source src="https://res.cloudinary.com/dwqit2mii/video/upload/v1778687072/Magazine_gmj4w2.mp4" type="video/mp4"></video>
         <div class="card-overlay" aria-hidden="true"></div>
@@ -1766,11 +1798,13 @@
             <p class="card-info-body" data-i18n="card.inventory.b3">Each unit undergoes a rigorous engineering inspection and mandatory replacement of all wear parts. Multi-stage testing of hydrodynamics and automation ensures that the unit is completely safe and performs like a brand-new unit.</p>
             <p class="card-info-body" data-i18n="card.inventory.b4">You receive a unit tailored precisely to the specifics of your chemical synthesis, along with expert recommendations for integrating it into your existing process. This is the ideal solution for testing pilot projects or rapidly scaling up production capacity under tight deadlines.</p>
             <p class="card-info-body" data-i18n="card.inventory.b5">By selecting industrial equipment from our inventory, you drastically reduce startup times, effectively optimize costs, and begin production without compromising on engineering quality.</p>
+            <a href="https://wa.me/48510275634?text=Interested%20in%20In-Stock%20Inventory" target="_blank" rel="noopener" class="card-discuss-btn" data-i18n="card.discuss">Discuss this project</a>
           </div>
         </div>
       </div>
       <div class="bento-cell has-video" data-card-video>
         <img class="card-poster-bg" src="https://res.cloudinary.com/dwqit2mii/image/upload/v1778687019/Full_cykle_jnofr9.webp" alt="">
+   
         <video class="card-video-bg" loop muted playsinline preload="none" poster="https://res.cloudinary.com/dwqit2mii/image/upload/v1778687019/Full_cykle_jnofr9.webp"><source src="https://res.cloudinary.com/dwqit2mii/video/upload/v1778687071/Full_Cykle_quuiy2.mp4" type="video/mp4"></video>
         <div class="card-overlay" aria-hidden="true"></div>
         <h3 class="bento-title" data-i18n="card.turnkey.title">Turnkey Projects</h3>
@@ -1786,12 +1820,14 @@
             <p class="card-info-body" data-i18n="card.turnkey.b2">To eliminate such financial risks, I manage your project on a full-cycle basis, acting as a single point of responsibility for the final result. Expert engineering integrates chemical technology and equipment design into a single process: from developing a scalable synthesis methodology to manufacturing custom reactors and final commissioning at your facility.</p>
             <p class="card-info-body" data-i18n="card.turnkey.b3">You are completely relieved of the burden of coordinating multiple contractors and struggling to adapt laboratory theory to real industrial equipment. Every stage—including complex thermal calculations, automation selection, and factory testing—is subject to strict, centralized control.</p>
             <p class="card-info-body" data-i18n="card.turnkey.b4">By choosing our full-cycle service, you receive a fully operational, highly profitable, and safe production line, built on a turnkey basis with uncompromising attention to engineering quality.</p>
+            <a href="https://wa.me/48510275634?text=Interested%20in%20Turnkey%20Projects" target="_blank" rel="noopener" class="card-discuss-btn" data-i18n="card.discuss">Discuss this project</a>
           </div>
         </div>
       </div>
     </div>
     <div class="bento-row">
       <div class="bento-cell has-video" data-card-video>
+    
         <img class="card-poster-bg" src="https://res.cloudinary.com/dwqit2mii/image/upload/v1778687020/Scale_up_srd5ei.webp" alt="">
         <video class="card-video-bg" loop muted playsinline preload="none" poster="https://res.cloudinary.com/dwqit2mii/image/upload/v1778687020/Scale_up_srd5ei.webp"><source src="https://res.cloudinary.com/dwqit2mii/video/upload/v1778687072/Scale_Up_tgjgeb.mp4" type="video/mp4"></video>
         <div class="card-overlay" aria-hidden="true"></div>
@@ -1801,6 +1837,7 @@
           <button type="button" class="card-pill-btn" data-i18n="card.explore">Explore →</button>
         </div>
         <div class="card-info" aria-hidden="true">
+   
           <button type="button" class="card-info-close" aria-label="Close">×</button>
           <div>
             <h4 class="card-info-title" data-i18n="card.aboutLabel">About this service</h4>
@@ -1808,10 +1845,12 @@
             <p class="card-info-body" data-i18n="card.scaleup.b2">To avoid financial losses during scale-up, it is essential to adapt your chemical synthesis to new production facilities with mathematical precision. Conducting a thorough engineering recalculation of hydrodynamics, heat transfer, and mass transfer allows the core methodology to be fully adapted to the actual physics of large-scale reactors.</p>
             <p class="card-info-body" data-i18n="card.scaleup.b3">You receive calibrated temperature profiles, precise dosing algorithms, and mixing parameters that guarantee process stability, even when working with complex or viscous media. This approach completely eliminates the need for trial-and-error with expensive raw materials: every stage of the transition is simulated and calculated in advance.</p>
             <p class="card-info-body" data-i18n="card.scaleup.b4">The result is a robust industrial process that allows you to confidently produce large batches while maintaining the benchmark quality of the original sample.</p>
+            <a href="https://wa.me/48510275634?text=Interested%20in%20Scale-Up" target="_blank" rel="noopener" class="card-discuss-btn" data-i18n="card.discuss">Discuss this project</a>
           </div>
         </div>
       </div>
       <div class="bento-cell has-video" data-card-video>
+        
         <img class="card-poster-bg" src="https://res.cloudinary.com/dwqit2mii/image/upload/v1778687020/Your_request_dbv5v8.webp" alt="">
         <video class="card-video-bg" loop muted playsinline preload="none" poster="https://res.cloudinary.com/dwqit2mii/image/upload/v1778687020/Your_request_dbv5v8.webp"><source src="https://res.cloudinary.com/dwqit2mii/video/upload/v1778687072/Your_Request_madmzj.mp4" type="video/mp4"></video>
         <div class="card-overlay" aria-hidden="true"></div>
@@ -1821,6 +1860,7 @@
           <button type="button" class="card-pill-btn" data-i18n="card.explore">Explore →</button>
         </div>
         <div class="card-info" aria-hidden="true">
+      
           <button type="button" class="card-info-close" aria-label="Close">×</button>
           <div>
             <h4 class="card-info-title" data-i18n="card.aboutLabel">About this service</h4>
@@ -1828,17 +1868,41 @@
             <p class="card-info-body" data-i18n="card.tailored.b2">If your project goes beyond standard parameters, I will engineer a solution from scratch. Whether it involves reverse engineering, upgrading weak links, or developing reactors for unique synthesis processes—I take on even the most unconventional tasks. Instead of forcing your technology to adapt to off-the-shelf equipment, I design the hardware strictly according to your exact specifications.</p>
             <p class="card-info-body" data-i18n="card.tailored.b3">A thorough technical audit of the baseline parameters allows us to assess the project's true technical and economic feasibility.</p>
             <p class="card-info-body" data-i18n="card.tailored.b4">As a result, you receive a transparent, step-by-step plan and an uncompromising engineering implementation that eliminates all barriers to scaling and business growth.</p>
+            <a href="https://wa.me/48510275634?text=Interested%20in%20Tailored%20Solutions" target="_blank" rel="noopener" class="card-discuss-btn" data-i18n="card.discuss">Discuss this project</a>
           </div>
+   
         </div>
       </div>
     </div>
     <div class="bento-row">
-      <div class="bento-cell wide has-video" data-card-video>
+      <div class="bento-cell has-video" data-card-video>
+        <img class="card-poster-bg" src="https://res.cloudinary.com/dwqit2mii/image/upload/v1783231694/PTFE_Coating_p9gm21.webp" alt="">
+        <video class="card-video-bg" loop muted playsinline preload="none" poster="https://res.cloudinary.com/dwqit2mii/image/upload/v1783231694/PTFE_Coating_p9gm21.webp"><source src="https://res.cloudinary.com/dwqit2mii/video/upload/v1783231748/PTFE_Coating_1_ftlubd.mp4" type="video/mp4"></video>
+        <div class="card-overlay" aria-hidden="true"></div>
+        <h3 class="bento-title" data-i18n="card.ptfe.title">PTFE Coating</h3>
+        <div class="bento-foot">
+          <button type="button" class="card-icon-btn" aria-label="Open">→</button>
+          <button type="button" class="card-pill-btn" data-i18n="card.explore">Explore →</button>
+        </div>
+        <div class="card-info" aria-hidden="true">
+          <button type="button" class="card-info-close" aria-label="Close">×</button>
+          <div>
+            <h4 class="card-info-title" data-i18n="card.aboutLabel">About this service</h4>
+            <p class="card-info-body" data-i18n="card.ptfe.b1">Exposing expensive industrial equipment to aggressive chemicals inevitably leads to rapid corrosion, sticky product buildup, and costly operational downtime.</p>
+            <p class="card-info-body" data-i18n="card.ptfe.b2">To eliminate these operational risks, we provide professional PTFE coating services, engineered to deliver absolute chemical inertness and extreme thermal stability. Our precise application technology creates an impenetrable, non-stick barrier tailored specifically to the harsh realities of your production environment.</p>
+            <p class="card-info-body" data-i18n="card.ptfe.b3">You are completely relieved of the constant struggle with premature equipment degradation and grueling cleaning cycles.</p>
+            <p class="card-info-body" data-i18n="card.ptfe.b4">By choosing our advanced PTFE coating service, you significantly extend the lifespan of your critical machinery, ensure uncompromising product purity, and maintain a highly efficient, profitable production line.</p>
+            <a href="https://wa.me/48510275634?text=Interested%20in%20PTFE%20Coating" target="_blank" rel="noopener" class="card-discuss-btn" data-i18n="card.discuss">Discuss this project</a>
+          </div>
+        </div>
+      </div>
+      <div class="bento-cell has-video" data-card-video>
         <img class="card-poster-bg" src="https://res.cloudinary.com/dwqit2mii/image/upload/v1778687019/Consultation_huwp7m.webp" alt="" style="object-position: center bottom;">
         <video class="card-video-bg" loop muted playsinline preload="none" poster="https://res.cloudinary.com/dwqit2mii/image/upload/v1778687019/Consultation_huwp7m.webp" style="object-position: center bottom;"><source src="https://res.cloudinary.com/dwqit2mii/video/upload/v1778687071/Consultation_c2lof2.mp4" type="video/mp4"></video>
         <div class="card-overlay" aria-hidden="true"></div>
         <h3 class="bento-title" data-i18n="card.audit.title">Technical Audit</h3>
         <div class="bento-foot">
+       
           <button type="button" class="card-icon-btn" aria-label="Open">→</button>
           <button type="button" class="card-pill-btn" data-i18n="card.explore">Explore →</button>
         </div>
@@ -1851,6 +1915,7 @@
             <p class="card-info-body" data-i18n="card.audit.b3">A detailed analysis of the physical and chemical parameters of your synthesis identifies hidden risks during scale-up and dictates the actual hardware requirements. You receive an objective assessment of the project's viability, entirely free from unrealistic marketing claims.</p>
             <p class="card-info-body" data-i18n="card.audit.b4">You walk away with a clear, actionable roadmap: from the optimal reactor configuration to a comprehensive strategy for safely launching the process.</p>
             <p class="card-info-body" data-i18n="card.audit.b5">This is a high-level consultation with a practicing engineer who helps you optimize your capital expenditure and avoid critical mistakes during technology implementation. By investing in professional expertise before procurement begins, you lay a solid foundation for the confident and predictable growth of your business.</p>
+            <a href="https://wa.me/48510275634?text=Interested%20in%20Technical%20Audit" target="_blank" rel="noopener" class="card-discuss-btn" data-i18n="card.discuss">Discuss this project</a>
           </div>
         </div>
       </div>
@@ -1858,7 +1923,6 @@
   </div>
 </section>
 
-<!-- 5. CONTACTS -->
 <section class="wf-contacts" data-screen-label="05 Contacts">
   <div class="contacts-inner">
     <h2 class="contacts-heading reveal" data-i18n="contacts.heading">Contacts</h2>
@@ -1867,7 +1931,8 @@
     <a class="contacts-phone reveal" href="tel:+380976550056">+38 097 655 00 56</a>
     <a class="contacts-phone footer-email-link reveal" href="mailto:krul.contact@gmail.com">krul.contact@gmail.com</a>
 
-    <ul class="contacts-socials reveal">
+    
+<ul class="contacts-socials reveal">
       <li><a href="https://t.me/erikkrul" target="_blank" rel="noopener noreferrer">Telegram</a></li>
       <li><a href="https://wa.me/48510275634" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
       <li><a href="https://www.linkedin.com/in/erik-krul/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
@@ -1875,7 +1940,6 @@
   </div>
 </section>
 
-<!-- 6. FOOTER -->
 <footer class="wf-footer" data-screen-label="06 Footer">
   <span data-i18n="footer.copyright">© 2026 · KRUL</span>
 </footer>
@@ -1885,7 +1949,7 @@
    CARD INTERACTION — desktop hover preview + open/close info overlay
    The info overlay is now driven by `.is-open` (was `.is-active`, which
    is now reserved for the mobile focus-playback state below).
-   ===================================================================== */
+===================================================================== */
 (function() {
   const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 
@@ -1899,7 +1963,8 @@
     // Desktop only: play video on hover. Touch playback is handled by the
     // IntersectionObserver block further down.
     if (!isTouch) {
-      card.addEventListener('mouseenter', () => {
+      card.addEventListener('mouseenter', 
+      () => {
         if (video && !card.classList.contains('is-open')) {
           video.play().catch(() => {});
         }
@@ -1909,6 +1974,7 @@
           video.pause();
           try { video.currentTime = 0; } catch(e) {}
         }
+      
       });
     }
 
@@ -1930,7 +1996,6 @@
         video.play().catch(() => {});
       }
     };
-
     // Both the small arrow and the pill open the overlay — on mobile the
     // arrow is the only visible CTA, on desktop the pill replaces it on hover.
     if (iconBtn)  iconBtn.addEventListener('click', open);
@@ -1938,7 +2003,6 @@
     if (closeBtn) closeBtn.addEventListener('click', close);
   });
 })();
-
 /* =====================================================================
    MOBILE — SMART FOCUS PLAYBACK FOR THE BENTO CAROUSEL
    ---------------------------------------------------------------------
@@ -1948,7 +2012,7 @@
      starts playing.
    • Losing focus: clear the pending timer immediately, fade the video
      out, pause it, and rewind to frame 0 — saves data + battery.
-   ===================================================================== */
+===================================================================== */
 (function() {
   const mq = window.matchMedia('(max-width: 768px)');
   const cardTimers = new WeakMap();
@@ -1967,7 +2031,8 @@
   }
 
   function teardown() {
-    if (observer) { observer.disconnect(); observer = null; }
+    if (observer) { 
+      observer.disconnect(); observer = null; }
     document.querySelectorAll('.bento-cell').forEach(deactivate);
     // Wipe inline opacity so desktop hover CSS owns it again.
     document.querySelectorAll('.bento-cell .card-video-bg').forEach(v => {
@@ -1981,7 +2046,6 @@
     if (!bento) return;
 
     const cards = bento.querySelectorAll('.bento-cell');
-
     observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         const card  = entry.target;
@@ -1993,6 +2057,7 @@
           card.classList.add('is-active');
 
           // 500ms dwell before committing to playback
+ 
           const timer = setTimeout(() => {
             if (card.classList.contains('is-active') && video) {
               video.style.opacity = '1';
@@ -2000,6 +2065,7 @@
             }
           }, 500);
           cardTimers.set(card, timer);
+    
         } else {
           if (card.classList.contains('is-active') ||
               cardTimers.has(card) ||
@@ -2020,7 +2086,8 @@
 
   if (mq.matches) setup();
   // Re-arm on orientation / resize crossing the breakpoint
-  const onChange = (e) => { if (e.matches) setup(); else teardown(); };
+  const onChange = (e) => { if (e.matches) setup();
+  else teardown(); };
   if (mq.addEventListener) mq.addEventListener('change', onChange);
   else if (mq.addListener) mq.addListener(onChange);
 })();
@@ -2031,10 +2098,11 @@
    SCROLL REVEAL — one-shot fade-up on .reveal elements
    ---------------------------------------------------------------------
    Picks up any element tagged with .reveal (paragraphs in About, section
-   headings, contact lines). Fades + slides up over 800ms on a heavy
+   headings, contact lines).
+   Fades + slides up over 800ms on a heavy
    ease-out curve when 15% of the element enters the viewport. Once
    revealed, the observer detaches that element so it stays visible.
-   ===================================================================== */
+===================================================================== */
 (function() {
   const targets = document.querySelectorAll('.reveal');
   if (!targets.length) return;
@@ -2054,6 +2122,7 @@
       }
     });
   }, {
+ 
     threshold: 0.15,
     rootMargin: '0px 0px -8% 0px' // trigger slightly before fully on-screen
   });
@@ -2070,7 +2139,6 @@
    than off section heights — heights change wildly on mobile (the bento
    collapses to a horizontal strip), but the top edges of each section
    are stable, so the trigger lines hold up across breakpoints.
-
    STATE MACHINE (light is the initial + final state):
 
      LIGHT  → DARK   when bento.top  crosses ↑ above 30% of viewport
@@ -2078,7 +2146,7 @@
      DARK   → LIGHT  when contacts.top crosses ↑ above 50% of viewport
 
    8px hysteresis at each boundary kills flicker.
-   ===================================================================== */
+===================================================================== */
 (function() {
   const bento    = document.querySelector('.wf-bento');
   const contacts = document.querySelector('.wf-contacts');
@@ -2095,7 +2163,8 @@
     ticking = false;
 
     const vh         = window.innerHeight;
-    const bentoTop   = bento.getBoundingClientRect().top;       // px from viewport top
+    const bentoTop   = bento.getBoundingClientRect().top;       
+    // px from viewport top
     const contactsTop= contacts.getBoundingClientRect().top;
 
     const darkOnLine    = vh * 0.30; // bento.top must rise above this for dark
@@ -2166,6 +2235,7 @@
       "services.heading": "Services",
       "card.aboutLabel": "About this service",
       "card.explore": "Explore →",
+      "card.discuss": "Discuss this project",
       "card.reactors.title": "Custom Reactors",
       "card.reactors.b1": "Standard equipment forces unique technologies to conform to its limitations. This inevitably reduces the efficiency and profitability of the process.",
       "card.reactors.b2": "To eliminate these compromises, I custom-design and manufacture chemical reactors strictly tailored to your synthesis objectives and production scaling needs.",
@@ -2198,6 +2268,11 @@
       "card.tailored.b2": "If your project goes beyond standard parameters, I will engineer a solution from scratch. Whether it involves reverse engineering, upgrading weak links, or developing reactors for unique synthesis processes—I take on even the most unconventional tasks. Instead of forcing your technology to adapt to off-the-shelf equipment, I design the hardware strictly according to your exact specifications.",
       "card.tailored.b3": "A thorough technical audit of the baseline parameters allows us to assess the project's true technical and economic feasibility.",
       "card.tailored.b4": "As a result, you receive a transparent, step-by-step plan and an uncompromising engineering implementation that eliminates all barriers to scaling and business growth.",
+      "card.ptfe.title": "PTFE Coating",
+      "card.ptfe.b1": "Exposing expensive industrial equipment to aggressive chemicals inevitably leads to rapid corrosion, sticky product buildup, and costly operational downtime.",
+      "card.ptfe.b2": "To eliminate these operational risks, we provide professional PTFE coating services, engineered to deliver absolute chemical inertness and extreme thermal stability. Our precise application technology creates an impenetrable, non-stick barrier tailored specifically to the harsh realities of your production environment.",
+      "card.ptfe.b3": "You are completely relieved of the constant struggle with premature equipment degradation and grueling cleaning cycles.",
+      "card.ptfe.b4": "By choosing our advanced PTFE coating service, you significantly extend the lifespan of your critical machinery, ensure uncompromising product purity, and maintain a highly efficient, profitable production line.",
       "card.audit.title": "Technical Audit",
       "card.audit.b1": "The cost of a mistake during the process planning phase or when blindly selecting equipment can amount to millions in lost investment and months of production downtime.",
       "card.audit.b2": "My in-depth technical consultation process eliminates critical missteps from the very outset. The selection of a technological solution is based not on forcing your needs to fit off-the-shelf equipment, but on an independent engineering audit of your exact objectives, formulation, or existing production line.",
@@ -2220,6 +2295,7 @@
       "services.heading": "Usługi",
       "card.aboutLabel": "O usłudze",
       "card.explore": "Szczegóły →",
+      "card.discuss": "Omów ten projekt",
       "card.reactors.title": "Reaktory na zamówienie",
       "card.reactors.b1": "Standardowe wyposażenie narzuca ograniczenia unikalnym technologiom, zmuszając do kompromisów. W rezultacie nieuchronnie spada efektywność i rentowność całego procesu.",
       "card.reactors.b2": "Aby wyeliminować te ograniczenia, reaktory chemiczne są projektowane i produkowane na indywidualne zamówienie. Sprzęt jest ściśle dopasowywany do Państwa specyficznych zadań w zakresie syntezy i skalowania produkcji.",
@@ -2252,6 +2328,11 @@
       "card.tailored.b2": "Jeśli Państwa projekt wykracza poza rynkowe standardy, stworzę dedykowane rozwiązanie od podstaw. Inżynieria odwrotna (reverse engineering), modernizacja słabych punktów i „wąskich gardeł”, projektowanie reaktorów pod unikalną syntezę — podejmuję się realizacji nawet najbardziej nietypowych zadań. Zamiast dopasowywać technologię do gotowych urządzeń, projektujemy zaplecze sprzętowe ściśle pod Państwa pomysł.",
       "card.tailored.b3": "Dogłębny audyt techniczny danych wejściowych pozwala precyzyjnie ocenić faktyczną wykonalność oraz ekonomiczną opłacalność projektu.",
       "card.tailored.b4": "W rezultacie otrzymują Państwo przejrzysty plan działania oraz bezkompromisowe wdrożenie inżynieryjne, które znosi wszelkie bariery utrudniające skalowanie i rozwój biznesu.",
+      "card.ptfe.title": "Powlekania PTFE",
+      "card.ptfe.b1": "Narażenie kosztownego sprzętu przemysłowego na działanie agresywnych chemikaliów nieuchronnie prowadzi do szybkiej korozji, osadzania się lepkich resztek produktu oraz kosztownych przestojów operacyjnych.",
+      "card.ptfe.b2": "Aby wyeliminować te zagrożenia operacyjne, oferujemy profesjonalne usługi powlekania PTFE, które zapewniają absolutną obojętność chemiczną i ekstremalną stabilność termiczną. Nasza precyzyjna technologia aplikacji tworzy nieprzeniknioną, antyadhezyjną barierę, specjalnie dostosowaną do surowych realiów Twojego środowiska produkcyjnego.",
+      "card.ptfe.b3": "Zostajesz całkowicie uwolniony od ciągłej walki z przedwczesnym zużyciem sprzętu i uciążliwymi cyklami czyszczenia.",
+      "card.ptfe.b4": "Wybierając naszą zaawansowaną usługę powlekania PTFE, znacząco wydłużasz żywotność kluczowych maszyn, zapewniasz bezkompromisową czystość produktu i utrzymujesz wysoce wydajną oraz rentowną linię produkcyjną.",
       "card.audit.title": "Doradztwo i konsultacje",
       "card.audit.b1": "Koszt błędu na etapie planowania procesu lub przy nieprzemyślanym doborze sprzętu może wynosić miliony utraconych inwestycji i miesiące przestojów produkcyjnych.",
       "card.audit.b2": "Specjalistyczne konsultacje techniczne, które oferuję, pozwalają wyeliminować krytyczne błędy już na starcie. Dobór rozwiązań technologicznych nie polega na sztucznym dopasowywaniu ich do maszyn z katalogu, lecz opiera się na niezależnym inżynieryjnym audycie Państwa zadania, receptury lub aktualnie działającej linii.",
@@ -2274,6 +2355,7 @@
       "services.heading": "Služby",
       "card.aboutLabel": "O službě",
       "card.explore": "Více →",
+      "card.discuss": "Projednat tento projekt",
       "card.reactors.title": "Reaktory na zakázku",
       "card.reactors.b1": "Standardní zařízení nutí jedinečné technologie přizpůsobovat se jeho omezením. To nevyhnutelně snižuje efektivitu a rentabilitu celého procesu.",
       "card.reactors.b2": "Aby se těmto kompromisům předešlo, jsou chemické reaktory navrhovány a vyráběny na míru. Zařízení je striktně přizpůsobeno vašim požadavkům na syntézu a škálování výroby.",
@@ -2306,8 +2388,13 @@
       "card.tailored.b2": "Pokud váš projekt překračuje hranice standardů, vytvořím řešení na zelené louce. Reverzní inženýrství, modernizace slabých uzlů, vývoj reaktorů pro unikátní syntézu – do práce jsou přijímány i ty nejneobvyklejší úkoly. Místo přizpůsobování technologie hotovému zařízení bude strojní základna navržena striktně podle vaší myšlenky.",
       "card.tailored.b3": "Hloubkový technický audit výchozích dat umožňuje posoudit skutečnou fyzikální i ekonomickou životaschopnost projektu.",
       "card.tailored.b4": "Výsledkem je transparentní plán krok za krokem a nekompromisní inženýrské řešení, které odstraňuje veškeré překážky pro škálování a růst vašeho podnikání.",
+      "card.ptfe.title": "PTFE",
+      "card.ptfe.b1": "Vystavení drahého průmyslového vybavení agresivním chemikáliím nevyhnutelně vede k rychlé korozi, usazování lepivých zbytků produktů a nákladným provozním odstávkám.",
+      "card.ptfe.b2": "K eliminaci těchto provozních rizik poskytujeme profesionální služby nanášení PTFE povlaků, které jsou navrženy tak, aby zajišťovaly absolutní chemickou inertnost a extrémní tepelnou stabilitu. Naše technologie precizní aplikace vytváří nepropustnou, nepřilnavou bariéru přizpůsobenou přesně na míru náročným podmínkám vašeho výrobního prostředí.",
+      "card.ptfe.b3": "Jste tak zcela zbaveni neustálého boje s předčasným opotřebením vybavení a vyčerpávajícími čisticími cykly.",
+      "card.ptfe.b4": "Výběrem naší pokročilé služby nanášení PTFE povlaků výrazně prodloužíte životnost vašich klíčových strojů, zajistíte nekompromisní čistotu produktů a udržíte vysoce efektivní a ziskovou výrobní linku.",
       "card.audit.title": "Technický audit a konzultace",
-      "card.audit.b1": "Cena chyby ve fázi technologického plánování nebo slepého výběru zařízení se měří v milionech ztracených investic a měsících výrobních prostojů.",
+      "card.audit.b1": "Cena chyby ve fázi technologického plánování nebo slepého výběru zařízení se měří v milionech ztracených investycji a měsících výrobních prostojů.",
       "card.audit.b2": "Hloubková technická konzultace eliminuje kritické chyby hned od začátku. Základem výběru technologického řešení není přizpůsobení katalogovým aparátům, nýbrž nezávislý inženýrský audit vašeho záměru, receptury nebo stávající linky.",
       "card.audit.b3": "Detailní rozbor fyzikálně-chemických parametrů syntézy odhalí skrytá rizika při škálování a stanoví reálné požadavky na strojní vybavení. Získáte objektivní posouzení životaschopnosti projektu, zcela prosté nerealistických marketingových slibů.",
       "card.audit.b4": "Výsledkem je přehledná cestovní mapa: od optimální konfigurace reaktoru až po strategii bezpečného spuštění procesu.",
@@ -2328,6 +2415,7 @@
       "services.heading": "Leistungen",
       "card.aboutLabel": "Über die Leistung",
       "card.explore": "Mehr erfahren →",
+      "card.discuss": "Dieses Projekt besprechen",
       "card.reactors.title": "Reaktoren nach Maß",
       "card.reactors.b1": "Standardanlagen zwingen einzigartige Verfahren dazu, sich deren Einschränkungen anzupassen – mit unvermeidlichen Einbußen bei Effizienz und Wirtschaftlichkeit.",
       "card.reactors.b2": "Um solche Kompromisse von vornherein auszuschließen, werden chemische Reaktoren individuell geplant und gefertigt. Jede Anlage wird konsequent auf Ihre spezifischen Synthese- und Skalierungsanforderungen zugeschnitten.",
@@ -2360,6 +2448,11 @@
       "card.tailored.b2": "Reverse Engineering, die Modernisierung schwacher Anlagenkomponenten, die Auslegung von Reaktoren für einzigartige Synthesen – auch die ungewöhnlichsten Aufgaben werden angenommen. Statt die Technologie an vorhandene Anlagen anzupassen, wird die gesamte Apparatebasis konsequent nach Ihrer Idee ausgelegt.",
       "card.tailored.b3": "Ein eingehender technischer Audit der Ausgangsdaten liefert eine belastbare Einschätzung der physikalischen und wirtschaftlichen Realisierbarkeit Ihres Vorhabens.",
       "card.tailored.b4": "Das Ergebnis: ein transparenter, schrittweiser Umsetzungsplan und eine kompromisslose ingenieurtechnische Realisierung, die alle Hürden für Skalierung und Unternehmenswachstum aus dem Weg räumt.",
+      "card.ptfe.title": "PTFE",
+      "card.ptfe.b1": "Die Aussetzung teurer Industrieanlagen gegenüber aggressiven Chemikalien führt unweigerlich zu schneller Korrosion, klebrigen Produktablagerungen und kostspieligen Betriebsausfällen.",
+      "card.ptfe.b2": "Um diese operationellen Risiken zu eliminieren, bieten wir professionelle PTFE-Beschichtungsdienstleistungen an, die auf absolute chemische Inertheit und extreme thermische Stabilität ausgelegt sind. Unsere präzise Applikationstechnologie schafft eine undurchdringliche Antihaft-Barriere, die speziell auf die rauen Bedingungen Ihrer Produktionsumgebung zugeschnitten ist.",
+      "card.ptfe.b3": "Sie werden vollständig von dem ständigen Kampf gegen vorzeitigen Materialverschleiß und aufwendige Reinigungszyklen befreit.",
+      "card.ptfe.b4": "Mit der Wahl unserer fortschrittlichen PTFE-Beschichtung verlängern Sie die Lebensdauer Ihrer kritischen Anlagen erheblich, gewährleisten kompromisslose Produktreinheit und erhalten eine hocheffiziente, profitable Produktionslinie.",
       "card.audit.title": "Beratung",
       "card.audit.b1": "Ein Fehler in der verfahrenstechnischen Planung oder eine uninformierte Investitionsentscheidung beim Anlagenkauf kann Millionen vernichten und monatelange Produktionsausfälle nach sich ziehen.",
       "card.audit.b2": "Eine fundierte technische Beratung beseitigt solche kritischen Fehler von Anfang an. Die Grundlage für die Auswahl der richtigen Technologielösung ist kein Abgleich mit Kataloggeräten, sondern ein unabhängiges ingenieurtechnisches Audit Ihrer Aufgabenstellung, Ihrer Rezeptur oder Ihrer bestehenden Produktionslinie.",
@@ -2382,6 +2475,7 @@
       "services.heading": "Послуги",
       "card.aboutLabel": "Про послугу",
       "card.explore": "Детальніше →",
+      "card.discuss": "Обговорити цей проєкт",
       "card.reactors.title": "Реактори на замовлення",
       "card.reactors.b1": "Стандартне обладнання змушує унікальні технології підлаштовуватися під його обмеження. Це неминуче знижує ефективність і рентабельність процесу.",
       "card.reactors.b2": "Щоб виключити ці компроміси, хімічні реактори проєктуються та виготовляються за індивідуальним замовленням. Обладнання суворо адаптується під ваші завдання синтезу та масштабування виробництва.",
@@ -2406,14 +2500,19 @@
       "card.turnkey.b4": "Обираючи послугу повного циклу, ви отримуєте абсолютно готову, високорентабельну та безпечну виробничу лінію, створену під ключ із безкомпромісною увагою до інженерної якості.",
       "card.scaleup.title": "Масштабування",
       "card.scaleup.b1": "Спроба прямого перенесення лабораторних пропорцій на промислові обсяги неминуче руйнує технологічний процес. Це призведе до неконтрольованих реакцій, високого відсотка браку та втрати якості продукту.",
-      "card.scaleup.b2": "Щоб уникнути фінансових втрат при масштабуванні, необхідно адаптувати ваш хімічний синтез до нових виробничих потужностей із математичною точністю. Проведення глибокого інженерного перерахунку гідродинаміки, теплообміну та масообміну дозволяє повністю адаптувати базову методику під реальну фізику великотоннажних реакторів.",
+      "card.scaleup.b2": "Щоб уникнути фінансових втрат при масштабуванні, необхідно адаптувати ваш хімічний синтез до нових виробничих потужностей із математичною точністю. Проведення глибокого інженерного перерахунку гідродинаміки, теплообміну та масообміну дозволяє повністю адаптувати базовую методику під реальну фізику великотоннажних реакторів.",
       "card.scaleup.b3": "ВВи отримуєте вивірені температурні режими, точні алгоритми дозування та параметри перемішування, які гарантують стабільність процесу навіть при роботі зі складними або в'язкими середовищами. Такий підхід повністю виключає метод спроб і помилок на дорогій сировині: кожен етап переходу моделюється і прораховується заздалегідь.",
       "card.scaleup.b4": "Підсумком роботи стає промислова технологія, яка дозволяє вам впевнено випускати великі партії продукції, зберігаючи еталонну якість вихідного зразка.",
       "card.tailored.title": "Індивідуальні рішення",
       "card.tailored.b1": "Найцікавіші виробничі завдання часто заходять у глухий кут, тому що їхня специфіка не вписується в рамки стандартних каталожних рішень.",
-      "card.tailored.b2": "Якщо ваш проєкт виходить за межі стандартів, я створю рішення з нуля. Реверс-інжиніринг, модернізація слабких вузлів, розробка реакторів під унікальний синтез — у роботу беруться навіть найнестандартніші завдання. Замість підгонки технології під готове обладнання, апаратна база проєктуватиметься суворо під вашу ідею.",
+      "card.tailored.b2": "Якщо ваш проєкт виходить за межі стандартів, я створю рішення з нуля. Реверс-інжиніринг, модернізація слабких вузлів, розробка реакторов під унікальний синтез — у роботу беруться навіть найнестандартніші завдання. Замість підгонки технології під готове обладнання, апаратна база проєктуватиметься суворо під вашу ідею.",
       "card.tailored.b3": "Глибокий технічний аудит вихідних даних дозволяє оцінити реальну фізичну та економічну життєздатність проєкту.",
       "card.tailored.b4": "У результаті ви отримуєте прозорий покроковий план і безкомпромісне інженерне втілення, яке знімає всі бар'єри для масштабування та зростання бізнесу.",
+      "card.ptfe.title": "Покриття PTFE",
+      "card.ptfe.b1": "Вплив агресивних хімічних речовин на дороге промислове обладнання неминуче призводить до швидкої корозії, налипання залишків продукту та дорогих експлуатаційних простоїв.",
+      "card.ptfe.b2": "Щоб усунути ці експлуатаційні ризики, ми надаємо професійні послуги з нанесення PTFE-покриттів, розроблених для забезпечення абсолютної хімічної інертності та екстремальної термічної стабільності. Наша технологія високоточного нанесення створює непроникний антиадгезійний бар'єр, спеціально адаптований до суворих реалій вашого виробничого середовища.",
+      "card.ptfe.b3": "Ви повністю позбавляєтеся від постійної боротьби з передчасним зносом обладнання та виснажливими циклами очищення.",
+      "card.ptfe.b4": "Обираючи нашу передову послугу з нанесення PTFE-покриттів, ви значно подовжуєте термін служби вашого критично важливого обладнання, забезпечуєте безкомпромісну чистоту продукції та підтримуєте високоефективну й рентабельну виробничу лінію.",
       "card.audit.title": "Консультація",
       "card.audit.b1": "Ціна помилки на етапі технологічного планування або сліпого вибору обладнання — мільйони втрачених інвестицій і місяці виробничого простою.",
       "card.audit.b2": "Моя глибока технічна консультація усуває критичні помилки з самого початку. В основі підбору технологічного рішення лежить не підгонка під каталожні апарати, а незалежний інженерний аудит вашого завдання, рецептури або діючої лінії.",
@@ -2436,8 +2535,9 @@
       "services.heading": "Услуги",
       "card.aboutLabel": "Об услуге",
       "card.explore": "Подробнее →",
+      "card.discuss": "Обсудить этот проект",
       "card.reactors.title": "Реакторы на заказ",
-      "card.reactors.b1": "Стандартное оборудование вынуждает уникальные технологии подстраиваться под его ограничения. Это неизбежно снижает эффективность и рентабельность процесса.",
+      "card.reactors.b1": "Стандартное оборудование вынуждает уникальные технологии подстраиваться под его ограничения. Это неизбежно снижает эффективность и рентабельльность процесса.",
       "card.reactors.b2": "Чтобы исключить эти компромиссы, химические реакторы проектируются и производятся по индивидуальному заказу. Оборудование строго адаптируется под ваши задачи синтеза и масштабирования производства.",
       "card.reactors.b3": "Работа ведется под ключ: от точных расчетов гидродинамики и теплообмена, разработки 3D-модели и чертежей до сборки аппарата и финальных испытаний. Вы получаете оборудование, рассчитанное на безопасную работу с любыми, даже самыми сложными и агрессивными средами, собранное из премиальных материалов и оснащенное надежной автоматикой.",
       "card.reactors.b4": "Реализация проектов охватывает любые масштабы — от пилотных установок до промышленных линий, обеспечивая их бесшовную интеграцию в действующий техпроцесс.",
@@ -2455,7 +2555,7 @@
       "card.inventory.b5": "Выбирая промышленное оборудование из наличия, вы радикально сокращаете сроки запуска, грамотно оптимизируете затраты и начинаете выпускать продукт без единого компромисса в качестве инженерии.",
       "card.turnkey.title": "Проекты под ключ",
       "card.turnkey.b1": "Разделение сложного проекта между разными подрядчиками неизбежно приводит инженерным нестыковкам, размытию зон ответственности и критическим задержкам запуска.",
-      "card.turnkey.b2": "Я веду ваш проект под ключ, выступая единым центром ответственности за конечный результат. Грамотный инжиниринг объединяет химическую технологию и аппаратное исполнение в единый процесс: от разработки масштабируемой методики синтеза до производства кастомных реакторов и финальной пусконаладки на вашем объекте.",
+      "card.turnkey.b2": "Я веду ваш проект под ключ, выступая единым центром ответственности за конечный результат. Грамотный инжиниринг объединяет химическую технологию и аппаратное исполнение в единый процесс: от разработки масштабируемой методики синтеза до производства кастомних реакторов и финальной пусконаладки на вашем объекте.",
       "card.turnkey.b3": "Вы полностью избавлены от необходимости координировать разных исполнителей и пытаться адаптировать лабораторную теорию под реальное промышленное оборудование. Каждый этап, включая сложные тепловые расчеты, подбор автоматики и заводские испытания, находится под строгим единым контролем.",
       "card.turnkey.b4": "Выбирая услугу полного цикла, вы получаете абсолютно готовую, высокорентабельную и безопасную производственную линию, созданную под ключ с бескомпромиссным вниманием к инженерному качеству.",
       "card.scaleup.title": "Масштабирование",
@@ -2468,10 +2568,15 @@
       "card.tailored.b2": "Если ваш проект выходит за рамки стандартов, я создам решение с чистого листа. Реверс-инжиниринг, модернизация слабых узлов, разработка реакторов под уникальный синтез — в работу берутся даже самые нестандартные задачи. Вместо подгонки технологии под готовое оборудование, аппаратная база будет проектироваться строго под вашу идею.",
       "card.tailored.b3": "Глубокий технический аудит исходных данных позволяет оценить реальную физическую и экономическую жизнеспособность проекта.",
       "card.tailored.b4": "В результате вы получаете прозрачный пошаговый план и бескомпромиссное инженерное воплощение, которое снимает все барьеры для масштабирования и роста бизнеса.",
+      "card.ptfe.title": "Покрытие PTFE",
+      "card.ptfe.b1": "Воздействие агрессивных химических веществ на дорогостоящее промышленное оборудование неизбежно приводит к быстрой коррозии, налипанию остатков продукта и дорогостоящим эксплуатационным простоям.",
+      "card.ptfe.b2": "Чтобы устранить эти операционные риски, мы предлагаем профессиональные услуги по нанесению ПТФЭ-покрытий (PTFE), разработанные для обеспечения абсолютной химической инертности и экстремальной термической стабильности. Наша прецизионная технология нанесения создает непроницаемый антиадгезионный барьер, специально адаптированный к суровым условиям вашей производственной среды.",
+      "card.ptfe.b3": "Вы полностью избавляетесь от постоянной борьбы с преждевременным износом оборудования и изнурительными циклами очистки.",
+      "card.ptfe.b4": "Выбирая нашу передовую услугу по нанесению ПТФЭ-покрытий, вы значительно продлеваете срок службы вашего критически важного оборудования, обеспечиваете бескомпромиссную чистоту продукции и поддерживаете высокоэффективную и рентабельную производственную линию.",
       "card.audit.title": "Консультация",
       "card.audit.b1": "Цена ошибки на этапе технологического планирования или слепого выбора оборудования — миллионы потерянных инвестиций и месяцы производственного простоя.",
-      "card.audit.b2": "Моя глубокая техническая консультация устраняет критические ошибки с самого начала. В основе подбора технологического решения лежит не подгонка под каталожные аппараты, а независимый инженерный аудит вашей задачи, рецептуры или действующей линии.",
-      "card.audit.b3": "Детальный разбор физико-химических параметров синтеза выявляет скрытые риски при масштабировании и диктует реальные требования к аппаратному обеспечению. Вы получаете объективную оценку жизнеспособности проекта, полностью свободную от нереалистичных маркетинговых обещаний.",
+      "card.audit.b2": "Моя глубока техническая консультация устраняет критические ошибки с самого начала. В основе подбора технологического решения лежит не подгонка под каталожные аппараты, а независимый инженерный аудит вашей задачи, рецептуры или действующей линии.",
+      "card.audit.b3": "Детальный разбор физико-химических параметров синтезу выявляет скрытые риски при масштабировании и диктует реальные требования к аппаратному обеспечению. Вы получаете объективную оценку жизнеспособности проекта, полностью свободную от нереалистичных маркетинговых обещаний.",
       "card.audit.b4": "Как итог — у вас на руках четкая дорожная карта: от оптимальной конфигурации реактора до стратегии безопасного запуска процесса.",
       "card.audit.b5": "Это консультация высокого уровня с практикующим инженером, который помогает грамотно распределить бюджет и избежать критических ошибок при внедрении технологии. Инвестируя в профессиональную экспертизу до начала закупок, вы закладываете надежный фундамент для уверенного и предсказуемого роста вашего бизнеса.",
       "contacts.heading": "Контакты",
@@ -2492,6 +2597,7 @@
   const DEFAULT_LANG = "en";
   const VALID = Object.keys(translations);
 
+  
   function getInitialLang() {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
@@ -2510,7 +2616,6 @@
       if (dict[key] != null) el.textContent = dict[key];
     }
     document.documentElement.lang = lang;
-
     const toggle = document.getElementById("langToggle");
     if (toggle) toggle.setAttribute("aria-label", TOGGLE_ARIA[lang] || TOGGLE_ARIA.en);
 
@@ -2557,7 +2662,6 @@
       e.stopPropagation();
       toggleMenu();
     });
-
     const items = menu.querySelectorAll(".lang-item");
     for (let i = 0; i < items.length; i++) {
       items[i].addEventListener("click", function(e) {
@@ -2571,7 +2675,6 @@
     document.addEventListener("click", function(e) {
       if (!wrap.contains(e.target)) closeMenu();
     });
-
     document.addEventListener("keydown", function(e) {
       if (e.key === "Escape" || e.keyCode === 27) closeMenu();
     });
