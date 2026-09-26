@@ -2003,6 +2003,33 @@ body.theme-dark .about-portrait { border-color:rgba(255,255,255,.14); }
 }
 .bento-cell.has-video .bento-foot { margin-top:auto; }
 
+/* Desktop: a cinematic local veil keeps the short description readable over
+   detailed photos and moving video without turning it into a separate panel. */
+@media (min-width:769px) {
+  .bento-cell.has-video > .card-overlay {
+    background:linear-gradient(180deg,
+      rgba(0,0,0,.9) 0%,
+      rgba(0,0,0,.66) 28%,
+      rgba(0,0,0,.32) 48%,
+      transparent 68%,
+      rgba(0,0,0,.28) 100%);
+  }
+  .bento-cell.has-video > .card-overlay::before {
+    content:"";
+    position:absolute;
+    inset:0 0 42%;
+    background:rgba(7,8,9,.08);
+    -webkit-backdrop-filter:blur(2px);
+    backdrop-filter:blur(2px);
+    -webkit-mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.92) 58%,transparent 100%);
+    mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.92) 58%,transparent 100%);
+  }
+  .bento-cell.has-video .service-card-purpose {
+    color:rgba(255,255,255,.94);
+    text-shadow:0 2px 20px rgba(0,0,0,.72);
+  }
+}
+
 @media (max-width:900px) {
   .about-layout { grid-template-columns:minmax(0,1fr); gap:38px; }
   .about-portrait { order:-1; justify-self:start; max-width:470px; }
@@ -2018,6 +2045,18 @@ body.theme-dark .about-portrait { border-color:rgba(255,255,255,.14); }
     margin-top:18px;
     font-size:15px;
     line-height:1.45;
+    opacity:1;
+  }
+  /* Mobile Safari/Chrome can keep :hover after a tap. The original touch
+     fallback hides generic descriptions in that state, so explicitly keep
+     the new short purpose visible through every card interaction state. */
+  .bento-cell.has-video:hover .service-card-purpose,
+  .bento-cell.has-video:active .service-card-purpose,
+  .bento-cell.has-video:focus-within .service-card-purpose,
+  .bento-cell.has-video.is-active .service-card-purpose,
+  .bento-cell.has-video.is-open .service-card-purpose {
+    display:block;
+    visibility:visible;
     opacity:1;
   }
 }
