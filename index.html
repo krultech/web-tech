@@ -1964,11 +1964,7 @@
   isolation: isolate;
   padding: 220px 120px 200px;
   overflow: hidden;
-  background:
-    radial-gradient(900px 620px at 9% 23%, rgba(55,88,118,.16), transparent 68%),
-    radial-gradient(760px 560px at 91% 72%, rgba(97,67,124,.11), transparent 70%),
-    radial-gradient(540px 380px at 64% 10%, rgba(243,98,35,.055), transparent 72%),
-    linear-gradient(180deg, #09090b 0%, #0d1116 24%, #101319 62%, #0b0d11 100%) !important;
+  background: linear-gradient(180deg, #09090b 0%, #0d0f12 48%, #15181c 100%) !important;
   scroll-margin-top: 30px;
 }
 .wf-projects::before,
@@ -1986,9 +1982,7 @@
   background-size: 72px 72px;
   mask-image: linear-gradient(to bottom, transparent, #000 16%, #000 82%, transparent);
 }
-.wf-projects::after {
-  background: linear-gradient(180deg, #09090b 0, transparent 140px, transparent calc(100% - 160px), #0b0d11 100%);
-}
+.wf-projects::after { background: linear-gradient(180deg, #09090b 0, transparent 150px); }
 .wf-projects .section-header {
   position: relative;
   z-index: 1;
@@ -2080,32 +2074,55 @@
   line-height: 1.55;
   overflow-wrap: anywhere;
 }
-.project-card__action {
+.project-card__actions {
   grid-column: 2;
   grid-row: 1 / 3;
   align-self: end;
-  display: inline-flex;
+  display: grid;
   align-items: center;
   justify-content: flex-end;
+  width: max-content;
+  min-width: 54px;
+  min-height: 54px;
+}
+.project-card__icon-btn {
+  grid-area: 1 / 1;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 54px;
   height: 54px;
-  padding: 0 17px;
-  border-radius: 999px;
-  overflow: hidden;
-  white-space: nowrap;
+  border-radius: 50%;
   background: rgba(255,255,255,.96);
   color: #111316;
-  transition: width .55s cubic-bezier(.22,1,.36,1), background-color .3s ease;
+  font-size: 21px;
+  line-height: 1;
+  box-shadow: 0 4px 14px rgba(0,0,0,.18);
+  transition: opacity 1.2s cubic-bezier(.25,1,.5,1), transform 1.2s cubic-bezier(.25,1,.5,1);
 }
-.project-card__action-text {
-  max-width: 0;
-  opacity: 0;
-  overflow: hidden;
-  font-size: 13px;
+.project-card__pill-btn {
+  grid-area: 1 / 1;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: max-content;
+  max-width: min(280px, 38vw);
+  padding: 14px 24px;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 999px;
+  background: rgba(40,40,40,.88);
+  color: #fff;
+  white-space: nowrap;
+  font-size: 14px;
   font-weight: 600;
-  transition: max-width .55s cubic-bezier(.22,1,.36,1), opacity .25s ease .02s, margin .55s cubic-bezier(.22,1,.36,1);
+  opacity: 0;
+  transform: scale(.9);
+  pointer-events: none;
+  transition: opacity 1.2s cubic-bezier(.25,1,.5,1), transform 1.2s cubic-bezier(.25,1,.5,1), background-color .25s ease;
 }
-.project-card__arrow { flex: 0 0 auto; font-size: 21px; line-height: 1; }
+.project-card__pill-arrow { flex: 0 0 auto; font-size: 18px; line-height: 1; }
 .project-card__link:focus-visible { outline: 2px solid #F36223; outline-offset: -4px; border-radius: 34px; }
 @media (hover:hover) and (pointer:fine) {
   .project-card:hover {
@@ -2116,8 +2133,9 @@
   }
   .project-card:hover .project-card__visual img { transform: scale(1.045); filter: brightness(.94) saturate(.94); }
   .project-card:hover .project-card__visual::after { opacity: .72; }
-  .project-card:hover .project-card__action { width: 210px; }
-  .project-card:hover .project-card__action-text { max-width: 150px; opacity: 1; margin-right: 12px; }
+  .project-card:hover .project-card__icon-btn { opacity:0; transform:scale(.7); }
+  .project-card:hover .project-card__pill-btn { opacity:1; transform:scale(1); }
+  .project-card:hover .project-card__pill-btn:hover { background:rgba(70,70,70,.96); }
 }
 
 .projects-cta {
@@ -2126,8 +2144,9 @@
   justify-content: space-between;
   gap: 28px;
   margin-top: 92px;
-  padding-top: 36px;
-  border-top: 1px solid var(--project-line);
+  padding: 36px 0;
+  border-top: 1px dashed var(--project-line);
+  border-bottom: 1px dashed var(--project-line);
 }
 .projects-cta__text {
   margin: 0;
@@ -2158,17 +2177,14 @@
 .project-detail__button:focus-visible,
 .project-detail__back:focus-visible { outline: 2px solid #F36223; outline-offset: 7px; }
 
-/* Продолжение темного премиального градиента в блоке Video. */
+/* Вторая половина единого градиента «Проекты → Video». */
 .wf-tech-log,
 body.theme-dark .wf-tech-log {
   color: var(--project-white) !important;
   padding-top: 190px !important;
   padding-bottom: 170px !important;
-  border-top-color: rgba(255,255,255,.11) !important;
-  background:
-    radial-gradient(900px 600px at 86% 20%, rgba(52,83,115,.14), transparent 70%),
-    radial-gradient(700px 520px at 16% 82%, rgba(94,65,120,.09), transparent 72%),
-    linear-gradient(180deg, #0b0d11 0%, #0e1217 46%, #09090b 100%) !important;
+  border-top: none !important;
+  background: linear-gradient(180deg, #15181c 0%, #202328 50%, #2b2e33 100%) !important;
 }
 .wf-tech-log .section-header,
 .wf-tech-log .tech-log-header { border-color: rgba(255,255,255,.13) !important; }
@@ -2183,10 +2199,10 @@ body.project-detail-mode {
   color: var(--project-white) !important;
   background-color: #090a0d !important;
   background-image:
-    radial-gradient(1100px 780px at 9% 8%, rgba(54,87,116,.18), transparent 68%),
-    radial-gradient(920px 720px at 92% 42%, rgba(92,64,118,.13), transparent 70%),
-    radial-gradient(620px 460px at 58% 92%, rgba(243,98,35,.055), transparent 72%),
-    linear-gradient(145deg, #08090b 0%, #0f1318 48%, #090a0d 100%) !important;
+    radial-gradient(1050px 760px at 4% 4%, rgba(62,101,134,.38), transparent 66%),
+    radial-gradient(900px 720px at 98% 42%, rgba(105,72,132,.30), transparent 68%),
+    radial-gradient(680px 500px at 54% 96%, rgba(243,98,35,.10), transparent 70%),
+    linear-gradient(145deg, #07080a 0%, #151b22 48%, #0a0c10 100%) !important;
   background-attachment: fixed !important;
 }
 body.project-detail-mode > section:not(.project-detail-page),
@@ -2202,10 +2218,10 @@ body.project-detail-mode .wf-footer { margin-top: 0; }
   min-height: 100vh;
   padding: 138px 0 0;
   background:
-    radial-gradient(1100px 780px at 9% 8%, rgba(54,87,116,.18), transparent 68%),
-    radial-gradient(920px 720px at 92% 42%, rgba(92,64,118,.13), transparent 70%),
-    radial-gradient(620px 460px at 58% 92%, rgba(243,98,35,.055), transparent 72%),
-    linear-gradient(145deg, #08090b 0%, #0f1318 48%, #090a0d 100%);
+    radial-gradient(1050px 760px at 4% 4%, rgba(62,101,134,.38), transparent 66%),
+    radial-gradient(900px 720px at 98% 42%, rgba(105,72,132,.30), transparent 68%),
+    radial-gradient(680px 500px at 54% 96%, rgba(243,98,35,.10), transparent 70%),
+    linear-gradient(145deg, #07080a 0%, #151b22 48%, #0a0c10 100%);
 }
 .project-detail__inner {
   width: min(1440px, calc(100% - 160px));
@@ -2248,6 +2264,7 @@ body.project-detail-mode .wf-footer { margin-top: 0; }
   line-height: 1.62;
 }
 .project-detail__cover {
+  position: relative;
   aspect-ratio: 16 / 9;
   margin: 0 0 24px;
   overflow: hidden;
@@ -2258,6 +2275,31 @@ body.project-detail-mode .wf-footer { margin-top: 0; }
 }
 .project-detail__cover img,
 .project-detail__gallery img { width:100%; height:100%; display:block; object-fit:cover; }
+.project-detail__nav {
+  position:absolute;
+  top:50%;
+  z-index:3;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:54px;
+  height:54px;
+  margin-top:-27px;
+  border:1px solid rgba(255,255,255,.24);
+  border-radius:50%;
+  background:rgba(15,17,20,.72);
+  color:#fff;
+  font-size:25px;
+  cursor:pointer;
+  opacity:0;
+  transform:scale(.88);
+  transition:opacity .35s ease, transform .45s cubic-bezier(.22,1,.36,1), background-color .25s ease;
+}
+.project-detail__nav--prev { left:24px; }
+.project-detail__nav--next { right:24px; }
+.project-detail__cover:hover .project-detail__nav { opacity:.9; transform:scale(1); }
+.project-detail__cover .project-detail__nav:hover { opacity:.46; background:rgba(15,17,20,.9); }
+.project-detail__nav:focus-visible { opacity:1; outline:2px solid #F36223; outline-offset:4px; }
 .project-detail__gallery {
   display: grid;
   grid-template-columns: repeat(3,minmax(0,1fr));
@@ -2270,7 +2312,11 @@ body.project-detail-mode .wf-footer { margin-top: 0; }
   border: 1px solid rgba(255,255,255,.09);
   border-radius: 24px;
   background:#15181c;
+  cursor:pointer;
+  transition:transform .5s cubic-bezier(.22,1,.36,1), border-color .3s ease, box-shadow .5s ease;
 }
+.project-detail__gallery-item:hover { transform:scale(1.035); border-color:rgba(255,255,255,.22); box-shadow:0 18px 50px rgba(0,0,0,.28); }
+.project-detail__gallery-item:focus-visible { outline:2px solid #F36223; outline-offset:5px; }
 .project-detail__story { border-top: 1px solid var(--project-line); }
 .project-detail__row {
   display: grid;
@@ -2287,8 +2333,8 @@ body.project-detail-mode .wf-footer { margin-top: 0; }
   justify-content:space-between;
   gap:32px;
   margin-top: 104px;
-  padding: 44px 0 0;
-  border-top: 1px solid var(--project-line);
+  padding: 0;
+  border-top: none;
 }
 .project-detail__cta h2 { margin:0; font-size:clamp(27px,3vw,42px); font-weight:400; letter-spacing:-.03em; }
 .project-detail__missing { padding: 150px 0 260px; }
@@ -2303,44 +2349,45 @@ body.project-detail-mode .wf-footer { margin-top: 0; }
   .wf-projects { padding: 128px 0 128px; }
   .wf-projects .section-header { margin: 0 20px 34px; }
   .projects-carousel {
-    height: 74svh;
-    min-height: 540px;
-    max-height: 720px;
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    scroll-snap-type: y mandatory;
+    height:auto;
+    min-height:0;
+    max-height:none;
+    overflow-x:auto;
+    overflow-y:hidden;
+    overscroll-behavior-x:contain;
+    scroll-snap-type:x mandatory;
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
   .projects-carousel::-webkit-scrollbar { display:none; }
   .projects-track {
     display:flex;
-    flex-direction:column;
+    flex-direction:row;
+    width:max-content;
     gap:18px;
-    padding: calc((74svh - 56svh) / 2) 20px;
+    padding:0 20px 16px;
   }
   .project-card {
-    flex:0 0 56svh;
-    min-height: 410px;
-    max-height: 540px;
-    scroll-snap-align:center;
+    flex:0 0 84vw;
+    width:84vw;
+    min-height:500px;
+    max-height:none;
+    scroll-snap-align:start;
     scroll-snap-stop:always;
     border-radius:28px;
-    opacity:.43;
-    transform:scale(.9);
-    transform-origin:center;
-    transition:transform .48s cubic-bezier(.22,1,.36,1), opacity .38s ease, background-color .35s ease;
+    opacity:1;
+    transform:none;
   }
-  .project-card.is-centered { opacity:1; transform:scale(1); background:rgba(255,255,255,.06); }
-  .project-card__link { display:grid; grid-template-rows:minmax(0,1.4fr) minmax(178px,.8fr); }
+  .project-card__link { display:grid; grid-template-rows:minmax(300px,1.4fr) minmax(178px,.8fr); }
   .project-card__visual { aspect-ratio:auto; min-height:0; }
   .project-card__number { top:18px; left:18px; }
   .project-card__body { min-height:0; padding:22px 20px 20px; column-gap:12px; }
   .project-card__title { font-size:clamp(25px,7.5vw,31px); margin-bottom:10px; }
   .project-card__summary { font-size:14px; line-height:1.45; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
-  .project-card__action { width:50px; height:50px; padding:0 15px; }
-  .project-card__action-text { display:none; }
-  .projects-cta { margin:44px 20px 0; padding-top:30px; flex-direction:column; align-items:flex-start; }
+  .project-card__actions { min-width:50px; min-height:50px; }
+  .project-card__icon-btn { width:50px; height:50px; }
+  .project-card__pill-btn { display:none; }
+  .projects-cta { margin:44px 20px 0; padding:30px 0; flex-direction:column; align-items:flex-start; }
   .projects-cta__button { max-width:100%; white-space:normal; }
   .wf-tech-log,
   body.theme-dark .wf-tech-log { padding:128px 20px 110px !important; }
@@ -2351,6 +2398,7 @@ body.project-detail-mode .wf-footer { margin-top: 0; }
   .project-detail__title { font-size:clamp(36px,11vw,54px); }
   .project-detail__lead { margin-bottom:38px; font-size:17px; }
   .project-detail__cover { margin-bottom:16px; border-radius:24px; }
+  .project-detail__nav { display:none; }
   .project-detail__gallery { grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-bottom:72px; }
   .project-detail__gallery-item { border-radius:18px; }
   .project-detail__gallery-item:nth-child(3n) { grid-column:1 / -1; aspect-ratio:16/9; }
@@ -2363,8 +2411,10 @@ body.project-detail-mode .wf-footer { margin-top: 0; }
 @media (prefers-reduced-motion: reduce) {
   .project-card,
   .project-card__visual img,
-  .project-card__action,
-  .project-card__action-text { transition:none !important; }
+  .project-card__icon-btn,
+  .project-card__pill-btn,
+  .project-detail__gallery-item,
+  .project-detail__nav { transition:none !important; }
 }
 
 </style>
@@ -3809,12 +3859,12 @@ body.project-detail-mode .wf-footer { margin-top: 0; }
 
   /* Служебные переводы интерфейса. Обычно этот блок менять не нужно. */
   const UI = {
-    en: { heading:"Projects", view:"View project", back:"All projects", eyebrow:"Project", question:"Have a similar challenge?", discuss:"Discuss your project", challenge:"The challenge", solution:"Our solution", result:"The result", missing:"Project not found", missingText:"Return to the project list and select a project.", message:"Hello, I would like to discuss my engineering project.", projectMessage:"Hello, I viewed ‘{project}’ on your website and would like to discuss a similar project." },
-    pl: { heading:"Projekty", view:"Zobacz projekt", back:"Wszystkie projekty", eyebrow:"Projekt", question:"Masz podobne wyzwanie?", discuss:"Porozmawiajmy o Twoim projekcie", challenge:"Wyzwanie", solution:"Nasze rozwiązanie", result:"Rezultat", missing:"Nie znaleziono projektu", missingText:"Wróć do listy projektów i wybierz projekt.", message:"Dzień dobry, chciałbym omówić mój projekt inżynieryjny.", projectMessage:"Dzień dobry, obejrzałem projekt ‘{project}’ na Państwa stronie i chciałbym omówić podobny projekt." },
-    cs: { heading:"Projekty", view:"Zobrazit projekt", back:"Všechny projekty", eyebrow:"Projekt", question:"Řešíte podobný úkol?", discuss:"Probrat váš projekt", challenge:"Zadání", solution:"Naše řešení", result:"Výsledek", missing:"Projekt nebyl nalezen", missingText:"Vraťte se na seznam projektů a vyberte projekt.", message:"Dobrý den, rád bych s vámi probral svůj technický projekt.", projectMessage:"Dobrý den, na vašem webu jsem si prohlédl projekt ‘{project}’ a rád bych probral podobný projekt." },
-    de: { heading:"Projekte", view:"Projekt ansehen", back:"Alle Projekte", eyebrow:"Projekt", question:"Haben Sie eine ähnliche Aufgabe?", discuss:"Ihr Projekt besprechen", challenge:"Die Aufgabe", solution:"Unsere Lösung", result:"Das Ergebnis", missing:"Projekt nicht gefunden", missingText:"Kehren Sie zur Projektübersicht zurück und wählen Sie ein Projekt aus.", message:"Guten Tag, ich möchte mein technisches Projekt mit Ihnen besprechen.", projectMessage:"Guten Tag, ich habe mir ‘{project}’ auf Ihrer Website angesehen und möchte ein ähnliches Projekt besprechen." },
-    uk: { heading:"Проєкти", view:"Переглянути проєкт", back:"Усі проєкти", eyebrow:"Проєкт", question:"Маєте схоже завдання?", discuss:"Обговорити мій проєкт", challenge:"Завдання", solution:"Наше рішення", result:"Результат", missing:"Проєкт не знайдено", missingText:"Поверніться до списку проєктів і виберіть потрібний.", message:"Вітаю! Хочу обговорити свій інженерний проєкт.", projectMessage:"Вітаю! Переглянув(-ла) ‘{project}’ на вашому сайті та хочу обговорити схожий проєкт." },
-    ru: { heading:"Проекты", view:"Смотреть проект", back:"Все проекты", eyebrow:"Проект", question:"Есть похожая задача?", discuss:"Обсудить мой проект", challenge:"Задача", solution:"Наше решение", result:"Результат", missing:"Проект не найден", missingText:"Вернитесь к списку проектов и выберите нужный.", message:"Здравствуйте! Хочу обсудить свой инженерный проект.", projectMessage:"Здравствуйте! Меня заинтересовал проект ‘{project}’ на вашем сайте. Хочу обсудить похожий проект." }
+    en: { heading:"Projects", view:"View project", back:"All projects", eyebrow:"Project", question:"Have a similar challenge?", discuss:"Discuss your project", challenge:"The challenge", solution:"Our solution", result:"The result", previous:"Previous image", next:"Next image", openImage:"Open image", missing:"Project not found", missingText:"Return to the project list and select a project.", message:"Hello, I would like to discuss my engineering project.", projectMessage:"Hello, I viewed ‘{project}’ on your website and would like to discuss a similar project." },
+    pl: { heading:"Projekty", view:"Zobacz projekt", back:"Wszystkie projekty", eyebrow:"Projekt", question:"Masz podobne wyzwanie?", discuss:"Porozmawiajmy o Twoim projekcie", challenge:"Wyzwanie", solution:"Nasze rozwiązanie", result:"Rezultat", previous:"Poprzednie zdjęcie", next:"Następne zdjęcie", openImage:"Otwórz zdjęcie", missing:"Nie znaleziono projektu", missingText:"Wróć do listy projektów i wybierz projekt.", message:"Dzień dobry, chciałbym omówić mój projekt inżynieryjny.", projectMessage:"Dzień dobry, obejrzałem projekt ‘{project}’ na Państwa stronie i chciałbym omówić podobny projekt." },
+    cs: { heading:"Projekty", view:"Zobrazit projekt", back:"Všechny projekty", eyebrow:"Projekt", question:"Řešíte podobný úkol?", discuss:"Probrat váš projekt", challenge:"Zadání", solution:"Naše řešení", result:"Výsledek", previous:"Předchozí obrázek", next:"Další obrázek", openImage:"Otevřít obrázek", missing:"Projekt nebyl nalezen", missingText:"Vraťte se na seznam projektů a vyberte projekt.", message:"Dobrý den, rád bych s vámi probral svůj technický projekt.", projectMessage:"Dobrý den, na vašem webu jsem si prohlédl projekt ‘{project}’ a rád bych probral podobný projekt." },
+    de: { heading:"Projekte", view:"Projekt ansehen", back:"Alle Projekte", eyebrow:"Projekt", question:"Haben Sie eine ähnliche Aufgabe?", discuss:"Ihr Projekt besprechen", challenge:"Die Aufgabe", solution:"Unsere Lösung", result:"Das Ergebnis", previous:"Vorheriges Bild", next:"Nächstes Bild", openImage:"Bild öffnen", missing:"Projekt nicht gefunden", missingText:"Kehren Sie zur Projektübersicht zurück und wählen Sie ein Projekt aus.", message:"Guten Tag, ich möchte mein technisches Projekt mit Ihnen besprechen.", projectMessage:"Guten Tag, ich habe mir ‘{project}’ auf Ihrer Website angesehen und möchte ein ähnliches Projekt besprechen." },
+    uk: { heading:"Проєкти", view:"Переглянути проєкт", back:"Усі проєкти", eyebrow:"Проєкт", question:"Маєте схоже завдання?", discuss:"Обговорити мій проєкт", challenge:"Завдання", solution:"Наше рішення", result:"Результат", previous:"Попереднє зображення", next:"Наступне зображення", openImage:"Відкрити зображення", missing:"Проєкт не знайдено", missingText:"Поверніться до списку проєктів і виберіть потрібний.", message:"Вітаю! Хочу обговорити свій інженерний проєкт.", projectMessage:"Вітаю! Переглянув(-ла) ‘{project}’ на вашому сайті та хочу обговорити схожий проєкт." },
+    ru: { heading:"Проекты", view:"Смотреть проект", back:"Все проекты", eyebrow:"Проект", question:"Есть похожая задача?", discuss:"Обсудить мой проект", challenge:"Задача", solution:"Наше решение", result:"Результат", previous:"Предыдущее изображение", next:"Следующее изображение", openImage:"Открыть изображение", missing:"Проект не найден", missingText:"Вернитесь к списку проектов и выберите нужный.", message:"Здравствуйте! Хочу обсудить свой инженерный проект.", projectMessage:"Здравствуйте! Меня заинтересовал проект ‘{project}’ на вашем сайте. Хочу обсудить похожий проект." }
   };
 
   const track = document.getElementById("projectsTrack");
@@ -3822,7 +3872,6 @@ body.project-detail-mode .wf-footer { margin-top: 0; }
   const detailPage = document.getElementById("projectDetailPage");
   const detailId = new URLSearchParams(window.location.search).get("project");
   let currentLanguage = "en";
-  let scrollFrame = 0;
 
   function byId(id) { return document.getElementById(id); }
   function currentPath() { return window.location.pathname || "index.html"; }
@@ -3868,35 +3917,16 @@ body.project-detail-mode .wf-footer { margin-top: 0; }
       const summary = document.createElement("p");
       summary.className = "project-card__summary";
       summary.textContent = copy.summary;
-      const action = document.createElement("span");
-      action.className = "project-card__action";
-      action.innerHTML = '<span class="project-card__action-text"></span><span class="project-card__arrow" aria-hidden="true">→</span>';
-      action.querySelector(".project-card__action-text").textContent = labels.view;
-      body.append(title, summary, action);
+      const actions = document.createElement("span");
+      actions.className = "project-card__actions";
+      actions.innerHTML = '<span class="project-card__icon-btn" aria-hidden="true">→</span><span class="project-card__pill-btn"><span class="project-card__pill-text"></span><span class="project-card__pill-arrow" aria-hidden="true">→</span></span>';
+      actions.querySelector(".project-card__pill-text").textContent = labels.view;
+      body.append(title, summary, actions);
       link.append(visual, body);
       article.appendChild(link);
       fragment.appendChild(article);
     });
     track.replaceChildren(fragment);
-    requestAnimationFrame(updateCenteredCard);
-  }
-
-  function updateCenteredCard() {
-    scrollFrame = 0;
-    if (!carousel || window.innerWidth > 768) return;
-    const center = carousel.getBoundingClientRect().top + carousel.clientHeight / 2;
-    let closest = null;
-    let distance = Infinity;
-    track.querySelectorAll(".project-card").forEach(function (card) {
-      const rect = card.getBoundingClientRect();
-      const value = Math.abs(rect.top + rect.height / 2 - center);
-      if (value < distance) { distance = value; closest = card; }
-    });
-    track.querySelectorAll(".project-card").forEach(function (card) { card.classList.toggle("is-centered", card === closest); });
-  }
-
-  function requestCenteredUpdate() {
-    if (!scrollFrame) scrollFrame = requestAnimationFrame(updateCenteredCard);
   }
 
   function renderDetail(lang) {
@@ -3925,16 +3955,61 @@ body.project-detail-mode .wf-footer { margin-top: 0; }
     byId("projectChallenge").textContent = copy.challenge;
     byId("projectSolution").textContent = copy.solution;
     byId("projectResult").textContent = copy.result;
-    byId("projectCover").replaceChildren(image(project.cover, copy.imageAlt, true));
+    const cover = byId("projectCover");
+    const mainImage = image(project.cover, copy.imageAlt, true);
+    const previous = document.createElement("button");
+    previous.type = "button";
+    previous.className = "project-detail__nav project-detail__nav--prev";
+    previous.setAttribute("aria-label", labels.previous);
+    previous.textContent = "←";
+    const next = document.createElement("button");
+    next.type = "button";
+    next.className = "project-detail__nav project-detail__nav--next";
+    next.setAttribute("aria-label", labels.next);
+    next.textContent = "→";
+    cover.replaceChildren(mainImage, previous, next);
     const gallery = byId("projectGallery");
     gallery.replaceChildren();
     (project.gallery || []).forEach(function (src, index) {
       const figure = document.createElement("figure");
       figure.className = "project-detail__gallery-item";
+      figure.tabIndex = 0;
+      figure.setAttribute("role", "button");
+      figure.setAttribute("aria-label", labels.openImage + " " + (index + 2));
       figure.appendChild(image(src, copy.imageAlt + " — " + (index + 2), false));
       gallery.appendChild(figure);
     });
     gallery.hidden = gallery.children.length === 0;
+
+    let activeThumbnail = -1;
+    function swapWithThumbnail(index) {
+      const items = Array.from(gallery.querySelectorAll(".project-detail__gallery-item"));
+      if (!items.length) return;
+      index = (index + items.length) % items.length;
+      const thumb = items[index].querySelector("img");
+      if (!thumb) return;
+      const oldMainSrc = mainImage.src;
+      const oldMainAlt = mainImage.alt;
+      mainImage.src = thumb.src;
+      mainImage.alt = thumb.alt;
+      thumb.src = oldMainSrc;
+      thumb.alt = oldMainAlt;
+      activeThumbnail = index;
+    }
+    Array.from(gallery.children).forEach(function (item, index) {
+      item.addEventListener("click", function () { swapWithThumbnail(index); });
+      item.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === " ") { event.preventDefault(); swapWithThumbnail(index); }
+      });
+    });
+    previous.addEventListener("click", function () {
+      const count = gallery.children.length;
+      if (count) swapWithThumbnail(activeThumbnail < 0 ? count - 1 : activeThumbnail - 1);
+    });
+    next.addEventListener("click", function () {
+      const count = gallery.children.length;
+      if (count) swapWithThumbnail(activeThumbnail < 0 ? 0 : activeThumbnail + 1);
+    });
     byId("projectDiscuss").href = whatsapp(labels.projectMessage.replace("{project}", copy.title));
     document.title = copy.title + " | KRUL Technology";
     const description = document.querySelector('meta[name="description"]');
@@ -3962,9 +4037,6 @@ body.project-detail-mode .wf-footer { margin-top: 0; }
   document.addEventListener("krul:languagechange", function (event) {
     applyProjectLanguage(event.detail.lang);
   });
-
-  if (carousel) carousel.addEventListener("scroll", requestCenteredUpdate, { passive:true });
-  window.addEventListener("resize", requestCenteredUpdate, { passive:true });
 
   function initProjects() {
     const lang = document.documentElement.lang;
