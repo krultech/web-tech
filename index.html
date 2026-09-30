@@ -4014,8 +4014,14 @@ body.project-detail-mode.theme-dark .wf-footer {
    КАК ИЗМЕНИТЬ ПРОЕКТ:
    1. Найдите нужный блок по id: "project-01", "project-02" и т.д.
    2. В cover вставьте Cloudinary-ссылку на главное большое изображение.
+      ВАЖНО: каждая ссылка должна быть в обычных двойных кавычках "...".
+      Пример: cover: "https://res.cloudinary.com/.../photo.webp",
+      Заменяйте только текст внутри кавычек, оставляя кавычки и запятую.
    3. В gallery вставьте ссылки на дополнительные фотографии.
+      Каждая ссылка — в двойных кавычках, между ссылками — запятая.
+      Пример: gallery: ["https://.../photo-1.webp", "https://.../photo-2.webp"],
       Фотографий может быть сколько угодно: добавляйте или удаляйте строки.
+      Не удаляйте квадратные скобки [ ] вокруг списка фотографий.
    4. В content заполните тексты для всех шести языков:
       en — английский, pl — польский, cs — чешский,
       de — немецкий, uk — украинский, ru — русский.
@@ -4032,54 +4038,228 @@ body.project-detail-mode.theme-dark .wf-footer {
   const PROJECTS = [
     {
       id: "project-01",
-      cover: https://res.cloudinary.com/dwqit2mii/image/upload/v1790791059/%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_ChatGPT_30_%D1%81%D0%B5%D0%BD%D1%82._2026_%D0%B3._09_11_01_jin2kv.png,
-      gallery: [https://res.cloudinary.com/dwqit2mii/image/upload/v1790791057/PTFE_Reactor_1_anqcyc.png, https://res.cloudinary.com/dwqit2mii/image/upload/v1790791005/PTFE_Reactor_2_z8ddzj.jpg, https://res.cloudinary.com/dwqit2mii/image/upload/v1790791074/%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_ChatGPT_30_%D1%81%D0%B5%D0%BD%D1%82._2026_%D0%B3._09_11_13_koj69a.png, https://res.cloudinary.com/dwqit2mii/image/upload/v1790790988/PTFE_Reactor_7_frkmsf.jpg, https://res.cloudinary.com/dwqit2mii/image/upload/v1790790986/PTFE_Reactor_5_bua8eg.jpg],
+      cover: "https://res.cloudinary.com/dwqit2mii/image/upload/v1790791059/%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_ChatGPT_30_%D1%81%D0%B5%D0%BD%D1%82._2026_%D0%B3._09_11_01_jin2kv.png",
+      gallery: [
+        "https://res.cloudinary.com/dwqit2mii/image/upload/v1790791057/PTFE_Reactor_1_anqcyc.png",
+        "https://res.cloudinary.com/dwqit2mii/image/upload/v1790791005/PTFE_Reactor_2_z8ddzj.jpg",
+        "https://res.cloudinary.com/dwqit2mii/image/upload/v1790791074/%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_ChatGPT_30_%D1%81%D0%B5%D0%BD%D1%82._2026_%D0%B3._09_11_13_koj69a.png",
+        "https://res.cloudinary.com/dwqit2mii/image/upload/v1790790988/PTFE_Reactor_7_frkmsf.jpg",
+        "https://res.cloudinary.com/dwqit2mii/image/upload/v1790790986/PTFE_Reactor_5_bua8eg.jpg"
+      ],
       content: {
-        en: { title:"Project 01", summary:"A short description of the project, the client’s task and the completed work.", challenge:"Describe the client’s task, initial conditions and key limitations.", solution:"Describe the engineering approach, equipment and work completed.", result:"Describe the measurable result and the value delivered to the client.", imageAlt:"Project 01 by KRUL Technology" },
-        pl: { title:"Projekt 01", summary:"Krótki opis projektu, zadania klienta i wykonanych prac.", challenge:"Opisz zadanie klienta, warunki początkowe i najważniejsze ograniczenia.", solution:"Opisz rozwiązanie inżynieryjne, urządzenia i wykonane prace.", result:"Opisz mierzalny rezultat i wartość uzyskaną przez klienta.", imageAlt:"Projekt 01 firmy KRUL Technology" },
-        cs: { title:"Projekt 01", summary:"Stručný popis projektu, zadání klienta a provedených prací.", challenge:"Popište zadání klienta, výchozí podmínky a hlavní omezení.", solution:"Popište technické řešení, zařízení a provedené práce.", result:"Popište měřitelný výsledek a přínos pro klienta.", imageAlt:"Projekt 01 společnosti KRUL Technology" },
-        de: { title:"Projekt 01", summary:"Kurze Beschreibung des Projekts, der Aufgabe und der ausgeführten Arbeiten.", challenge:"Beschreiben Sie die Aufgabe, die Ausgangslage und die wichtigsten Einschränkungen.", solution:"Beschreiben Sie den technischen Ansatz, die Anlage und die ausgeführten Arbeiten.", result:"Beschreiben Sie das messbare Ergebnis und den Nutzen für den Kunden.", imageAlt:"Projekt 01 von KRUL Technology" },
-        uk: { title:"Проєкт 01", summary:"Короткий опис проєкту, завдання замовника та виконаних робіт.", challenge:"Опишіть завдання замовника, початкові умови та ключові обмеження.", solution:"Опишіть інженерний підхід, обладнання та виконані роботи.", result:"Опишіть вимірюваний результат і користь для замовника.", imageAlt:"Проєкт 01 компанії KRUL Technology" },
-        ru: { title:"Проект «Бром»", summary:"Установка для производства брома на базе реакторов из PTFE объёмом 2 000 литров.", challenge:"Ключевой вопрос проекта - химическая стойкость аппаратов. Требовалось решение, в котором контактирующий с продуктом корпус выполнен из подходящего материала по всей толщине стенки.", solution:"В качестве основы предложены реакторы из цельного фторопласта с толщиной стенки 50 мм. Это полноценный фторопластовый корпус и здесь отсутствует отдельный слой, который может отслаиваться и открывать металл воздействию среды.", result:"Предложена конкретная аппаратная основа проекта — реакторы объёмом 2 000 литров, уже имеющиеся в наличии. Такие реакторы отлично справляются с химической и физической нагрузкой. Производство брома успешно запущено.", imageAlt:"Проект 01 компании KRUL Technology" }
+        en: {
+  title: "“Bromine”",
+  summary: "A bromine production unit based on 2,000-liter PTFE reactors.",
+  challenge: "The key challenge was the chemical resistance of the equipment. The vessel body in contact with the product had to be made of a suitable material throughout the full thickness of its walls.",
+  solution: "Reactors made entirely of solid PTFE, with a wall thickness of 50 mm, were proposed as the basis of the installation. The vessel body is PTFE throughout, with no separate protective layer that could peel away and expose metal to the process medium.",
+  result: "A specific equipment solution was proposed: 2,000-liter reactors already available from stock. These reactors withstand chemical exposure and mechanical loads very well. Bromine production has been successfully launched.",
+  imageAlt: "Project 01 by KRUL Technology"
+},
+pl: {
+  title: "„Brom”",
+  summary: "Instalacja do produkcji bromu oparta na reaktorach z PTFE o pojemności 2 000 litrów.",
+  challenge: "Kluczowym wyzwaniem projektu była odporność chemiczna aparatury. Potrzebne było rozwiązanie, w którym korpus mający kontakt z produktem jest wykonany z odpowiedniego materiału na całej grubości ścianek.",
+  solution: "Jako podstawę instalacji zaproponowano reaktory wykonane w całości z PTFE, o grubości ścianek 50 mm. Cały korpus jest wykonany z PTFE, bez oddzielnej warstwy ochronnej, która mogłaby się odspajać i narażać metal na działanie medium.",
+  result: "Zaproponowano konkretne rozwiązanie aparaturowe: reaktory o pojemności 2 000 litrów, już dostępne w magazynie. Takie reaktory bardzo dobrze znoszą działanie chemikaliów i obciążenia mechaniczne. Produkcja bromu została pomyślnie uruchomiona.",
+  imageAlt: "Projekt 01 firmy KRUL Technology"
+},
+cs: {
+  title: "„Brom”",
+  summary: "Zařízení pro výrobu bromu na bázi reaktorů z PTFE o objemu 2 000 litrů.",
+  challenge: "Klíčovou otázkou projektu byla chemická odolnost zařízení. Těleso reaktoru přicházející do styku s produktem muselo být vyrobeno z vhodného materiálu v celé tloušťce stěny.",
+  solution: "Jako základ zařízení byly navrženy reaktory vyrobené celé z PTFE, s tloušťkou stěny 50 mm. Celé těleso je z PTFE a nemá samostatnou ochrannou vrstvu, která by se mohla odlupovat a vystavit kov působení procesního média.",
+  result: "Základem navrženého řešení jsou konkrétní reaktory o objemu 2 000 litrů, které jsou již skladem. Tyto reaktory velmi dobře odolávají chemickému působení i mechanickému zatížení. Výroba bromu byla úspěšně zahájena.",
+  imageAlt: "Projekt 01 společnosti KRUL Technology"
+},
+de: {
+  title: "„Brom“",
+  summary: "Anlage zur Herstellung von Brom auf Basis von PTFE-Reaktoren mit einem Volumen von 2.000 Litern.",
+  challenge: "Die zentrale Herausforderung des Projekts war die chemische Beständigkeit der Apparate. Der mit dem Produkt in Kontakt stehende Behälterkörper musste über die gesamte Wandstärke aus einem geeigneten Werkstoff bestehen.",
+  solution: "Als Grundlage wurden Reaktoren aus massivem PTFE mit einer Wandstärke von 50 mm vorgeschlagen. Der Behälterkörper besteht vollständig aus PTFE und besitzt keine separate Schutzschicht, die sich ablösen und Metall dem Prozessmedium aussetzen könnte.",
+  result: "Als konkrete apparative Basis wurden bereits ab Lager verfügbare Reaktoren mit einem Volumen von 2.000 Litern vorgeschlagen. Diese Reaktoren halten chemischen Einflüssen und mechanischen Belastungen sehr gut stand. Die Bromproduktion wurde erfolgreich gestartet.",
+  imageAlt: "Projekt 01 von KRUL Technology"
+},
+uk: {
+  title: "«Бром»",
+  summary: "Установка для виробництва брому на базі реакторів із PTFE об’ємом 2 000 літрів.",
+  challenge: "Ключовим питанням проєкту була хімічна стійкість апаратів. Потрібне було рішення, у якому корпус, що контактує з продуктом, виготовлений із відповідного матеріалу по всій товщині стінки.",
+  solution: "За основу запропоновано реактори із суцільного фторопласту з товщиною стінки 50 мм. Корпус повністю виготовлений із фторопласту, тому тут немає окремого шару, який може відшаровуватися й оголювати метал, піддаючи його впливу середовища.",
+  result: "Запропоновано конкретну апаратну основу проєкту — реактори об’ємом 2 000 літрів, які вже є в наявності. Такі реактори відмінно витримують хімічний вплив і механічні навантаження. Виробництво брому успішно запущено.",
+  imageAlt: "Проєкт 01 компанії KRUL Technology"
+},
+ru: {
+  title: "«Бром»",
+  summary: "Установка для производства брома на базе реакторов из PTFE объёмом 2 000 литров.",
+  challenge: "Ключевой вопрос проекта - химическая стойкость аппаратов. Требовалось решение, в котором контактирующий с продуктом корпус выполнен из подходящего материала по всей толщине стенки.",
+  solution: "В качестве основы предложены реакторы из цельного фторопласта с толщиной стенки 50 мм. Это полноценный фторопластовый корпус и здесь отсутствует отдельный слой, который может отслаиваться и открывать металл воздействию среды.",
+  result: "Предложена конкретная аппаратная основа проекта — реакторы объёмом 2 000 литров, уже имеющиеся в наличии. Такие реакторы отлично справляются с химической и физической нагрузкой. Производство брома успешно запущено.",
+  imageAlt: "Проект 01 компании KRUL Technology"
+}
       }
     },
     {
       id: "project-02",
-      cover: PLACEHOLDER_IMAGE,
-      gallery: [PLACEHOLDER_IMAGE, PLACEHOLDER_IMAGE, PLACEHOLDER_IMAGE],
+      cover: "https://res.cloudinary.com/dwqit2mii/image/upload/v1790795385/%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_ChatGPT_30_%D1%81%D0%B5%D0%BD%D1%82._2026_%D0%B3._12_06_28_v1cf20.png",
+      gallery: ["https://res.cloudinary.com/dwqit2mii/image/upload/v1790795377/%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_ChatGPT_30_%D1%81%D0%B5%D0%BD%D1%82._2026_%D0%B3._12_05_27_mnuiwu.png", "https://res.cloudinary.com/dwqit2mii/image/upload/v1790795374/%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_ChatGPT_30_%D1%81%D0%B5%D0%BD%D1%82._2026_%D0%B3._12_05_10_veaxev.png"],
       content: {
-        en: { title:"Project 02", summary:"A short description of the project, the client’s task and the completed work.", challenge:"Describe the client’s task, initial conditions and key limitations.", solution:"Describe the engineering approach, equipment and work completed.", result:"Describe the measurable result and the value delivered to the client.", imageAlt:"Project 02 by KRUL Technology" },
-        pl: { title:"Projekt 02", summary:"Krótki opis projektu, zadania klienta i wykonanych prac.", challenge:"Opisz zadanie klienta, warunki początkowe i najważniejsze ograniczenia.", solution:"Opisz rozwiązanie inżynieryjne, urządzenia i wykonane prace.", result:"Opisz mierzalny rezultat i wartość uzyskaną przez klienta.", imageAlt:"Projekt 02 firmy KRUL Technology" },
-        cs: { title:"Projekt 02", summary:"Stručný popis projektu, zadání klienta a provedených prací.", challenge:"Popište zadání klienta, výchozí podmínky a hlavní omezení.", solution:"Popište technické řešení, zařízení a provedené práce.", result:"Popište měřitelný výsledek a přínos pro klienta.", imageAlt:"Projekt 02 společnosti KRUL Technology" },
-        de: { title:"Projekt 02", summary:"Kurze Beschreibung des Projekts, der Aufgabe und der ausgeführten Arbeiten.", challenge:"Beschreiben Sie die Aufgabe, die Ausgangslage und die wichtigsten Einschränkungen.", solution:"Beschreiben Sie den technischen Ansatz, die Anlage und die ausgeführten Arbeiten.", result:"Beschreiben Sie das messbare Ergebnis und den Nutzen für den Kunden.", imageAlt:"Projekt 02 von KRUL Technology" },
-        uk: { title:"Проєкт 02", summary:"Короткий опис проєкту, завдання замовника та виконаних робіт.", challenge:"Опишіть завдання замовника, початкові умови та ключові обмеження.", solution:"Опишіть інженерний підхід, обладнання та виконані роботи.", result:"Опишіть вимірюваний результат і користь для замовника.", imageAlt:"Проєкт 02 компанії KRUL Technology" },
-        ru: { title:"Проект 02", summary:"Краткое описание проекта, задачи заказчика и выполненных работ.", challenge:"Опишите задачу заказчика, исходные условия и ключевые ограничения.", solution:"Опишите инженерный подход, оборудование и выполненные работы.", result:"Опишите измеримый результат и пользу для заказчика.", imageAlt:"Проект 02 компании KRUL Technology" }
+        en: {
+  title: "Chitosan",
+  summary: "Process development and equipment supply for chitosan production from crustacean shells.",
+  challenge: "The aim of the project was to turn a by-product of the client’s core business into a marketable product. The client regularly generated large quantities of crustacean shells during seafood processing and decided to use them to produce chitosan. A complete processing cycle was needed, taking into account variations in the feedstock, water and chemical consumption, and the quality requirements for the finished product.",
+  solution: "I developed a process flow covering shell preparation, chitin extraction, conversion to chitosan, washing, drying, and milling. I put together an equipment package comprising reactors, filtration units, and drying equipment, with provisions for wastewater treatment and commissioning support.",
+  result: "Production of dry chitosan was launched, with quality control covering moisture content, ash content, and the degree of deacetylation. The client gained the ability to manufacture a marketable product from its own by-products and develop a new business line alongside its existing operations.",
+  imageAlt: "Chitosan project by KRUL Technology"
+},
+pl: {
+  title: "Chitozan",
+  summary: "Opracowanie technologii i skompletowanie wyposażenia do produkcji chitozanu z pancerzy skorupiaków.",
+  challenge: "Celem projektu było przekształcenie produktów ubocznych z podstawowej działalności klienta w odrębny produkt przeznaczony do sprzedaży. Podczas przetwarzania owoców morza regularnie powstawały duże ilości pancerzy, które klient postanowił wykorzystać do produkcji chitozanu. Należało zorganizować pełny cykl przetwarzania, uwzględniający zróżnicowanie surowca, zużycie wody i odczynników oraz wymagania jakościowe dotyczące gotowego produktu.",
+  solution: "Opracowałem schemat technologiczny obejmujący przygotowanie pancerzy, wydzielenie chityny, przekształcenie jej w chitozan, płukanie, suszenie i rozdrabnianie. Dobrałem i skompletowałem reaktory oraz urządzenia do filtracji i suszenia, uwzględniając oczyszczanie ścieków i wsparcie podczas uruchomienia.",
+  result: "Uruchomiono produkcję suchego chitozanu z kontrolą wilgotności, zawartości popiołu i stopnia deacetylacji. Klient zyskał możliwość wytwarzania produktu na sprzedaż z własnych surowców ubocznych i rozwijania nowej gałęzi produkcji w ramach istniejącego przedsiębiorstwa.",
+  imageAlt: "Projekt „Chitozan” firmy KRUL Technology"
+},
+cs: {
+  title: "Chitosan",
+  summary: "Vývoj technologie a zajištění vybavení pro výrobu chitosanu z krunýřů korýšů.",
+  challenge: "Cílem projektu bylo proměnit vedlejší produkty z hlavní činnosti klienta v samostatný produkt určený k prodeji. Při zpracování mořských plodů klientovi pravidelně zůstávalo velké množství krunýřů, které se rozhodl využít k výrobě chitosanu. Bylo třeba zajistit celý zpracovatelský proces s ohledem na proměnlivé složení suroviny, spotřebu vody a chemikálií a požadavky na kvalitu konečného produktu.",
+  solution: "Navrhl jsem technologický postup zahrnující přípravu krunýřů, izolaci chitinu, jeho přeměnu na chitosan, promývání, sušení a mletí. Vybral a zkompletoval jsem reaktory, filtrační a sušicí zařízení; součástí řešení bylo také čištění odpadních vod a podpora při uvedení do provozu.",
+  result: "Byla zahájena výroba suchého chitosanu s kontrolou vlhkosti, obsahu popela a stupně deacetylace. Klient získal možnost vyrábět produkt určený k prodeji z vlastních vedlejších surovin a rozvíjet novou oblast podnikání v rámci stávajícího provozu.",
+  imageAlt: "Projekt „Chitosan“ společnosti KRUL Technology"
+},
+de: {
+  title: "Chitosan",
+  summary: "Entwicklung des Verfahrens und Zusammenstellung der Anlagentechnik zur Herstellung von Chitosan aus Krebstierschalen.",
+  challenge: "Ziel des Projekts war es, Nebenprodukte aus dem Kerngeschäft des Kunden in ein eigenständiges, vermarktbares Produkt zu verwandeln. Bei der Verarbeitung von Meeresfrüchten fielen regelmäßig große Mengen an Krebstierschalen an, die der Kunde zur Herstellung von Chitosan nutzen wollte. Dafür musste ein vollständiger Verarbeitungsprozess aufgebaut werden, der Schwankungen in der Rohstoffzusammensetzung, den Wasser- und Chemikalienverbrauch sowie die Qualitätsanforderungen an das Endprodukt berücksichtigt.",
+  solution: "Ich entwickelte ein Verfahrenskonzept, das die Vorbereitung der Schalen, die Gewinnung von Chitin, dessen Umwandlung in Chitosan sowie das Waschen, Trocknen und Mahlen umfasst. Ich stellte das Anlagenpaket aus Reaktoren sowie Filtrations- und Trocknungstechnik zusammen und sah auch die Abwasserbehandlung und eine Begleitung der Inbetriebnahme vor.",
+  result: "Die Produktion von trockenem Chitosan wurde gestartet, wobei Feuchtigkeitsgehalt, Aschegehalt und Deacetylierungsgrad kontrolliert werden. Der Kunde erhielt damit die Möglichkeit, aus eigenen Nebenprodukten ein vermarktbares Produkt herzustellen und auf Basis seines bestehenden Geschäfts ein neues Geschäftsfeld zu erschließen.",
+  imageAlt: "Projekt „Chitosan“ von KRUL Technology"
+},
+uk: {
+  title: "Хітозан",
+  summary: "Розроблення технології та комплектація виробництва хітозану з панцирів ракоподібних.",
+  challenge: "Завдання проєкту — перетворити побічну сировину основного бізнесу замовника на окремий продукт для продажу. Після переробки морепродуктів у замовника регулярно залишалися великі обсяги панцирів, які він вирішив використовувати для виробництва хітозану. Потрібно було організувати повний цикл переробки з урахуванням неоднорідності сировини, витрат води й реагентів, а також вимог до якості готового продукту.",
+  solution: "Розробив технологічну схему: підготовка панцирів, виділення хітину, його перетворення на хітозан, промивання, сушіння та подрібнення. Підібрав і скомплектував реактори, фільтраційне та сушильне обладнання, передбачив очищення стоків і супровід запуску.",
+  result: "Запущено виробництво сухого хітозану з контролем вологості, зольності та ступеня деацетилювання. Замовник отримав можливість виготовляти товарний продукт із власної побічної сировини й розвивати новий напрям на базі чинного бізнесу.",
+  imageAlt: "Проєкт «Хітозан» компанії KRUL Technology"
+},
+ru: {
+  title: "Хитозан",
+  summary: "Разработка технологии и комплектация производства хитозана из панцирей ракообразных.",
+  challenge: "Задача проекта — превратить побочное сырьё основного бизнеса клиента в отдельный продукт для продажи. После переработки морепродуктов у клиента регулярно оставались большие объёмы панцирей, которые он решил использовать для производства хитозана. Требовалось выстроить полный цикл переработки с учётом неоднородности сырья, расхода воды и реагентов, а также требований к качеству готового продукта.",
+  solution: "Разработал технологическую схему: подготовка панцирей, выделение хитина, его превращение в хитозан, промывка, сушка и измельчение. Подобрал и скомплектовал реакторы, фильтрационное и сушильное оборудование, предусмотрел обработку стоков и сопровождение запуска.",
+  result: "Запущено производство сухого хитозана с контролем влажности, зольности и степени деацетилирования. Клиент получил возможность выпускать товарный продукт из собственного побочного сырья и развивать новое направление на базе действующего бизнеса.",
+  imageAlt: "Проект «Хитозан» компании KRUL Technology"
+}
       }
     },
     {
       id: "project-03",
-      cover: PLACEHOLDER_IMAGE,
-      gallery: [PLACEHOLDER_IMAGE, PLACEHOLDER_IMAGE, PLACEHOLDER_IMAGE],
+      cover: "https://res.cloudinary.com/dwqit2mii/image/upload/v1790798572/%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_ChatGPT_30_%D1%81%D0%B5%D0%BD%D1%82._2026_%D0%B3._13_00_53_cmgxzw.png",
+      gallery: ["https://res.cloudinary.com/dwqit2mii/image/upload/v1790798645/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_2026-09-30_%D0%B2_12.29.09_trqssb.png", "https://res.cloudinary.com/dwqit2mii/image/upload/v1790798622/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_2026-09-30_%D0%B2_12.33.44_ujneay.png", "https://res.cloudinary.com/dwqit2mii/image/upload/v1790798607/%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_ChatGPT_30_%D1%81%D0%B5%D0%BD%D1%82._2026_%D0%B3._13_00_44_kbp50m.png"],
       content: {
-        en: { title:"Project 03", summary:"A short description of the project, the client’s task and the completed work.", challenge:"Describe the client’s task, initial conditions and key limitations.", solution:"Describe the engineering approach, equipment and work completed.", result:"Describe the measurable result and the value delivered to the client.", imageAlt:"Project 03 by KRUL Technology" },
-        pl: { title:"Projekt 03", summary:"Krótki opis projektu, zadania klienta i wykonanych prac.", challenge:"Opisz zadanie klienta, warunki początkowe i najważniejsze ograniczenia.", solution:"Opisz rozwiązanie inżynieryjne, urządzenia i wykonane prace.", result:"Opisz mierzalny rezultat i wartość uzyskaną przez klienta.", imageAlt:"Projekt 03 firmy KRUL Technology" },
-        cs: { title:"Projekt 03", summary:"Stručný popis projektu, zadání klienta a provedených prací.", challenge:"Popište zadání klienta, výchozí podmínky a hlavní omezení.", solution:"Popište technické řešení, zařízení a provedené práce.", result:"Popište měřitelný výsledek a přínos pro klienta.", imageAlt:"Projekt 03 společnosti KRUL Technology" },
-        de: { title:"Projekt 03", summary:"Kurze Beschreibung des Projekts, der Aufgabe und der ausgeführten Arbeiten.", challenge:"Beschreiben Sie die Aufgabe, die Ausgangslage und die wichtigsten Einschränkungen.", solution:"Beschreiben Sie den technischen Ansatz, die Anlage und die ausgeführten Arbeiten.", result:"Beschreiben Sie das messbare Ergebnis und den Nutzen für den Kunden.", imageAlt:"Projekt 03 von KRUL Technology" },
-        uk: { title:"Проєкт 03", summary:"Короткий опис проєкту, завдання замовника та виконаних робіт.", challenge:"Опишіть завдання замовника, початкові умови та ключові обмеження.", solution:"Опишіть інженерний підхід, обладнання та виконані роботи.", result:"Опишіть вимірюваний результат і користь для замовника.", imageAlt:"Проєкт 03 компанії KRUL Technology" },
-        ru: { title:"Проект 03", summary:"Краткое описание проекта, задачи заказчика и выполненных работ.", challenge:"Опишите задачу заказчика, исходные условия и ключевые ограничения.", solution:"Опишите инженерный подход, оборудование и выполненные работы.", result:"Опишите измеримый результат и пользу для заказчика.", imageAlt:"Проект 03 компании KRUL Technology" }
+        en: {
+  title: "PTFE Coating",
+  summary: "Application of a PTFE coating to the process-contact surfaces of equipment at an operating production facility.",
+  challenge: "The aim was to protect the underlying metal from aggressive process media and extend the equipment’s service life. The client had encountered corrosion damage in individual components, although the equipment was still performing its production duties. The work needed to protect vulnerable surfaces, retain the existing production line, and fit within an agreed shutdown window.",
+  solution: "I assessed the condition of the metal substrate and selected a PTFE coating system suited to the process medium, temperature, and operating conditions. I coordinated the removal of the selected components, surface preparation, coating application, and quality checks before reinstallation.",
+  result: "The treated components were returned to service with a protective coating on the surfaces in contact with the process medium. The client retained its existing equipment, with added protection to help extend its service life without purchasing new units.",
+  imageAlt: "PTFE coating project by KRUL Technology"
+},
+pl: {
+  title: "Powłoka PTFE",
+  summary: "Naniesienie powłoki PTFE na powierzchnie robocze urządzeń w działającym zakładzie produkcyjnym.",
+  challenge: "Celem było zabezpieczenie metalowego podłoża przed agresywnym medium i wydłużenie okresu eksploatacji aparatury. Klient zaobserwował uszkodzenia korozyjne poszczególnych elementów, mimo że urządzenia nadal spełniały swoje zadania produkcyjne. Należało zabezpieczyć narażone powierzchnie, zachować istniejącą linię produkcyjną i wykonać prace w uzgodnionym okresie postoju.",
+  solution: "Oceniłem stan metalowego podłoża i dobrałem system powłokowy PTFE odpowiedni do medium procesowego, temperatury i warunków eksploatacji. Zorganizowałem demontaż wybranych elementów, przygotowanie powierzchni, naniesienie powłoki i kontrolę jej jakości przed ponownym montażem.",
+  result: "Zabezpieczone elementy wróciły do eksploatacji z powłoką ochronną na powierzchniach mających kontakt z medium procesowym. Klient zachował dotychczasowe wyposażenie i zyskał możliwość wydłużenia jego żywotności bez zakupu nowych urządzeń.",
+  imageAlt: "Projekt „Powłoka PTFE” firmy KRUL Technology"
+},
+cs: {
+  title: "Povlak PTFE",
+  summary: "Nanesení povlaku PTFE na pracovní povrchy zařízení používaných ve výrobě.",
+  challenge: "Cílem bylo chránit kovový podklad před agresivním procesním médiem a prodloužit životnost zařízení. Klient se potýkal s korozním poškozením některých součástí, přestože zařízení stále plnilo své výrobní úkoly. Bylo třeba ochránit ohrožené povrchy, zachovat stávající výrobní linku a provést práce během dohodnuté odstávky.",
+  solution: "Posoudil jsem stav kovového podkladu a zvolil povlakový systém na bázi PTFE vhodný pro procesní médium, teplotu a provozní podmínky. Zorganizoval jsem demontáž vybraných dílů, přípravu povrchů, nanesení povlaku a kontrolu jeho kvality před opětovnou montáží.",
+  result: "Ošetřené díly byly vráceny do provozu s ochranným povlakem na površích přicházejících do styku s procesním médiem. Klient si ponechal stávající zařízení a získal možnost prodloužit jeho životnost bez nákupu nových aparátů.",
+  imageAlt: "Projekt „Povlak PTFE“ společnosti KRUL Technology"
+},
+de: {
+  title: "PTFE-Beschichtung",
+  summary: "PTFE-Beschichtung der medienberührten Oberflächen von Anlagen in einem laufenden Produktionsbetrieb.",
+  challenge: "Ziel war es, den metallischen Grundwerkstoff vor aggressiven Prozessmedien zu schützen und die Nutzungsdauer der Apparate zu verlängern. Der Kunde hatte Korrosionsschäden an einzelnen Komponenten festgestellt, obwohl die Anlagen weiterhin ihre Produktionsaufgaben erfüllten. Die gefährdeten Oberflächen mussten geschützt, die bestehende Produktionslinie erhalten und die Arbeiten innerhalb des vereinbarten Stillstandszeitraums durchgeführt werden.",
+  solution: "Ich bewertete den Zustand des metallischen Grundwerkstoffs und wählte ein PTFE-Beschichtungssystem passend zum Prozessmedium, zur Temperatur und zu den Betriebsbedingungen aus. Ich organisierte den Ausbau der ausgewählten Komponenten, die Oberflächenvorbereitung, das Aufbringen der Beschichtung und die Qualitätsprüfung vor dem Wiedereinbau.",
+  result: "Die behandelten Komponenten wurden mit einer Schutzbeschichtung auf den medienberührten Oberflächen wieder in Betrieb genommen. Der Kunde konnte seine vorhandene Anlagentechnik weiterverwenden und erhielt die Möglichkeit, deren Lebensdauer ohne die Anschaffung neuer Apparate zu verlängern.",
+  imageAlt: "Projekt „PTFE-Beschichtung“ von KRUL Technology"
+},
+uk: {
+  title: "PTFE-покриття",
+  summary: "Нанесення PTFE-покриття на робочі поверхні обладнання, яке вже використовується у виробництві.",
+  challenge: "Завдання — захистити металеву основу від агресивного середовища й продовжити строк експлуатації апаратів. Замовник зіткнувся з корозійним зношуванням окремих вузлів, хоча саме обладнання продовжувало виконувати виробничі завдання. Потрібно було захистити вразливі поверхні, зберегти наявну лінію та провести роботи в межах погодженого періоду зупинки.",
+  solution: "Оцінив стан металевої основи й підібрав систему PTFE-покриття відповідно до робочого середовища, температури та умов експлуатації. Організував демонтаж вибраних вузлів, підготовку поверхонь, нанесення покриття та перевірку його якості перед повторним монтажем.",
+  result: "Оброблені вузли повернуто в експлуатацію із захисним покриттям на поверхнях, що контактують із робочим середовищем. Замовник зберіг наявне обладнання й отримав можливість продовжити його ресурс без придбання нових апаратів.",
+  imageAlt: "Проєкт «PTFE-покриття» компанії KRUL Technology"
+},
+ru: {
+  title: "PTFE покрытие",
+  summary: "Нанесение PTFE-покрытия на рабочие поверхности оборудования действующего производства.",
+  challenge: "Задача — защитить металлическую основу от агрессивной среды и продлить срок эксплуатации аппаратов. Клиент столкнулся с коррозионным износом отдельных узлов, при этом само оборудование продолжало выполнять производственные задачи. Требовалось защитить уязвимые поверхности, сохранить существующую линию и провести работы в пределах согласованного периода остановки.",
+  solution: "Оценил состояние металлической основы и подобрал систему PTFE-покрытия под рабочую среду, температуру и условия эксплуатации. Организовал демонтаж выбранных узлов, подготовку поверхностей, нанесение покрытия и проверку его качества перед обратным монтажом.",
+  result: "Обработанные узлы возвращены в эксплуатацию с защитным покрытием на поверхностях, контактирующих с рабочей средой. Клиент сохранил действующее оборудование и получил возможность продлить его ресурс без закупки новых аппаратов.",
+  imageAlt: "Проект «PTFE покрытие» компании KRUL Technology"
+}
       }
     },
     {
       id: "project-04",
-      cover: PLACEHOLDER_IMAGE,
-      gallery: [PLACEHOLDER_IMAGE, PLACEHOLDER_IMAGE, PLACEHOLDER_IMAGE],
+      cover: "https://res.cloudinary.com/dwqit2mii/image/upload/v1790801410/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_2026-09-30_%D0%B2_13.23.57_nqxtlr.png",
+      gallery: ["https://res.cloudinary.com/dwqit2mii/image/upload/v1790801413/%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_ChatGPT_30_%D1%81%D0%B5%D0%BD%D1%82._2026_%D0%B3._13_43_31_gqh9zp.png", "https://res.cloudinary.com/dwqit2mii/image/upload/v1790801378/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_2026-09-30_%D0%B2_13.24.18_f6wq9j.png", "https://res.cloudinary.com/dwqit2mii/image/upload/v1790801345/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_2026-09-30_%D0%B2_13.24.06_t1tdyx.png"],
       content: {
-        en: { title:"Project 04", summary:"A short description of the project, the client’s task and the completed work.", challenge:"Describe the client’s task, initial conditions and key limitations.", solution:"Describe the engineering approach, equipment and work completed.", result:"Describe the measurable result and the value delivered to the client.", imageAlt:"Project 04 by KRUL Technology" },
-        pl: { title:"Projekt 04", summary:"Krótki opis projektu, zadania klienta i wykonanych prac.", challenge:"Opisz zadanie klienta, warunki początkowe i najważniejsze ograniczenia.", solution:"Opisz rozwiązanie inżynieryjne, urządzenia i wykonane prace.", result:"Opisz mierzalny rezultat i wartość uzyskaną przez klienta.", imageAlt:"Projekt 04 firmy KRUL Technology" },
-        cs: { title:"Projekt 04", summary:"Stručný popis projektu, zadání klienta a provedených prací.", challenge:"Popište zadání klienta, výchozí podmínky a hlavní omezení.", solution:"Popište technické řešení, zařízení a provedené práce.", result:"Popište měřitelný výsledek a přínos pro klienta.", imageAlt:"Projekt 04 společnosti KRUL Technology" },
-        de: { title:"Projekt 04", summary:"Kurze Beschreibung des Projekts, der Aufgabe und der ausgeführten Arbeiten.", challenge:"Beschreiben Sie die Aufgabe, die Ausgangslage und die wichtigsten Einschränkungen.", solution:"Beschreiben Sie den technischen Ansatz, die Anlage und die ausgeführten Arbeiten.", result:"Beschreiben Sie das messbare Ergebnis und den Nutzen für den Kunden.", imageAlt:"Projekt 04 von KRUL Technology" },
-        uk: { title:"Проєкт 04", summary:"Короткий опис проєкту, завдання замовника та виконаних робіт.", challenge:"Опишіть завдання замовника, початкові умови та ключові обмеження.", solution:"Опишіть інженерний підхід, обладнання та виконані роботи.", result:"Опишіть вимірюваний результат і користь для замовника.", imageAlt:"Проєкт 04 компанії KRUL Technology" },
-        ru: { title:"Проект 04", summary:"Краткое описание проекта, задачи заказчика и выполненных работ.", challenge:"Опишите задачу заказчика, исходные условия и ключевые ограничения.", solution:"Опишите инженерный подход, оборудование и выполненные работы.", result:"Опишите измеримый результат и пользу для заказчика.", imageAlt:"Проект 04 компании KRUL Technology" }
+        en: {
+  title: "CBD Trichome Separation",
+  summary: "Process design and equipment sourcing for an ice water separation line processing CBD-rich cannabis.",
+  challenge: "The client needed to increase processing capacity and produce a concentrate with minimal plant material contamination. When processing successive batches, it was essential to maintain low temperatures, control agitation intensity and collect the product with minimal manual handling.",
+  solution: "I developed the process flow for cooling, trichome separation, fraction collection and subsequent drying. I selected chillers, insulated vessels with adjustable agitation and multistage vibrating sieves for processing the aqueous slurry. I put together the equipment package and included temperature monitoring and commissioning support in the project.",
+  result: "A line for producing trichome concentrate without organic solvents was commissioned. The client gained the ability to process raw material in batches, collect selected fractions separately and monitor product yield, moisture and cannabinoid content. The equipment provides a foundation for further increases in processing capacity.",
+  imageAlt: "CBD trichome separation project by KRUL Technology"
+},
+pl: {
+  title: "Separacja trichomów CBD",
+  summary: "Zaprojektowanie i skompletowanie linii do oddzielania trichomów z konopi bogatych w CBD metodą separacji w wodzie lodowej.",
+  challenge: "Klient potrzebował zwiększyć wydajność przetwarzania surowca i uzyskiwać koncentrat z minimalną ilością zanieczyszczeń roślinnych. Przy przetwarzaniu kolejnych partii kluczowe było utrzymanie niskiej temperatury, kontrolowanie intensywności mieszania oraz zorganizowanie odbioru produktu przy ograniczonym nakładzie pracy ręcznej.",
+  solution: "Opracowałem schemat procesu obejmujący chłodzenie, oddzielanie trichomów, rozdział na frakcje i późniejsze suszenie. Dobrałem chillery, izolowane termicznie zbiorniki z regulowaną intensywnością mieszania oraz wielostopniowe sita wibracyjne do pracy z zawiesiną wodną. Skompletowałem wyposażenie, uwzględniając kontrolę temperatury i wsparcie podczas rozruchu.",
+  result: "Uruchomiono linię do otrzymywania koncentratu trichomów bez stosowania rozpuszczalników organicznych. Klient zyskał możliwość przetwarzania surowca partiami, oddzielnego odbioru wybranych frakcji oraz kontrolowania uzysku produktu, jego wilgotności i zawartości kannabinoidów. Wyposażenie stanowi bazę do dalszego zwiększania wydajności przetwarzania.",
+  imageAlt: "Projekt separacji trichomów CBD firmy KRUL Technology"
+},
+cs: {
+  title: "Separace trichomů CBD",
+  summary: "Návrh a sestavení technologické linky pro oddělování trichomů z konopí bohatého na CBD metodou separace v ledové vodě.",
+  challenge: "Klient potřeboval zvýšit kapacitu zpracování suroviny a získávat koncentrát s minimálním obsahem rostlinných nečistot. Při zpracování po sobě jdoucích šarží bylo důležité udržovat nízkou teplotu, řídit intenzitu míchání a zajistit sběr produktu s minimálním podílem ruční práce.",
+  solution: "Navrhl jsem technologický postup zahrnující chlazení, oddělování trichomů, rozdělení do frakcí a následné sušení. Vybral jsem chladicí jednotky, tepelně izolované nádoby s regulovatelným mícháním a vícestupňová vibrační síta pro zpracování vodné suspenze. Sestavil jsem soubor zařízení a zahrnul kontrolu teploty i podporu při uvádění linky do provozu.",
+  result: "Byla uvedena do provozu linka pro získávání trichomového koncentrátu bez použití organických rozpouštědel. Klient získal možnost zpracovávat surovinu po šaržích, samostatně odebírat vybrané frakce a sledovat výtěžnost produktu, jeho vlhkost a obsah kanabinoidů. Technické vybavení vytváří základ pro další zvyšování kapacity zpracování.",
+  imageAlt: "Projekt separace trichomů CBD společnosti KRUL Technology"
+},
+de: {
+  title: "CBD-Trichomtrennung",
+  summary: "Verfahrensentwicklung und Zusammenstellung der Anlagentechnik zur Abtrennung von Trichomen aus CBD-reichem Cannabis im Eiswasserverfahren.",
+  challenge: "Der Kunde wollte die Verarbeitungskapazität erhöhen und ein Konzentrat mit möglichst wenigen pflanzlichen Verunreinigungen gewinnen. Bei aufeinanderfolgenden Chargen mussten niedrige Temperaturen eingehalten, die Rührintensität geregelt und die Produktgewinnung mit möglichst geringem manuellem Aufwand organisiert werden.",
+  solution: "Ich entwickelte das Verfahrenskonzept für die Kühlung, Trichomabtrennung, Fraktionierung und anschließende Trocknung. Dafür wählte ich Kaltwassersätze, wärmeisolierte Behälter mit regelbaren Rührwerken und mehrstufige Vibrationssiebe zur Verarbeitung der wässrigen Suspension aus. Ich stellte die Anlagentechnik zusammen und berücksichtigte die Temperaturüberwachung sowie die Begleitung der Inbetriebnahme.",
+  result: "Eine Anlage zur Gewinnung von Trichomkonzentrat ohne organische Lösungsmittel wurde in Betrieb genommen. Der Kunde kann das Ausgangsmaterial chargenweise verarbeiten, ausgewählte Fraktionen getrennt sammeln und Produktausbeute, Feuchtigkeit und Cannabinoidgehalt überwachen. Die Anlagentechnik schafft die Grundlage für eine weitere Steigerung der Verarbeitungskapazität.",
+  imageAlt: "Projekt zur CBD-Trichomtrennung von KRUL Technology"
+},
+uk: {
+  title: "Сепарація CBD-трихом",
+  summary: "Розроблення та комплектація лінії відділення трихом із CBD-канабісу методом крижаної сепарації.",
+  challenge: "Клієнту потрібно було збільшити обсяг перероблення сировини й отримувати концентрат із мінімальною кількістю рослинних домішок. Під час послідовного завантаження партій було важливо підтримувати низьку температуру, контролювати інтенсивність перемішування та організувати збирання продукту без значного обсягу ручної роботи.",
+  solution: "Розробив схему охолодження, відділення трихом, розділення на фракції та подальшого сушіння. Підібрав чилери, теплоізольовані ємності з регульованим перемішуванням і багатоступеневі вібросита для роботи з водною суспензією. Скомплектував обладнання, передбачив контроль температури та супровід запуску.",
+  result: "Запущено лінію отримання концентрату трихом без застосування органічних розчинників. Клієнт отримав можливість переробляти сировину партіями, окремо збирати вибрані фракції та контролювати вихід продукту, його вологість і вміст канабіноїдів. Створено апаратну основу для подальшого збільшення обсягів перероблення.",
+  imageAlt: "Проєкт сепарації CBD-трихом компанії KRUL Technology"
+},
+ru: {
+  title: "Сепарация CBD трихом",
+  summary: "Разработка и комплектация линии отделения трихом из CBD-каннабиса методом ледяной сепарации.",
+  challenge: "Клиенту требовалось увеличить объём переработки сырья и получать концентрат с минимальным количеством растительных примесей. При последовательных загрузках было важно поддерживать низкую температуру, контролировать интенсивность перемешивания и организовать сбор продукта без большого объёма ручной работы.",
+  solution: "Разработал схему охлаждения, отделения трихом, разделения на фракции и последующей сушки. Подобрал чиллеры, теплоизолированные ёмкости с регулируемым перемешиванием и многоступенчатые вибросита для работы с водной суспензией. Скомплектовал оборудование, предусмотрел контроль температуры и сопровождение запуска.",
+  result: "Запущена линия получения концентрата трихом без применения органических растворителей. Клиент получил возможность перерабатывать сырьё партиями, отдельно собирать выбранные фракции и контролировать выход продукта, его влажность и содержание каннабиноидов. Создана аппаратная основа для дальнейшего увеличения объёмов переработки.",
+  imageAlt: "Проект сепарации CBD трихом компании KRUL Technology"
+}
       }
     }
   ];
