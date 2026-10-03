@@ -2078,7 +2078,7 @@ body.theme-dark .about-portrait { border-color:rgba(255,255,255,.14); }
 .wf-projects {
   position: relative;
   isolation: isolate;
-  padding: 72px 120px 150px;
+  padding: 72px 120px 80px;
   overflow: hidden;
   background: linear-gradient(180deg, #08090b 0%, #0e1114 54%, #181c20 100%) !important;
   scroll-margin-top: 30px;
@@ -2116,6 +2116,15 @@ body.theme-dark .wf-projects::after { opacity:0; }
 .wf-tech-log .section-header h2 { color: var(--project-white) !important; }
 
 .projects-carousel { position: relative; }
+/* Ненавязчивая граница перед видео: ближе к карточкам проектов. */
+.projects-divider {
+  height: 0;
+  margin: 64px 0 0;
+  border: 0;
+  border-top: 1px dashed var(--theme-line-light);
+  transition: border-color var(--theme-dur) var(--theme-ease);
+}
+body.theme-dark .projects-divider { border-color: var(--project-line); }
 .projects-track {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2346,6 +2355,8 @@ body.project-detail-mode > section:not(.project-detail-page),
 body.project-detail-mode > .wf-contacts { display: none !important; }
 body.project-detail-mode .project-detail-page { display: block !important; }
 body.project-detail-mode .wf-header { color: #fff; }
+/* На странице проекта верхняя кнопка консультации скрыта на всех экранах. */
+body.project-detail-mode .wf-header .header-cta-btn { display: none; }
 body.project-detail-mode .wf-logo,
 body.project-detail-mode .wf-lang { color: #fff !important; }
 body.project-detail-mode.theme-dark .wf-footer {
@@ -2488,8 +2499,9 @@ body.project-detail-mode.theme-dark .wf-footer {
 }
 
 @media (max-width: 768px) {
-  .wf-projects { padding: 64px 0 96px; }
+  .wf-projects { padding: 64px 0 56px; }
   .wf-projects .section-header { margin: 0 20px 34px; }
+  .projects-divider { margin: 36px 20px 0; }
   .projects-carousel {
     height:auto;
     min-height:0;
@@ -2498,6 +2510,9 @@ body.project-detail-mode.theme-dark .wf-footer {
     overflow-y:hidden;
     overscroll-behavior-x:contain;
     scroll-snap-type:x mandatory;
+    /* Сохранять отступ 20px и после каждого свайпа, как в услугах. */
+    scroll-padding-left:20px;
+    scroll-padding-right:20px;
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
@@ -2853,6 +2868,7 @@ body.project-detail-mode.theme-dark .wf-footer {
   <div class="projects-carousel" id="projectsCarousel" aria-label="Projects">
     <div class="projects-track" id="projectsTrack"></div>
   </div>
+  <hr class="projects-divider" aria-hidden="true">
 </section>
 
 <!-- Страница одного проекта. Она открывается из этого же index.html. -->
@@ -4048,7 +4064,7 @@ body.project-detail-mode.theme-dark .wf-footer {
       ],
       content: {
         en: {
-  title: "“Bromine”",
+  title: "Bromine",
   summary: "A bromine production unit based on 2,000-liter PTFE reactors.",
   challenge: "The key challenge was the chemical resistance of the equipment. The vessel body in contact with the product had to be made of a suitable material throughout the full thickness of its walls.",
   solution: "Reactors made entirely of solid PTFE, with a wall thickness of 50 mm, were proposed as the basis of the installation. The vessel body is PTFE throughout, with no separate protective layer that could peel away and expose metal to the process medium.",
@@ -4056,7 +4072,7 @@ body.project-detail-mode.theme-dark .wf-footer {
   imageAlt: "Project 01 by KRUL Technology"
 },
 pl: {
-  title: "„Brom”",
+  title: "Brom",
   summary: "Instalacja do produkcji bromu oparta na reaktorach z PTFE o pojemności 2 000 litrów.",
   challenge: "Kluczowym wyzwaniem projektu była odporność chemiczna aparatury. Potrzebne było rozwiązanie, w którym korpus mający kontakt z produktem jest wykonany z odpowiedniego materiału na całej grubości ścianek.",
   solution: "Jako podstawę instalacji zaproponowano reaktory wykonane w całości z PTFE, o grubości ścianek 50 mm. Cały korpus jest wykonany z PTFE, bez oddzielnej warstwy ochronnej, która mogłaby się odspajać i narażać metal na działanie medium.",
@@ -4064,7 +4080,7 @@ pl: {
   imageAlt: "Projekt 01 firmy KRUL Technology"
 },
 cs: {
-  title: "„Brom”",
+  title: "Brom",
   summary: "Zařízení pro výrobu bromu na bázi reaktorů z PTFE o objemu 2 000 litrů.",
   challenge: "Klíčovou otázkou projektu byla chemická odolnost zařízení. Těleso reaktoru přicházející do styku s produktem muselo být vyrobeno z vhodného materiálu v celé tloušťce stěny.",
   solution: "Jako základ zařízení byly navrženy reaktory vyrobené celé z PTFE, s tloušťkou stěny 50 mm. Celé těleso je z PTFE a nemá samostatnou ochrannou vrstvu, která by se mohla odlupovat a vystavit kov působení procesního média.",
@@ -4072,7 +4088,7 @@ cs: {
   imageAlt: "Projekt 01 společnosti KRUL Technology"
 },
 de: {
-  title: "„Brom“",
+  title: "Brom",
   summary: "Anlage zur Herstellung von Brom auf Basis von PTFE-Reaktoren mit einem Volumen von 2.000 Litern.",
   challenge: "Die zentrale Herausforderung des Projekts war die chemische Beständigkeit der Apparate. Der mit dem Produkt in Kontakt stehende Behälterkörper musste über die gesamte Wandstärke aus einem geeigneten Werkstoff bestehen.",
   solution: "Als Grundlage wurden Reaktoren aus massivem PTFE mit einer Wandstärke von 50 mm vorgeschlagen. Der Behälterkörper besteht vollständig aus PTFE und besitzt keine separate Schutzschicht, die sich ablösen und Metall dem Prozessmedium aussetzen könnte.",
@@ -4080,7 +4096,7 @@ de: {
   imageAlt: "Projekt 01 von KRUL Technology"
 },
 uk: {
-  title: "«Бром»",
+  title: "Бром",
   summary: "Установка для виробництва брому на базі реакторів із PTFE об’ємом 2 000 літрів.",
   challenge: "Ключовим питанням проєкту була хімічна стійкість апаратів. Потрібне було рішення, у якому корпус, що контактує з продуктом, виготовлений із відповідного матеріалу по всій товщині стінки.",
   solution: "За основу запропоновано реактори із суцільного фторопласту з товщиною стінки 50 мм. Корпус повністю виготовлений із фторопласту, тому тут немає окремого шару, який може відшаровуватися й оголювати метал, піддаючи його впливу середовища.",
@@ -4088,7 +4104,7 @@ uk: {
   imageAlt: "Проєкт 01 компанії KRUL Technology"
 },
 ru: {
-  title: "«Бром»",
+  title: "Бром",
   summary: "Установка для производства брома на базе реакторов из PTFE объёмом 2 000 литров.",
   challenge: "Ключевой вопрос проекта - химическая стойкость аппаратов. Требовалось решение, в котором контактирующий с продуктом корпус выполнен из подходящего материала по всей толщине стенки.",
   solution: "В качестве основы предложены реакторы из цельного фторопласта с толщиной стенки 50 мм. Это полноценный фторопластовый корпус и здесь отсутствует отдельный слой, который может отслаиваться и открывать металл воздействию среды.",
